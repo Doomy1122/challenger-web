@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ 여기를 수정하세요!
+// ✅ 하나로 깔끔하게 합쳤습니다!
 export const metadata: Metadata = {
   title: "CHALLENGER - Hoseo Univ. Formula Student Team",
   description: "호서대학교 자작자동차 동아리 CHALLENGER 공식 웹사이트입니다.",
@@ -27,12 +27,19 @@ export const metadata: Metadata = {
     siteName: "CHALLENGER",
     images: [
       {
-        url: "/vision/team.jpg", // 카톡 공유 시 나올 이미지 (기존에 있는 파일 활용)
+        url: "/vision/team.jpg",
         width: 800,
         height: 600,
       },
     ],
     type: "website",
+  },
+  // ✅ 검증 코드는 여기에 넣으세요 (주의: 파일 이름 아님!)
+  verification: {
+    google: "구글_서치콘솔_HTML태그_값_복사해서_넣기", 
+    other: {
+      "naver-site-verification": "네이버_웹마스터도구_HTML태그_값_복사해서_넣기",
+    },
   },
 };
 
