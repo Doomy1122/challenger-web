@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+// ✅ 1. localFont 불러오기
+import localFont from "next/font/local"; 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// ✅ 1. 방금 만든 Provider 불러오기
 import { LanguageProvider } from "./context/LanguageContext";
 
 const geistSans = Geist({
@@ -14,17 +15,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "CHALLENGER - Hoseo Univ. Formula Student Team",
-  description: "호서대학교 자작자동차 동아리 CHALLENGER 공식 웹사이트입니다.",
-  // ... (기타 메타데이터 그대로 유지) ...
-  verification: {
-    google: "ek3UK1DGh9YSFKsBX0QjxMUNq1lVzLEJtGsHF72t0jk", 
-    other: {
-      "naver-site-verification": "b953718b9e8c5ccbafc11ad98c8dd8009c4946d1",
-    },
-  },
-};
+// ✅ 2. Coreldraw 폰트 설정 (변수명: --font-corel)
+const corel = localFont({
+  src: "./fonts/CorelDraw.ttf", // ⚠️ 파일 경로 정확해야 함!
+  variable: "--font-corel",
+  display: "swap",
+});
+
+// ... metadata 부분은 그대로 ...
 
 export default function RootLayout({
   children,
@@ -33,8 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* ✅ 2. 여기서 감싸주면 끝! */}
+      {/* ✅ 3. body 태그 클래스에 corel.variable 추가 */}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${corel.variable} antialiased`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

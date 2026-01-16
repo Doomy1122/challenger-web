@@ -31,7 +31,7 @@ const SPECS: Record<
         { label: "공차 무게", value: "229 kg" },
         { label: "무게 배분(전/후)", value: "49% / 51%" },
         { label: "Cell", value: "Samsung 21700 40T" },
-        { label: "축전지", value: "294 V / 245 A" },
+        { label: "축전지", value: "294 V / 315 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / CM200DZ" },
         { label: "종 감속비", value: "3.73" },
       ],

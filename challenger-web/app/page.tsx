@@ -10,7 +10,7 @@ import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터 유지) ...
+// ... (로고 데이터는 그대로 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -111,7 +111,8 @@ export default function Home() {
           );
         })()}
         <div className="relative z-30 text-center px-4 flex flex-col items-center">
-          <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse">
+          {/* ✅ 여기에 font-corel 적용 */}
+          <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
             {t.hero.spirit}
           </p>
           <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-8" />
@@ -130,7 +131,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-black leading-tight break-keep">
                 {t.about.title_1}
                 <br />
-                {t.about.title_2} <span className="text-[#950000]">CHALLENGER</span> spirit
+                {t.about.title_2} <span className="text-[#950000] font-corel">CHALLENGER</span> spirit
               </h2>
               <p className="mt-6 text-gray-400 text-lg leading-relaxed break-keep">
                 {t.about.desc}
@@ -176,44 +177,52 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
+              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
-                <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
+                {/* ✅ 연도 2025에도 font-corel 적용 */}
+                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
                   <div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div>
                   <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.gold25_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
+
+              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
-                <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
+                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
                   <div className="text-xl md:text-2xl font-black">{t.awards.accel25_title}</div>
                   <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel25_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
+
+              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
-                <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2022</div>
+                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2022</div>
                 <div className="flex-1">
                   <div className="text-xl md:text-2xl font-black">{t.awards.silver22_title}</div>
                   <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver22_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
+
+              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
-                <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2020</div>
+                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2020</div>
                 <div className="flex-1">
                   <div className="text-xl md:text-2xl font-black">{t.awards.silver20_title}</div>
                   <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver20_desc}</div>
@@ -269,7 +278,6 @@ export default function Home() {
             <div className="space-y-6 text-gray-500 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#950000] mt-0.5 shrink-0" />
-                {/* ✅ 주소도 다국어 적용됨 */}
                 <p className="whitespace-pre-wrap leading-relaxed">{t.contact.address}</p>
               </div>
               <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-[#950000] shrink-0" /><p>CHALLENGERFSAE@gmail.com</p></div>
@@ -279,7 +287,6 @@ export default function Home() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#950000]" />
-                    {/* ✅ 회장 이름 다국어 적용 */}
                     <p>{t.contact.name_chair} +82) 10 4561 8947</p>
                   </div>
                   <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div>
@@ -290,7 +297,6 @@ export default function Home() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#950000]" />
-                    {/* ✅ 팀장 이름 다국어 적용 */}
                     <p>{t.contact.name_pm} +82) 10 4705 3671</p>
                   </div>
                   <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div>
