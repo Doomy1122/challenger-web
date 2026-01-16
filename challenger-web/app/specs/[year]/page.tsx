@@ -20,7 +20,7 @@ const SPECS: Record<
     image: "/awards/2025-gold.jpg",
     ko: {
       title: "DF-25",
-      subtitle: "KSAE 대학생 자작자동차 대회 (2025)",
+      subtitle: "차량의 모든 움직임을 실시간으로 제어하는 기술의 집약체",
       rows: [
         { label: "전장 / 전폭 / 전고", value: "2954 / 1493 / 1040 mm" },
         { label: "축거", value: "1515 mm" },
@@ -35,7 +35,7 @@ const SPECS: Record<
     },
     en: {
       title: "DF-25",
-      subtitle: "KSAE Formula Student Korea (2025)",
+      subtitle: "A technological culmination that commands every movement of the vehicle in real time",
       rows: [
         { label: "L / W / H", value: "2954 / 1493 / 1040 mm" },
         { label: "Wheelbase", value: "1515 mm" },
