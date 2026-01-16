@@ -1,15 +1,15 @@
-"use client"; // 👈 상태 관리를 위해 필수
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { Instagram, Youtube, MapPin, Mail, Phone, Globe } from "lucide-react";
 import NewsSection from "./components/NewsSection";
-import { translations } from "./constants/translations"; // 👈 방금 만든 파일 불러오기
+import { translations } from "./constants/translations";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (스폰서 로고 데이터는 그대로 유지)
+// ... (로고 데이터는 그대로) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -62,17 +62,12 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
   );
 }
 
-// 타입 정의
 type LangType = "ko" | "en";
 
 export default function Home() {
-  // ✅ 언어 상태 관리 (기본값: 한국어 'ko')
   const [language, setLanguage] = useState<LangType>("ko");
-
-  // 현재 선택된 언어 데이터 가져오기
   const t = translations[language];
 
-  // 언어 변경 함수
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "ko" ? "en" : "ko"));
   };
@@ -95,7 +90,6 @@ export default function Home() {
             <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
             <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
 
-            {/* ✅ 언어 변경 버튼 (클릭 시 글자 바뀜) */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -137,7 +131,6 @@ export default function Home() {
       <section id="about" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-            {/* 왼쪽: 텍스트 박스 */}
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10 flex flex-col justify-center">
               <p className="text-sm font-bold text-white/80 mb-3">About Us</p>
               <h2 className="text-4xl md:text-5xl font-black leading-tight break-keep">
@@ -149,8 +142,6 @@ export default function Home() {
                 {t.about.desc}
               </p>
             </div>
-
-            {/* 오른쪽: 사진 박스 */}
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10 h-full min-h-[320px]">
               <img src="/vision/spirit.jpg" alt="Challenger Car Side" className="w-full h-full object-cover" />
             </div>
@@ -200,11 +191,12 @@ export default function Home() {
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
                 <div className="flex-1">
-                  <div className="text-xl md:text-2xl font-black">FSK E-Formula 금상</div>
-                  <div className="mt-2 text-sm md:text-base text-gray-400">KSAE Formula Student Korea</div>
+                  <div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.gold25_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
+
               {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -212,11 +204,12 @@ export default function Home() {
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
                 <div className="flex-1">
-                  <div className="text-xl md:text-2xl font-black">FSK 가속 성능 최우수상</div>
-                  <div className="mt-2 text-sm md:text-base text-gray-400">0-100 km/h <span className="text-white font-black">3.01 s</span></div>
+                  <div className="text-xl md:text-2xl font-black">{t.awards.accel25_title}</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel25_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
+
               {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -224,11 +217,12 @@ export default function Home() {
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2022</div>
                 <div className="flex-1">
-                  <div className="text-xl md:text-2xl font-black">KSAE E-Formula 은상</div>
-                  <div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div>
+                  <div className="text-xl md:text-2xl font-black">{t.awards.silver22_title}</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver22_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
+
               {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -236,8 +230,8 @@ export default function Home() {
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2020</div>
                 <div className="flex-1">
-                  <div className="text-xl md:text-2xl font-black">KSAE C-Formula 은상</div>
-                  <div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div>
+                  <div className="text-xl md:text-2xl font-black">{t.awards.silver20_title}</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver20_desc}</div>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
