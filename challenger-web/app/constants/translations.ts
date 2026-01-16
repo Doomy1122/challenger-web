@@ -14,9 +14,8 @@ export const translations = {
       desc: "Hoseo University Formula Student Team\nSince 1997",
     },
     about: {
-      // ✅ 대제목 줄바꿈을 위해 텍스트 길이 조정
       title_1: "강력한 E-Formula,",
-      title_2: "그 이상의 가치 ", // 뒤에 CHALLENGER spirit 붙음
+      title_2: "그 이상의 가치 ", 
       desc: "빠르고 정밀하게 트랙을 지배하는 의지, DF-25.\n\n단순히 빠른 속도만이 아닙니다. 우리는 차량의 모든 움직임을 실시간 데이터로 제어하는 기술의 집약체를 만듭니다.\n\n호서대학교 CHALLENGER는 끊임없이 기술의 한계에 도전합니다.",
       spirit_title: "Our Spirit",
       spirit_desc: "패기있는 도전자 정신.\n\n우리의 정신은 실패를 두려워하지 않고 미래를 향해 나아가는 강인한 마음입니다.\n\n어떠한 트랙과 환경에서도 차량의 잠재력을 100% 이끌어내는 것, 그것이 우리의 도전입니다.",
@@ -40,24 +39,27 @@ export const translations = {
     sponsors: {
       label: "Sponsorship",
       title: "Partnership",
+      // ✅ 상단 설득 멘트
       main_copy: "열정적인 엔지니어들과 함께\n모빌리티의 미래를 이끌어주세요.",
-      sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.\n저희와 함께 기술의 한계에 도전하십시오.",
-      download_btn: "제안서 다운로드",
-      contact_btn: "후원 문의하기",
-      // ✅ 버튼 텍스트 추가
+      sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.",
+      download_btn: "제안서 다운로드 (PDF)",
+      // ✅ [복구] 하단 배너 멘트
+      banner_title: "스폰서가 되어주세요",
+      banner_desc: "스폰서로 참여하여 CHALLENGER 정신과 함께해주세요!",
       list_btn: "스폰서 목록 보기",
+      
       benefits: [
         {
           title: "강력한 브랜드 노출",
-          desc: "대회 출전 차량(DF-25), 팀 유니폼, 패독 부스 및 각종 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
+          desc: "차량(DF-25), 유니폼, 패독 부스 및 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
         },
         {
           title: "우수 공학 인재 확보",
-          desc: "설계, 해석, 제작 실무 경험을 갖춘 준비된 엔지니어들과의 네트워킹 기회를 제공하며, 채용 연계 및 인턴십 우선권을 드립니다.",
+          desc: "설계, 해석, 제작 실무 경험을 갖춘 준비된 엔지니어들과의 네트워킹 및 채용 연계 기회를 제공합니다.",
         },
         {
           title: "기술 R&D 데이터 공유",
-          desc: "후원 부품 및 기술이 실제 레이싱 환경에서 발휘하는 성능 데이터를 분석하여 피드백 레포트를 제공, 귀사의 R&D에 기여합니다.",
+          desc: "후원 부품 및 기술이 실제 레이싱 환경에서 발휘하는 성능 데이터를 분석하여 피드백 레포트를 제공합니다.",
         },
       ],
     },
@@ -111,23 +113,25 @@ export const translations = {
       label: "Sponsorship",
       title: "Partnership",
       main_copy: "Drive the Future of Mobility\nwith Passionate Engineers.",
-      sub_copy: "CHALLENGER aims for a partnership that grows together with your company.\nJoin us in challenging the limits of technology.",
+      sub_copy: "CHALLENGER aims for a partnership that grows together with your company.",
       download_btn: "Download Proposal",
-      contact_btn: "Contact Us",
-      // ✅ 버튼 텍스트 추가
+      // ✅ [Restored] Banner Text
+      banner_title: "Become a Sponsor",
+      banner_desc: "Support us and join the CHALLENGER spirit by participating as a sponsor!",
       list_btn: "SHOW LIST",
+      
       benefits: [
         {
           title: "Powerful Brand Exposure",
-          desc: "Maximize marketing impact with your logo on our race car (DF-25), team uniforms, paddock booths, and social media channels.",
+          desc: "Maximize marketing impact with your logo on our race car (DF-25), team uniforms, and social media channels.",
         },
         {
           title: "Access to Top Talent",
-          desc: "Connect with industry-ready engineers skilled in design, analysis, and manufacturing. We offer priority for internships and recruitment.",
+          desc: "Connect with industry-ready engineers skilled in design and analysis. We offer priority for recruitment.",
         },
         {
           title: "Technical R&D Partnership",
-          desc: "We contribute to your R&D by providing detailed performance analysis and feedback reports on sponsored parts in real racing conditions.",
+          desc: "We contribute to your R&D by providing detailed performance analysis reports on sponsored parts.",
         },
       ],
     },
