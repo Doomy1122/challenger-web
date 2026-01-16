@@ -21,7 +21,7 @@ const tiers = [
       { name: "GM", src: "/sponsors/marquee/tiers/Diamond/gm.png" },
       { name: "HEARIM", src: "/sponsors/marquee/tiers/Diamond/hearim.png" },
       { name: "HYUNDAI", src: "/sponsors/marquee/tiers/Diamond/hyundai.png" },
-      { name: "KATECH", src: "/sponsors/marquee/tiers/Diamond/Katech.png" },
+      { name: "KATECH", src: "/sponsors/marquee/tiers/Diamond/katech.png" },
       { name: "LLight", src: "/sponsors/marquee/tiers/Diamond/light.png" },
       { name: "Brian KIM WORKS", src: "/sponsors/marquee/tiers/Diamond/brian.png" },
     ],
