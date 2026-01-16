@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   // ✅ 검증 코드는 여기에 넣으세요 (주의: 파일 이름 아님!)
   verification: {
-    google: "구글_서치콘솔_HTML태그_값_복사해서_넣기", 
+    google: "ek3UK1DGh9YSFKsBX0Q", 
     other: {
-      "naver-site-verification": "네이버_웹마스터도구_HTML태그_값_복사해서_넣기",
+      "naver-site-verification": "ek3UK1DGh9YSFKsBX0Q",
     },
   },
 };
