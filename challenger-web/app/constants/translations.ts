@@ -11,7 +11,7 @@ export const translations = {
     },
     hero: {
       spirit: "Spirit of",
-      desc: "Hoseo University Formula Student Team Since 1997",
+      desc: "Hoseo University Formula Student Team\nSince 1997",
     },
     about: {
       title_1: "A powerful E-Formula Vehicle",

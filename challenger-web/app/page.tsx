@@ -115,7 +115,7 @@ export default function Home() {
             {t.hero.spirit}
           </p>
           <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-8" />
-          <p className="text-lg md:text-xl font-medium text-gray-200/90 border-t border-gray-500/60 pt-6 px-10 leading-relaxed">
+          <p className="text-lg md:text-xl font-medium text-gray-200/90 border-t border-gray-500/60 pt-6 px-10 leading-relaxed whitespace-pre-wrap">
             {t.hero.desc}
           </p>
         </div>
