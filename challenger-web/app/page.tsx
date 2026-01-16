@@ -111,7 +111,6 @@ export default function Home() {
           );
         })()}
         <div className="relative z-30 text-center px-4 flex flex-col items-center">
-          {/* ✅ 여기에 font-corel 적용 */}
           <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
             {t.hero.spirit}
           </p>
@@ -133,7 +132,9 @@ export default function Home() {
                 <br />
                 {t.about.title_2} <span className="text-[#950000] font-corel">CHALLENGER</span> spirit
               </h2>
-              <p className="mt-6 text-gray-400 text-lg leading-relaxed break-keep">
+              
+              {/* ✅ 수정: text-justify(양쪽정렬), leading-loose(줄간격 넓게), whitespace-pre-line(줄바꿈 허용) */}
+              <p className="mt-6 text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
                 {t.about.desc}
               </p>
             </div>
@@ -147,13 +148,17 @@ export default function Home() {
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
               <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.spirit_title}</h3>
-              <p className="text-gray-400 text-lg leading-relaxed break-keep">
+              
+              {/* ✅ 수정: text-justify, leading-loose */}
+              <p className="text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
                 {t.about.spirit_desc}
               </p>
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
               <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
-              <p className="text-gray-400 text-lg leading-relaxed break-keep">
+              
+              {/* ✅ 수정: text-justify, leading-loose */}
+              <p className="text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
                 {t.about.vision_desc}
               </p>
             </div>
@@ -182,7 +187,6 @@ export default function Home() {
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
-                {/* ✅ 연도 2025에도 font-corel 적용 */}
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
                   <div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div>
