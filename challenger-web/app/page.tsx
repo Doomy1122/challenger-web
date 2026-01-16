@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { Instagram, Youtube, MapPin, Mail, Phone } from "lucide-react";
-// ✅ 여기에 NewsSection 컴포넌트 불러오기
+// ✅ 컴포넌트 불러오기
 import NewsSection from "./components/NewsSection";
+import GallerySection from "./components/GallerySection";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
@@ -107,9 +108,12 @@ export default function Home() {
             <a href="#history" className="hover:text-[#950000] transition">
               COMPETITION
             </a>
-            {/* 메뉴에 NEWS 추가 */}
             <a href="#news" className="hover:text-[#950000] transition">
               NEWS
+            </a>
+            {/* ✅ GALLERY 메뉴 추가! */}
+            <a href="#gallery" className="hover:text-[#950000] transition">
+              GALLERY
             </a>
             <a href="#sponsors" className="hover:text-[#950000] transition">
               SPONSORS
@@ -171,7 +175,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. About / Spirit / Vision */}
+      {/* 3. About */}
       <section id="about" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -237,7 +241,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. History (Awards & Records) */}
+      {/* 4. History */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
@@ -251,17 +255,12 @@ export default function Home() {
 
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link
                   href="/specs/2025"
                   className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer"
                 >
-                  <img
-                    src="/awards/2025-gold.jpg"
-                    alt="2025 Car"
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                  />
+                  <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
                 <div className="flex-1">
@@ -270,18 +269,12 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
-
-              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link
                   href="/specs/2025"
                   className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer"
                 >
-                  <img
-                    src="/awards/2025-accel.png"
-                    alt="2025 Car"
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                  />
+                  <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
                 <div className="flex-1">
@@ -290,18 +283,12 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
-
-              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link
                   href="/specs/2022"
                   className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer"
                 >
-                  <img
-                    src="/awards/2022-silver.jpg"
-                    alt="2022 Car"
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                  />
+                  <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2022</div>
                 <div className="flex-1">
@@ -310,18 +297,12 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
-
-              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link
                   href="/specs/2020"
                   className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer"
                 >
-                  <img
-                    src="/awards/2020-silver.jpg"
-                    alt="2020 Car"
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                  />
+                  <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2020</div>
                 <div className="flex-1">
@@ -338,20 +319,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ✅ 5. News Section (여기에 추가됨!) */}
+      {/* ✅ 5. News Section */}
       <NewsSection />
 
-      {/* 6. Sponsors */}
+      {/* ✅ 6. Gallery Section (여기에 추가됨!) */}
+      <GallerySection />
+
+      {/* 7. Sponsors */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
-            {/* 로고 마퀴 */}
             <div className="px-6 md:px-10 py-10 opacity-70">
               <MarqueeRow logos={sponsorLogosRow1} direction="left" speedSec={44} />
               <MarqueeRow logos={sponsorLogosRow2} direction="right" speedSec={48} />
               <MarqueeRow logos={sponsorLogosRow3} direction="left" speedSec={52} />
             </div>
-            {/* 오버레이 */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="absolute inset-0 bg-black/55" />
               <div className="relative z-10 text-center px-6 pointer-events-none">
@@ -374,7 +356,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Footer + Contact */}
+      {/* 8. Contact */}
       <section id="contact" className="bg-black py-16 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>
