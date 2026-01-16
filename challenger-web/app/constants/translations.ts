@@ -14,8 +14,9 @@ export const translations = {
       desc: "Hoseo University Formula Student Team\nSince 1997",
     },
     about: {
-      title_1: "A powerful E-Formula Vehicle",
-      title_2: "created with a ",
+      // ✅ 대제목 줄바꿈을 위해 텍스트 길이 조정
+      title_1: "강력한 E-Formula,",
+      title_2: "그 이상의 가치 ", // 뒤에 CHALLENGER spirit 붙음
       desc: "빠르고 정밀하게 트랙을 지배하는 의지, DF-25.\n\n단순히 빠른 속도만이 아닙니다. 우리는 차량의 모든 움직임을 실시간 데이터로 제어하는 기술의 집약체를 만듭니다.\n\n호서대학교 CHALLENGER는 끊임없이 기술의 한계에 도전합니다.",
       spirit_title: "Our Spirit",
       spirit_desc: "패기있는 도전자 정신.\n\n우리의 정신은 실패를 두려워하지 않고 미래를 향해 나아가는 강인한 마음입니다.\n\n어떠한 트랙과 환경에서도 차량의 잠재력을 100% 이끌어내는 것, 그것이 우리의 도전입니다.",
@@ -36,14 +37,15 @@ export const translations = {
       silver20_title: "KSAE C-Formula 은상",
       silver20_desc: "KSAE 대학생 자작자동차 대회",
     },
-    // ✅ [NEW] 스폰서십 강화 데이터
     sponsors: {
       label: "Sponsorship",
       title: "Partnership",
       main_copy: "열정적인 엔지니어들과 함께\n모빌리티의 미래를 이끌어주세요.",
       sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.\n저희와 함께 기술의 한계에 도전하십시오.",
-      download_btn: "제안서 다운로드 (PDF)",
+      download_btn: "제안서 다운로드",
       contact_btn: "후원 문의하기",
+      // ✅ 버튼 텍스트 추가
+      list_btn: "스폰서 목록 보기",
       benefits: [
         {
           title: "강력한 브랜드 노출",
@@ -105,14 +107,15 @@ export const translations = {
       silver20_title: "KSAE C-Formula Silver Award",
       silver20_desc: "Formula Student Korea",
     },
-    // ✅ [NEW] Sponsorship Enhanced Data
     sponsors: {
       label: "Sponsorship",
       title: "Partnership",
       main_copy: "Drive the Future of Mobility\nwith Passionate Engineers.",
       sub_copy: "CHALLENGER aims for a partnership that grows together with your company.\nJoin us in challenging the limits of technology.",
-      download_btn: "Download Sponsorship Deck",
-      contact_btn: "Contact for Sponsorship",
+      download_btn: "Download Proposal",
+      contact_btn: "Contact Us",
+      // ✅ 버튼 텍스트 추가
+      list_btn: "SHOW LIST",
       benefits: [
         {
           title: "Powerful Brand Exposure",

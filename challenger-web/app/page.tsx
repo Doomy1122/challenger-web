@@ -3,15 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-// ✅ 아이콘 추가 (Download, Megaphone 등)
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로 두세요) ...
+// ... (로고 데이터 그대로 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -133,9 +132,8 @@ export default function Home() {
                 <br />
                 {t.about.title_2} <span className="text-[#950000] font-corel">CHALLENGER</span> spirit
               </h2>
-              
-              {/* ✅ 수정: text-justify(양쪽정렬), leading-loose(줄간격 넓게), whitespace-pre-line(줄바꿈 허용) */}
-              <p className="mt-6 text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
+              {/* ✅ 수정: text-justify 삭제 (왼쪽 정렬) */}
+              <p className="mt-6 text-gray-400 text-lg leading-loose whitespace-pre-line break-keep">
                 {t.about.desc}
               </p>
             </div>
@@ -149,17 +147,15 @@ export default function Home() {
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
               <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.spirit_title}</h3>
-              
-              {/* ✅ 수정: text-justify, leading-loose */}
-              <p className="text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
+              {/* ✅ 수정: text-justify 삭제 */}
+              <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep">
                 {t.about.spirit_desc}
               </p>
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
               <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
-              
-              {/* ✅ 수정: text-justify, leading-loose */}
-              <p className="text-gray-400 text-lg leading-loose text-justify whitespace-pre-line break-keep">
+              {/* ✅ 수정: text-justify 삭제 */}
+              <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep">
                 {t.about.vision_desc}
               </p>
             </div>
@@ -183,7 +179,6 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -195,7 +190,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
-              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -207,7 +201,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
-              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -219,7 +212,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
-              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -240,7 +232,7 @@ export default function Home() {
       {/* 5. News Section */}
       <NewsSection />
 
-      {/* 6. Sponsors (완전 개편됨!) */}
+      {/* 6. Sponsors */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 items-start mb-20">
@@ -255,20 +247,30 @@ export default function Home() {
               <p className="mt-6 text-gray-400 text-lg leading-relaxed break-keep whitespace-pre-line">
                 {t.sponsors.sub_copy}
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                {/* 1. 제안서 다운로드 버튼 */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                {/* 1. 제안서 다운로드 */}
                 <a 
-                  href="/Challenger_Sponsorship_Proposal.pdf" // ⚠️ 실제 PDF 파일 경로로 바꾸세요
+                  href="/Challenger_Sponsorship_Proposal.pdf" 
                   download
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition text-sm"
                 >
                   <Download size={18} />
                   {t.sponsors.download_btn}
                 </a>
-                {/* 2. 문의하기 버튼 */}
+
+                {/* ✅ 2. [복구됨] 스폰서 목록 보기 */}
+                <Link 
+                  href="/sponsors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition text-sm"
+                >
+                  <List size={18} />
+                  {t.sponsors.list_btn}
+                </Link>
+
+                {/* 3. 문의하기 */}
                 <a 
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition text-sm"
                 >
                   <Mail size={18} />
                   {t.sponsors.contact_btn}
@@ -283,34 +285,31 @@ export default function Home() {
                   <Megaphone size={24} className="text-white" />
                 </div>
                 <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[0].title}</h4>
-                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[0].desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep">{t.sponsors.benefits[0].desc}</p>
               </div>
               <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#950000]/50 transition duration-300 group">
                 <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:bg-[#950000] transition">
                   <Users size={24} className="text-white" />
                 </div>
                 <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[1].title}</h4>
-                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[1].desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep">{t.sponsors.benefits[1].desc}</p>
               </div>
               <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#950000]/50 transition duration-300 group">
                 <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:bg-[#950000] transition">
                   <Cpu size={24} className="text-white" />
                 </div>
                 <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[2].title}</h4>
-                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[2].desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep">{t.sponsors.benefits[2].desc}</p>
               </div>
             </div>
           </div>
 
-          {/* 기존 스폰서 로고 Marquee */}
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
             <div className="px-6 md:px-10 py-10 opacity-70">
               <MarqueeRow logos={sponsorLogosRow1} direction="left" speedSec={44} />
               <MarqueeRow logos={sponsorLogosRow2} direction="right" speedSec={48} />
               <MarqueeRow logos={sponsorLogosRow3} direction="left" speedSec={52} />
             </div>
-            {/* 로고 위 오버레이 텍스트 삭제 (상단으로 내용 이동했으므로) */}
-            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
           </div>
         </div>
       </section>
