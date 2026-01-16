@@ -44,14 +44,14 @@ export const translations = {
       sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.",
       download_btn: "제안서 다운로드 (PDF)",
       // ✅ [복구] 하단 배너 멘트
-      banner_title: "스폰서가 되어주세요",
+      banner_title: "Become a Sposor",
       banner_desc: "스폰서로 참여하여 CHALLENGER 정신과 함께해주세요!",
       list_btn: "스폰서 목록 보기",
       
       benefits: [
         {
           title: "강력한 브랜드 노출",
-          desc: "차량(DF-25), 유니폼, 패독 부스 및 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
+          desc: "차량(DF-Series), 유니폼, 패독 부스 및 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
         },
         {
           title: "우수 공학 인재 확보",
@@ -123,7 +123,7 @@ export const translations = {
       benefits: [
         {
           title: "Powerful Brand Exposure",
-          desc: "Maximize marketing impact with your logo on our race car (DF-25), team uniforms, and social media channels.",
+          desc: "Maximize marketing impact with your logo on our race car (DF-Series), team uniforms, and social media channels.",
         },
         {
           title: "Access to Top Talent",
