@@ -1,5 +1,5 @@
 export const translations = {
-  // 🇰🇷 한국어 모드 (제목은 영어, 본문은 한국어, Hero는 영어 고정)
+  // 🇰🇷 한국어 모드
   ko: {
     nav: {
       about: "ABOUT US",
@@ -11,7 +11,6 @@ export const translations = {
     },
     hero: {
       spirit: "Spirit of",
-      // ✅ 요청하신 대로 무조건 영어로!
       desc: "Hoseo University Formula Student Team Since 1997",
     },
     about: {
@@ -27,7 +26,6 @@ export const translations = {
       label: "Latest Achievements",
       title: "Awards & Records",
     },
-    // ✅ 홈 화면 수상 내역 (한국어)
     awards: {
       gold25_title: "FSK E-Formula 금상",
       gold25_desc: "KSAE 대학생 자작자동차 대회",
@@ -47,13 +45,14 @@ export const translations = {
     contact: {
       chairman: "회장 (Chairman)",
       pm: "팀장 (Project Manager)",
-      // ✅ 요청하신 이름 반영
-      name_chair: "Jeon JinWoo",
-      name_pm: "Minsoo Park",
+      // ✅ 한국어 정보
+      name_chair: "전진우",
+      name_pm: "박민수",
+      address: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호",
     },
   },
 
-  // 🇺🇸 영어 모드 (전부 영어)
+  // 🇺🇸 영어 모드
   en: {
     nav: {
       about: "ABOUT US",
@@ -80,7 +79,6 @@ export const translations = {
       label: "Latest Achievements",
       title: "Awards & Records",
     },
-    // ✅ 홈 화면 수상 내역 (영어)
     awards: {
       gold25_title: "FSK E-Formula Gold Award",
       gold25_desc: "Formula Student Korea",
@@ -100,9 +98,10 @@ export const translations = {
     contact: {
       chairman: "Chairman",
       pm: "Project Manager",
-      // ✅ 요청하신 이름 반영
+      // ✅ 영어 정보
       name_chair: "Jeon JinWoo",
       name_pm: "Minsoo Park",
+      address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },
 };

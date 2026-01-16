@@ -1,18 +1,16 @@
 "use client";
 
-import React from "react"; // useState 삭제됨
+import React from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { Instagram, Youtube, MapPin, Mail, Phone, Globe } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
-// ✅ 1. useLanguage 불러오기
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터들 const sponsorLogosRow1 등등... 그대로 두세요!) ...
-// (코드 너무 길어서 로고 부분은 생략합니다. 기존 것 그대로 유지하세요.)
+// ... (로고 데이터 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -66,15 +64,13 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
 }
 
 export default function Home() {
-  // ✅ 2. 전역 상태 사용! (useState 대신 useLanguage)
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
-      {/* ... (이 아래 내용은 기존과 완벽히 동일합니다. t.hero.spirit 이런 변수들 그대로 작동함) ... */}
       
-      {/* 네비게이션 바 */}
+      {/* 1. 네비게이션 바 */}
       <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center">
@@ -89,7 +85,6 @@ export default function Home() {
             <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
             <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
 
-            {/* 언어 버튼 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -101,7 +96,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 히어로 섹션 */}
+      {/* 2. 히어로 섹션 */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {(() => {
           const videoId = "8ErcU7HjICU";
@@ -126,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About */}
+      {/* 3. About */}
       <section id="about" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
@@ -168,7 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* History */}
+      {/* 4. History */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
@@ -231,8 +226,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 5. News Section */}
       <NewsSection />
 
+      {/* 6. Sponsors */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
@@ -264,16 +261,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 7. Footer + Contact */}
       <section id="contact" className="bg-black py-16 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>
             <img src="/logo.png" alt="CHALLENGER Logo" className="h-12 w-auto mb-8 object-contain" />
             <div className="space-y-6 text-gray-500 text-sm">
-              <div className="flex items-start gap-3"><MapPin className="w-5 h-5 text-[#950000] mt-0.5 shrink-0" /><p>충청남도 아산시 배방읍 호서로79번길 20,<br />호서대학교 아산캠퍼스 제2공학관 B10호</p></div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#950000] mt-0.5 shrink-0" />
+                {/* ✅ 주소도 다국어 적용됨 */}
+                <p className="whitespace-pre-wrap leading-relaxed">{t.contact.address}</p>
+              </div>
               <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-[#950000] shrink-0" /><p>CHALLENGERFSAE@gmail.com</p></div>
               <div className="border-t border-zinc-800 my-4" />
-              <div><p className="text-white font-bold mb-2">{t.contact.chairman}</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>전진우 +82) 10 4561 8947</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div></div></div>
-              <div><p className="text-white font-bold mb-2">{t.contact.pm}</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>박민수 +82) 10 4705 3671</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div></div></div>
+              <div>
+                <p className="text-white font-bold mb-2">{t.contact.chairman}</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-[#950000]" />
+                    {/* ✅ 회장 이름 다국어 적용 */}
+                    <p>{t.contact.name_chair} +82) 10 4561 8947</p>
+                  </div>
+                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div>
+                </div>
+              </div>
+              <div>
+                <p className="text-white font-bold mb-2">{t.contact.pm}</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-[#950000]" />
+                    {/* ✅ 팀장 이름 다국어 적용 */}
+                    <p>{t.contact.name_pm} +82) 10 4705 3671</p>
+                  </div>
+                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div>
+                </div>
+              </div>
             </div>
             <div className="flex gap-4 mt-8">
               <a href="https://instagram.com/challenger_fsae" target="_blank" rel="noopener noreferrer" className="p-3 bg-zinc-900 rounded-full hover:bg-[#950000] transition text-white"><Instagram size={20} /></a>
