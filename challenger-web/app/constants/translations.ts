@@ -49,7 +49,7 @@ export const translations = {
       down_eng: "English Version (.pdf)",
 
       // ✅ [복구] 하단 배너 멘트
-      banner_title: "Become a Sposor",
+      banner_title: "Become a Sponsor",
       banner_desc: "스폰서로 참여하여 CHALLENGER 정신과 함께해주세요!",
       list_btn: "스폰서 목록 보기",
       
