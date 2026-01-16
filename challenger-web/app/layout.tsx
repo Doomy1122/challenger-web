@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   // ✅ 검증 코드는 여기에 넣으세요 (주의: 파일 이름 아님!)
   verification: {
-    google: "ek3UK1DGh9YSFKsBX0Q", 
+    google: "ek3UK1DGh9YSFKsBX0QjxMUNq1lVzLEJtGsHF72t0jk", 
     other: {
-      "naver-site-verification": "ek3UK1DGh9YSFKsBX0Q",
+      "naver-site-verification": "",
     },
   },
 };
