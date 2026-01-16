@@ -4,45 +4,40 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ExternalLink, Heart, MessageCircle, Instagram } from "lucide-react";
 
-// ✅ 인스타그램 데이터 타입 정의
+// ✅ JSON 데이터 구조에 맞게 수정됨 (CamelCase 적용)
 interface InstaPost {
   id: string;
-  media_url: string;
+  mediaUrl: string;       // JSON에서 mediaUrl로 옴
   permalink: string;
   caption?: string;
-  thumbnail_url?: string; // 동영상일 경우 썸네일
-  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+  thumbnailUrl?: string;  // 동영상 썸네일
+  mediaType: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM"; // JSON에서 mediaType으로 옴
 }
 
 export default function NewsSection() {
   const [posts, setPosts] = useState<InstaPost[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ 나중에 여기에 'Behold.so' 같은 곳에서 받은 JSON URL을 넣으면 됩니다.
-  // 지금은 비워두면 아래 '더미 데이터'가 나옵니다.
   const INSTAGRAM_FEED_URL = "https://feeds.behold.so/OW7qH8D0M6gQwvkQAiFw"; 
 
   useEffect(() => {
     async function fetchInstagram() {
       try {
-        if (!INSTAGRAM_FEED_URL) throw new Error("No URL");
-        
         const res = await fetch(INSTAGRAM_FEED_URL);
         const data = await res.json();
-        // 최신 7개만 자르기
-        setPosts(data.slice(0, 7));
+        
+        // ✅ 중요: JSON 구조가 { posts: [...] } 형태이므로 data.posts를 가져와야 함
+        if (data.posts && Array.isArray(data.posts)) {
+          setPosts(data.posts.slice(0, 7));
+        } else {
+          // 만약 구조가 다르다면 그냥 data 자체가 배열일 수도 있음 (안전장치)
+          setPosts(Array.isArray(data) ? data.slice(0, 7) : []);
+        }
+
       } catch (error) {
-        console.log("Using fallback data (Instagram API not connected)");
-        // ❌ API 연결 전까지 보여줄 임시 데이터 (더미)
-        setPosts([
-          { id: "1", media_type: "IMAGE", media_url: "/vision/spirit.jpg", permalink: "https://instagram.com", caption: "2025 Season Start! 🔥 #CHALLENGER" },
-          { id: "2", media_type: "IMAGE", media_url: "/vision/team.jpg", permalink: "https://instagram.com", caption: "Team Workshop Day 🛠️" },
-          { id: "3", media_type: "IMAGE", media_url: "/vision/sex.jpg", permalink: "https://instagram.com", caption: "Night testing runs 🏎️💨" },
-          { id: "4", media_type: "IMAGE", media_url: "/vision/good.jpg", permalink: "https://instagram.com", caption: "Engineering Design Finals" },
-          { id: "5", media_type: "IMAGE", media_url: "/vision/spirit.jpg", permalink: "https://instagram.com", caption: "New Chassis Welding" },
-          { id: "6", media_type: "IMAGE", media_url: "/vision/team.jpg", permalink: "https://instagram.com", caption: "Sponsorship meeting success" },
-          { id: "7", media_type: "IMAGE", media_url: "/vision/sex.jpg", permalink: "https://instagram.com", caption: "Ready for KSAE 2025" },
-        ]);
+        console.error("Instagram fetch error:", error);
+        // 에러 시 빈 배열 (혹은 더미 데이터 유지 가능)
+        setPosts([]); 
       } finally {
         setLoading(false);
       }
@@ -50,6 +45,9 @@ export default function NewsSection() {
 
     fetchInstagram();
   }, []);
+
+  // 로딩 중이거나 게시물이 없을 때 아무것도 안 보이게 처리 (깔끔하게)
+  if (!loading && posts.length === 0) return null;
 
   return (
     <section id="news" className="py-28 bg-black border-t border-zinc-900">
@@ -77,12 +75,17 @@ export default function NewsSection() {
           </a>
         </div>
 
-        {/* 그리드 레이아웃 (1번 게시물은 크게, 나머지는 작게) */}
+        {/* 그리드 레이아웃 */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[300px]">
           {posts.map((post, idx) => {
             // 첫 번째 게시물은 가로세로 2칸 차지 (Big Card)
             const isFirst = idx === 0;
             const spanClass = isFirst ? "md:col-span-2 md:row-span-2" : "md:col-span-1 md:row-span-1";
+
+            // ✅ 변수명 수정: mediaType, thumbnailUrl, mediaUrl
+            const imageSrc = post.mediaType === "VIDEO" && post.thumbnailUrl 
+              ? post.thumbnailUrl 
+              : post.mediaUrl;
 
             return (
               <Link
@@ -93,7 +96,7 @@ export default function NewsSection() {
               >
                 {/* 이미지 */}
                 <img
-                  src={post.media_type === "VIDEO" && post.thumbnail_url ? post.thumbnail_url : post.media_url}
+                  src={imageSrc}
                   alt={post.caption || "Instagram Post"}
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-60"
                 />
