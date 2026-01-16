@@ -4,13 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Globe } from "lucide-react";
-// ✅ 언어 설정 가져오기 (경로 주의!)
 import { useLanguage } from "../../context/LanguageContext";
 
 type SpecRow = { label: string; value: string };
 
-// ✅ 여기에 한국어(ko)와 영어(en) 데이터를 모두 넣습니다.
-// 이렇게 하면 translations.ts를 더럽히지 않고도 완벽하게 관리할 수 있습니다.
 const SPECS: Record<
   string,
   {
@@ -30,8 +27,8 @@ const SPECS: Record<
         { label: "윤거(전/후)", value: "1280 / 1260 mm" },
         { label: "공차 무게", value: "229 kg" },
         { label: "무게 배분(전/후)", value: "49% / 51%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
-        { label: "축전지", value: "294 V / 315 A" },
+        { label: "배터리", value: "Samsung 21700 40T" },
+        { label: "축전지", value: "294 V / 245 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / CM200DZ" },
         { label: "종 감속비", value: "3.73" },
       ],
@@ -45,8 +42,8 @@ const SPECS: Record<
         { label: "Track (F/R)", value: "1280 / 1260 mm" },
         { label: "Weight", value: "229 kg" },
         { label: "Weight Dist. (F/R)", value: "49% / 51%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
-        { label: "Accumulator", value: "294 V / 315 A" },
+        { label: "Battery", value: "Samsung 21700 40T" },
+        { label: "Accumulator", value: "294 V / 245 A" },
         { label: "Motor / Inverter", value: "EMRAX 228 MV / CM200DZ" },
         { label: "Final Drive Ratio", value: "3.73" },
       ],
@@ -64,7 +61,7 @@ const SPECS: Record<
         { label: "윤거", value: "1280 mm" },
         { label: "공차 무게", value: "206 kg" },
         { label: "무게 배분(전/후)", value: "50% / 50%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
+        { label: "배터리", value: "Samsung 21700 40T" },
         { label: "축전지", value: "294 V / 315 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "종 감속비", value: "3.18" },
@@ -79,7 +76,7 @@ const SPECS: Record<
         { label: "Track", value: "1280 mm" },
         { label: "Weight", value: "206 kg" },
         { label: "Weight Dist. (F/R)", value: "50% / 50%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
+        { label: "Battery", value: "Samsung 21700 40T" },
         { label: "Accumulator", value: "294 V / 315 A" },
         { label: "Motor / Inverter", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "Final Drive Ratio", value: "3.18" },
@@ -98,7 +95,7 @@ const SPECS: Record<
         { label: "윤거", value: "1320 mm" },
         { label: "공차 무게", value: "210 kg" },
         { label: "무게 배분(전/후)", value: "50% / 50%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
+        { label: "배터리", value: "Samsung 21700 40T" },
         { label: "축전지", value: "294 V / 315 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "종 감속비", value: "3.25" },
@@ -113,7 +110,7 @@ const SPECS: Record<
         { label: "Track", value: "1320 mm" },
         { label: "Weight", value: "210 kg" },
         { label: "Weight Dist. (F/R)", value: "50% / 50%" },
-        { label: "Cell", value: "Samsung 21700 40T" },
+        { label: "Battery", value: "Samsung 21700 40T" },
         { label: "Accumulator", value: "294 V / 315 A" },
         { label: "Motor / Inverter", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "Final Drive Ratio", value: "3.25" },
@@ -132,7 +129,7 @@ const SPECS: Record<
         { label: "윤거(전/후)", value: "1220 / 1220 mm" },
         { label: "공차 무게", value: "227.5 kg" },
         { label: "무게 배분(전/후)", value: "48% / 52%" },
-        { label: "Cell", value: "Samsung 18650 25r" },
+        { label: "배터리", value: "Samsung 18650 25r" },
         { label: "축전지", value: "294 V / 270 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "종 감속비", value: "3.09" },
@@ -147,7 +144,7 @@ const SPECS: Record<
         { label: "Track (F/R)", value: "1220 / 1220 mm" },
         { label: "Weight", value: "227.5 kg" },
         { label: "Weight Dist. (F/R)", value: "48% / 52%" },
-        { label: "Cell", value: "Samsung 18650 25r" },
+        { label: "Battery", value: "Samsung 18650 25r" },
         { label: "Accumulator", value: "294 V / 270 A" },
         { label: "Motor / Inverter", value: "EMRAX 228 MV / Bamocar 700/400" },
         { label: "Final Drive Ratio", value: "3.09" },
@@ -194,24 +191,23 @@ export default function SpecsYearPage() {
   const year = typeof params.year === "string" ? params.year : "2025";
   const data = SPECS[year];
 
-  // ✅ 2. 전역 상태 사용! (useState 대신 useLanguage 사용)
+  // ✅ 전역 상태 사용
   const { language, toggleLanguage } = useLanguage();
 
-  if (!data) return null; // 데이터 없으면 로딩 안 함
+  if (!data) return null;
 
-  // ✅ 현재 언어(ko/en)에 맞는 데이터 선택
   const content = data[language];
 
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        {/* 상단 헤더 */}
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 uppercase">
               Vehicle Specs
             </p>
-            <h1 className="mt-3 text-4xl md:text-5xl font-black">
+            {/* ✅ 여기에 font-corel 적용됨! */}
+            <h1 className="mt-3 text-4xl md:text-5xl font-black font-corel tracking-wide">
               {year} · {content.title}
             </h1>
             <p className="mt-3 text-gray-400 max-w-2xl whitespace-pre-wrap break-keep">
@@ -220,7 +216,6 @@ export default function SpecsYearPage() {
           </div>
 
           <div className="flex flex-col md:flex-row items-end md:items-center gap-3">
-            {/* ✅ 언어 변경 버튼 추가 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-sm"
@@ -238,7 +233,6 @@ export default function SpecsYearPage() {
           </div>
         </div>
 
-        {/* 메인 콘텐츠 (이미지 + 스펙표) */}
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
           <div className="rounded-3xl border border-white/10 bg-zinc-950 p-6">
             {data.image && <img src={data.image} alt="car" className="w-full h-auto object-contain" />}
@@ -258,7 +252,6 @@ export default function SpecsYearPage() {
           </div>
         </div>
         
-        {/* 연도 이동 버튼들 */}
         <div className="mt-10 flex flex-wrap gap-3">
           {["2025", "2024", "2023", "2022", "2021", "2020"].map((y) => (
             <Link
