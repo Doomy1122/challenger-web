@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronDown, ChevronUp } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronUp } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로 유지) ...
+// ... (로고 데이터 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-6">
-            {/* PC 메뉴 링크 */}
+            {/* PC 메뉴 */}
             <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
               <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
               <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
@@ -89,7 +89,7 @@ export default function Home() {
               <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
             </div>
 
-            {/* ✅ 모바일에서도 보이게 언어 버튼을 밖으로 꺼냄 */}
+            {/* 언어 버튼 (모바일에서도 보임) */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -101,22 +101,29 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 2. 히어로 섹션 (모바일 정렬 수정) */}
+      {/* 2. 히어로 섹션 (모바일 영상 확대 적용) */}
       <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
         {(() => {
           const videoId = "8ErcU7HjICU";
           const startSec = 37;
           const src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&start=${startSec}`;
           return (
-            <div className="absolute inset-0 z-0">
-              <iframe className="absolute inset-0 w-full h-full pointer-events-none" src={src} title="CHALLENGER Hero Video" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              {/* ✅ 여기서 w-[350%]를 주어 모바일에서 영상을 강제로 키웁니다 */}
+              <iframe 
+                className="absolute top-1/2 left-1/2 w-[350%] h-full -translate-x-1/2 -translate-y-1/2 md:w-full md:h-full md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 pointer-events-none object-cover" 
+                src={src} 
+                title="CHALLENGER Hero Video" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowFullScreen 
+              />
               <div className="absolute inset-0 bg-black/60 z-10" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black z-20" />
             </div>
           );
         })()}
         
-        {/* ✅ justify-center 추가로 모바일 수직 중앙 정렬 */}
+        {/* 모바일 텍스트 위치 정렬 */}
         <div className="relative z-30 text-center px-4 flex flex-col items-center justify-center h-full pb-20 md:pb-0">
           <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
             {t.hero.spirit}
@@ -170,7 +177,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. History (모바일 클릭 수정) */}
+      {/* 4. History */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
@@ -190,7 +197,6 @@ export default function Home() {
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
-                  {/* ✅ 모바일에서 글자 누르면 이동하게 Link로 감쌈 */}
                   <Link href="/specs/2025" className="block hover:text-[#950000] transition">
                     <div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div>
                     <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.gold25_desc}</div>
@@ -198,7 +204,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
-
               {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -213,7 +218,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
-
               {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -228,7 +232,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
-
               {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -299,12 +302,10 @@ export default function Home() {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   
-                  {/* 스폰서 목록 버튼 */}
                   <Link href="/sponsors" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black font-black hover:bg-[#950000] hover:text-white transition w-full sm:w-auto">
                     {t.sponsors.list_btn}
                   </Link>
 
-                  {/* 제안서 다운로드 드롭다운 */}
                   <div className="relative w-full sm:w-auto">
                     <button 
                       onClick={() => setIsDownloadOpen(!isDownloadOpen)}
@@ -312,11 +313,9 @@ export default function Home() {
                     >
                       <Download size={18} />
                       {t.sponsors.download_btn}
-                      {/* ✅ 아이콘을 ChevronUp으로 변경 (위로 열림 암시) */}
                       <ChevronUp size={16} className={`transition-transform duration-300 ${isDownloadOpen ? "rotate-180" : ""}`} />
                     </button>
 
-                    {/* ✅ 드롭다운 위로 열리게 수정 (bottom-full, mb-2) */}
                     {isDownloadOpen && (
                       <div className="absolute bottom-full left-0 mb-2 w-full sm:w-60 bg-zinc-900 border border-white/10 rounded-xl shadow-xl overflow-hidden flex flex-col z-20">
                         <a 
