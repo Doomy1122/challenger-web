@@ -3,14 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe } from "lucide-react";
+// ✅ 아이콘 추가 (Download, Megaphone 등)
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로 유지) ...
+// ... (로고 데이터는 그대로 두세요) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -194,7 +195,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
-
               {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -207,7 +207,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
-
               {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -220,7 +219,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
-
               {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -242,34 +240,77 @@ export default function Home() {
       {/* 5. News Section */}
       <NewsSection />
 
-      {/* 6. Sponsors */}
+      {/* 6. Sponsors (완전 개편됨!) */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 items-start mb-20">
+            {/* 왼쪽: 설득 문구 */}
+            <div>
+              <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">
+                {t.sponsors.label}
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black whitespace-pre-wrap leading-tight">
+                {t.sponsors.main_copy}
+              </h2>
+              <p className="mt-6 text-gray-400 text-lg leading-relaxed break-keep whitespace-pre-line">
+                {t.sponsors.sub_copy}
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                {/* 1. 제안서 다운로드 버튼 */}
+                <a 
+                  href="/Challenger_Sponsorship_Proposal.pdf" // ⚠️ 실제 PDF 파일 경로로 바꾸세요
+                  download
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition"
+                >
+                  <Download size={18} />
+                  {t.sponsors.download_btn}
+                </a>
+                {/* 2. 문의하기 버튼 */}
+                <a 
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 bg-white/5 text-white font-bold hover:bg-white/10 transition"
+                >
+                  <Mail size={18} />
+                  {t.sponsors.contact_btn}
+                </a>
+              </div>
+            </div>
+
+            {/* 오른쪽: 혜택 카드 3종 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#950000]/50 transition duration-300 group">
+                <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:bg-[#950000] transition">
+                  <Megaphone size={24} className="text-white" />
+                </div>
+                <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[0].title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[0].desc}</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#950000]/50 transition duration-300 group">
+                <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:bg-[#950000] transition">
+                  <Users size={24} className="text-white" />
+                </div>
+                <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[1].title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[1].desc}</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#950000]/50 transition duration-300 group">
+                <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:bg-[#950000] transition">
+                  <Cpu size={24} className="text-white" />
+                </div>
+                <h4 className="text-lg font-bold mb-2">{t.sponsors.benefits[2].title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed break-keep text-justify">{t.sponsors.benefits[2].desc}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 기존 스폰서 로고 Marquee */}
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
             <div className="px-6 md:px-10 py-10 opacity-70">
               <MarqueeRow logos={sponsorLogosRow1} direction="left" speedSec={44} />
               <MarqueeRow logos={sponsorLogosRow2} direction="right" speedSec={48} />
               <MarqueeRow logos={sponsorLogosRow3} direction="left" speedSec={52} />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 text-center px-6 pointer-events-none">
-                <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">
-                  {t.sponsors.label}
-                </p>
-                <h2 className="text-4xl md:text-5xl font-black">
-                  {t.sponsors.title}
-                </h2>
-                <p className="mt-4 text-gray-300/90">
-                  {t.sponsors.desc}
-                </p>
-                <div className="mt-7 pointer-events-auto">
-                  <Link href="/sponsors" className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white text-black font-black text-sm hover:bg-[#950000] hover:text-white transition">
-                    {t.sponsors.btn}
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* 로고 위 오버레이 텍스트 삭제 (상단으로 내용 이동했으므로) */}
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
           </div>
         </div>
       </section>
