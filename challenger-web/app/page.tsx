@@ -406,8 +406,8 @@ export default function Home() {
             </ul>
 
             <div className="px-6 md:px-12 py-5 text-xs md:text-sm text-gray-400 border-t border-white/10">
-              * Acceleration Award record:
-              <span className="text-white font-bold"> 0-100 km/h 3.01 s</span>
+              
+              <span className="text-white font-bold"> </span>
             </div>
           </div>
         </div>
