@@ -49,11 +49,11 @@ const SPECS: Record<
     subtitle: "안정화 이후, 새로운 가능성을 탐색한 진화의 단계",
     image: "/awards/2024-car.jpg", // ⚠️ 이미지 파일명 확인 필요
     rows: [
-      { label: "전장 / 전폭 / 전고", value: "0000 / 0000 / 0000 mm" },
-      { label: "축거", value: "0000 mm" },
-      { label: "윤거(전/후)", value: "0000 / 0000 mm" },
-      { label: "공차 무게", value: "000 kg" },
-      { label: "무게 배분(전/후)", value: "00% / 00%" },
+      { label: "전장 / 전폭 / 전고", value: "2954 / 1493 / 1040 mm" },
+      { label: "축거", value: "1550 mm" },
+      { label: "윤거", value: "1280 mm" },
+      { label: "공차 무게", value: "206 kg" },
+      { label: "무게 배분(전/후)", value: "50% / 50%" },
       { label: "배터리", value: "Samsung 21700 40T" },
       { label: "축전지", value: "294 V / 315 A" },
       { label: "모터 / 인버터", value: "EMRAX 228 MV / Bamocar 700/400" },
