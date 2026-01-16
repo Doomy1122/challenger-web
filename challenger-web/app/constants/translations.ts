@@ -43,6 +43,11 @@ export const translations = {
       main_copy: "열정적인 엔지니어들과 함께\n모빌리티의 미래를 이끌어주세요.",
       sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.",
       download_btn: "제안서 다운로드 (PDF)",
+
+      // ✅ [추가] 버전 선택 텍스트
+      down_kor: "한국어 버전 (.pdf)",
+      down_eng: "English Version (.pdf)",
+
       // ✅ [복구] 하단 배너 멘트
       banner_title: "Become a Sposor",
       banner_desc: "스폰서로 참여하여 CHALLENGER 정신과 함께해주세요!",
@@ -115,6 +120,10 @@ export const translations = {
       main_copy: "Drive the Future of Mobility\nwith Passionate Engineers.",
       sub_copy: "CHALLENGER aims for a partnership that grows together with your company.",
       download_btn: "Download Proposal",
+
+      down_kor: "Korean Version (.pdf)",
+      down_eng: "English Version (.pdf)",
+
       // ✅ [Restored] Banner Text
       banner_title: "Become a Sponsor",
       banner_desc: "Support us and join the CHALLENGER spirit by participating as a sponsor!",

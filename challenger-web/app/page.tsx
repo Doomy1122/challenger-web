@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
+// ✅ 1. useState 추가 확인 (React import에 포함되어 있으면 OK, 없으면 추가)
+import React, { useState } from "react"; 
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronDown } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로 유지 - 복사해서 넣으세요) ...
+// ... (로고 데이터 - 기존 그대로 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -66,6 +67,9 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
 export default function Home() {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
+
+  // ✅ 2. 드롭다운 상태 관리 (버튼 눌렀는지 여부)
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
@@ -132,7 +136,6 @@ export default function Home() {
                 <br />
                 {t.about.title_2} <span className="text-[#950000] font-corel">CHALLENGER</span> spirit
               </h2>
-              {/* ✅ 왼쪽 정렬 복구 */}
               <p className="mt-6 text-gray-400 text-lg leading-loose whitespace-pre-line break-keep text-left">
                 {t.about.desc}
               </p>
@@ -177,7 +180,7 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* History Items (동일) */}
+              {/* History Items... (그대로 유지) */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -222,7 +225,6 @@ export default function Home() {
       {/* 6. Sponsors */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
-          {/* 상단: 혜택 및 설명 (깔끔한 왼쪽 정렬) */}
           <div className="mb-12">
             <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">
               {t.sponsors.label}
@@ -233,7 +235,6 @@ export default function Home() {
             <p className="mt-4 text-gray-400 text-lg leading-relaxed whitespace-pre-line">
               {t.sponsors.sub_copy}
             </p>
-            {/* 혜택 아이콘 3개 나열 (간결하게) */}
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/10 pt-8">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3 text-white font-bold text-lg"><Megaphone className="text-[#950000]" size={20} /> {t.sponsors.benefits[0].title}</div>
@@ -250,16 +251,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ✅ 하단: 예전의 멋진 배너 디자인 복구! (Marquee + Overlay) */}
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)] h-[400px]">
-            {/* Marquee (배경) */}
             <div className="absolute inset-0 flex flex-col justify-center opacity-40">
               <MarqueeRow logos={sponsorLogosRow1} direction="left" speedSec={44} />
               <MarqueeRow logos={sponsorLogosRow2} direction="right" speedSec={48} />
               <MarqueeRow logos={sponsorLogosRow3} direction="left" speedSec={52} />
             </div>
             
-            {/* Overlay (검은색 딤처리 + 텍스트 + 버튼) */}
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
               <div className="relative z-10 text-center px-6">
                 <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -268,20 +266,49 @@ export default function Home() {
                 <p className="text-gray-300/90 text-lg mb-8">
                   {t.sponsors.banner_desc}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                
+                {/* ✅ 버튼 영역 수정: 목록 버튼 + 다운로드 드롭다운 */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  
                   {/* 스폰서 목록 버튼 */}
-                  <Link href="/sponsors" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black font-black hover:bg-[#950000] hover:text-white transition">
+                  <Link href="/sponsors" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black font-black hover:bg-[#950000] hover:text-white transition w-full sm:w-auto">
                     {t.sponsors.list_btn}
                   </Link>
-                  {/* 제안서 다운로드 버튼 (배너 안으로 쏙!) */}
-                  <a 
-                    href="/Challenger_Sponsorship_Proposal.pdf" 
-                    download
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/20 bg-black/50 backdrop-blur-md text-white font-bold hover:bg-white/10 transition"
-                  >
-                    <Download size={18} />
-                    {t.sponsors.download_btn}
-                  </a>
+
+                  {/* ✅ 제안서 다운로드 드롭다운 (클릭하면 메뉴 나옴) */}
+                  <div className="relative w-full sm:w-auto">
+                    <button 
+                      onClick={() => setIsDownloadOpen(!isDownloadOpen)}
+                      className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/20 bg-black/50 backdrop-blur-md text-white font-bold hover:bg-white/10 transition w-full sm:w-auto"
+                    >
+                      <Download size={18} />
+                      {t.sponsors.download_btn}
+                      <ChevronDown size={16} className={`transition-transform duration-300 ${isDownloadOpen ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {/* 드롭다운 메뉴 */}
+                    {isDownloadOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-full sm:w-60 bg-zinc-900 border border-white/10 rounded-xl shadow-xl overflow-hidden flex flex-col z-20">
+                        {/* 1. 한국어 버전 다운로드 */}
+                        <a 
+                          href="/Challenger_Sponsorship_Proposal.pdf" 
+                          download
+                          className="px-5 py-3 text-sm text-left hover:bg-[#950000] transition border-b border-white/5 flex items-center gap-2"
+                        >
+                          <span className="text-lg">🇰🇷</span> {t.sponsors.down_kor}
+                        </a>
+                        {/* 2. 영어 버전 다운로드 */}
+                        <a 
+                          href="/Challenger_Sponsorship_Proposal_Eng.pdf" 
+                          download
+                          className="px-5 py-3 text-sm text-left hover:bg-[#950000] transition flex items-center gap-2"
+                        >
+                          <span className="text-lg">🇺🇸</span> {t.sponsors.down_eng}
+                        </a>
+                      </div>
+                    )}
+                  </div>
+
                 </div>
               </div>
             </div>
