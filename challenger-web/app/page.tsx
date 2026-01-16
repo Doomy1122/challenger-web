@@ -1,17 +1,16 @@
 "use client";
 
-// ✅ 1. useState 추가 확인 (React import에 포함되어 있으면 OK, 없으면 추가)
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronDown } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronDown, ChevronUp } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터 - 기존 그대로 유지) ...
+// ... (로고 데이터는 그대로 유지) ...
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -67,8 +66,6 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
 export default function Home() {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
-
-  // ✅ 2. 드롭다운 상태 관리 (버튼 눌렀는지 여부)
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
 
   return (
@@ -81,14 +78,18 @@ export default function Home() {
             <img src="/logo.png" alt="CHALLENGER Logo" className="h-12 md:h-14 w-auto object-contain" />
           </div>
 
-          <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
-            <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
-            <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
-            <a href="#news" className="hover:text-[#950000] transition">{t.nav.news}</a>
-            <Link href="/gallery" className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
-            <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
-            <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
+          <div className="flex items-center gap-6">
+            {/* PC 메뉴 링크 */}
+            <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
+              <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
+              <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
+              <a href="#news" className="hover:text-[#950000] transition">{t.nav.news}</a>
+              <Link href="/gallery" className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
+              <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
+              <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
+            </div>
 
+            {/* ✅ 모바일에서도 보이게 언어 버튼을 밖으로 꺼냄 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -100,8 +101,8 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 2. 히어로 섹션 */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* 2. 히어로 섹션 (모바일 정렬 수정) */}
+      <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
         {(() => {
           const videoId = "8ErcU7HjICU";
           const startSec = 37;
@@ -114,11 +115,13 @@ export default function Home() {
             </div>
           );
         })()}
-        <div className="relative z-30 text-center px-4 flex flex-col items-center">
+        
+        {/* ✅ justify-center 추가로 모바일 수직 중앙 정렬 */}
+        <div className="relative z-30 text-center px-4 flex flex-col items-center justify-center h-full pb-20 md:pb-0">
           <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
             {t.hero.spirit}
           </p>
-          <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-8" />
+          <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-6 md:mb-8" />
           <p className="text-lg md:text-xl font-medium text-gray-200/90 border-t border-gray-500/60 pt-6 px-10 leading-relaxed whitespace-pre-wrap">
             {t.hero.desc}
           </p>
@@ -167,7 +170,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. History */}
+      {/* 4. History (모바일 클릭 수정) */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
@@ -180,37 +183,64 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* History Items... (그대로 유지) */}
+              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div><div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.gold25_desc}</div></div>
+                <div className="flex-1">
+                  {/* ✅ 모바일에서 글자 누르면 이동하게 Link로 감쌈 */}
+                  <Link href="/specs/2025" className="block hover:text-[#950000] transition">
+                    <div className="text-xl md:text-2xl font-black">{t.awards.gold25_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.gold25_desc}</div>
+                  </Link>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
+
+              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">{t.awards.accel25_title}</div><div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel25_desc}</div></div>
+                <div className="flex-1">
+                  <Link href="/specs/2025" className="block hover:text-[#950000] transition">
+                    <div className="text-xl md:text-2xl font-black">{t.awards.accel25_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel25_desc}</div>
+                  </Link>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
+
+              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2022</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">{t.awards.silver22_title}</div><div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver22_desc}</div></div>
+                <div className="flex-1">
+                  <Link href="/specs/2022" className="block hover:text-[#950000] transition">
+                    <div className="text-xl md:text-2xl font-black">{t.awards.silver22_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver22_desc}</div>
+                  </Link>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
+
+              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2020</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">{t.awards.silver20_title}</div><div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver20_desc}</div></div>
+                <div className="flex-1">
+                  <Link href="/specs/2020" className="block hover:text-[#950000] transition">
+                    <div className="text-xl md:text-2xl font-black">{t.awards.silver20_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.silver20_desc}</div>
+                  </Link>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
             </ul>
@@ -267,7 +297,6 @@ export default function Home() {
                   {t.sponsors.banner_desc}
                 </p>
                 
-                {/* ✅ 버튼 영역 수정: 목록 버튼 + 다운로드 드롭다운 */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   
                   {/* 스폰서 목록 버튼 */}
@@ -275,7 +304,7 @@ export default function Home() {
                     {t.sponsors.list_btn}
                   </Link>
 
-                  {/* ✅ 제안서 다운로드 드롭다운 (클릭하면 메뉴 나옴) */}
+                  {/* 제안서 다운로드 드롭다운 */}
                   <div className="relative w-full sm:w-auto">
                     <button 
                       onClick={() => setIsDownloadOpen(!isDownloadOpen)}
@@ -283,13 +312,13 @@ export default function Home() {
                     >
                       <Download size={18} />
                       {t.sponsors.download_btn}
-                      <ChevronDown size={16} className={`transition-transform duration-300 ${isDownloadOpen ? "rotate-180" : ""}`} />
+                      {/* ✅ 아이콘을 ChevronUp으로 변경 (위로 열림 암시) */}
+                      <ChevronUp size={16} className={`transition-transform duration-300 ${isDownloadOpen ? "rotate-180" : ""}`} />
                     </button>
 
-                    {/* 드롭다운 메뉴 */}
+                    {/* ✅ 드롭다운 위로 열리게 수정 (bottom-full, mb-2) */}
                     {isDownloadOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-full sm:w-60 bg-zinc-900 border border-white/10 rounded-xl shadow-xl overflow-hidden flex flex-col z-20">
-                        {/* 1. 한국어 버전 다운로드 */}
+                      <div className="absolute bottom-full left-0 mb-2 w-full sm:w-60 bg-zinc-900 border border-white/10 rounded-xl shadow-xl overflow-hidden flex flex-col z-20">
                         <a 
                           href="/Challenger_Sponsorship_Proposal.pdf" 
                           download
@@ -297,7 +326,6 @@ export default function Home() {
                         >
                           <span className="text-lg">🇰🇷</span> {t.sponsors.down_kor}
                         </a>
-                        {/* 2. 영어 버전 다운로드 */}
                         <a 
                           href="/Challenger_Sponsorship_Proposal_Eng.pdf" 
                           download
