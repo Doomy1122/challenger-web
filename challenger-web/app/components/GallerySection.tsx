@@ -3,9 +3,10 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 
-// ✅ 갤러리 설정 (나중에 DF-26, DF-27 생기면 여기에 추가만 하면 됨)
+// ✅ 갤러리 설정 (DF-25, DF-22 추가됨)
 const GALLERY_CATEGORIES = [
   { id: "df-25", title: "DF-25", year: "2025" },
+  { id: "df-22", title: "DF-22", year: "2022" }, // 👈 여기에 DF-22 추가했습니다!
   // { id: "df-26", title: "DF-26", year: "2026" }, // 나중에 주석 풀고 폴더 만들면 됨
 ];
 
@@ -15,15 +16,15 @@ function getImagesFromFolder(folderName: string) {
     const dirPath = path.join(process.cwd(), "public", "gallery", folderName);
     const files = fs.readdirSync(dirPath);
     
-    // 이미지 파일만 걸러내기 (jpg, png, webp 등)
+    // 이미지 파일만 걸러내기 (jpg, png, webp, gif 등)
     const images = files.filter((file) => 
-      /\.(jpg|jpeg|png|webp|gif)$/i.test(file)
+      /\.(jpg|jpeg|png|webp|gif|heic)$/i.test(file)
     );
     
-    // 전체 경로 반환 (/gallery/df-25/파일명.jpg)
+    // 전체 경로 반환 (/gallery/폴더명/파일명.jpg)
     return images.map((img) => `/gallery/${folderName}/${img}`);
   } catch (error) {
-    console.error(`Gallery Error: ${folderName} 폴더가 없거나 비어있습니다.`);
+    // 폴더가 없으면 에러가 아닌 빈 배열 반환 (화면에 안 뜨게)
     return [];
   }
 }
@@ -47,18 +48,18 @@ export default function GallerySection() {
           {GALLERY_CATEGORIES.map((category) => {
             const images = getImagesFromFolder(category.id);
 
-            // 사진 없으면 안 보여줌
+            // 사진이 하나도 없으면 이 섹션은 아예 숨김
             if (images.length === 0) return null;
 
             return (
               <div key={category.id}>
-                {/* 소제목 (DF-25 2025) */}
+                {/* 소제목 (예: DF-25 2025) */}
                 <div className="flex items-end gap-4 mb-6 border-b border-white/10 pb-4">
                   <h3 className="text-3xl font-black text-white">{category.title}</h3>
                   <span className="text-lg font-bold text-gray-500 mb-1">{category.year}</span>
                 </div>
 
-                {/* 사진 그리드 (자동 정렬) */}
+                {/* 사진 그리드 */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {images.map((src, index) => (
                     <div 
