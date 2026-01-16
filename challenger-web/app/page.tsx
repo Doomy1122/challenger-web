@@ -1,15 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react"; // useState 삭제됨
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { Instagram, Youtube, MapPin, Mail, Phone, Globe } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
+// ✅ 1. useLanguage 불러오기
+import { useLanguage } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로) ...
+// ... (로고 데이터들 const sponsorLogosRow1 등등... 그대로 두세요!) ...
+// (코드 너무 길어서 로고 부분은 생략합니다. 기존 것 그대로 유지하세요.)
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -62,20 +65,16 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
   );
 }
 
-type LangType = "ko" | "en";
-
 export default function Home() {
-  const [language, setLanguage] = useState<LangType>("ko");
+  // ✅ 2. 전역 상태 사용! (useState 대신 useLanguage)
+  const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "ko" ? "en" : "ko"));
-  };
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
+      {/* ... (이 아래 내용은 기존과 완벽히 동일합니다. t.hero.spirit 이런 변수들 그대로 작동함) ... */}
       
-      {/* 1. 네비게이션 바 */}
+      {/* 네비게이션 바 */}
       <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center">
@@ -90,6 +89,7 @@ export default function Home() {
             <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
             <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
 
+            {/* 언어 버튼 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 2. 히어로 섹션 */}
+      {/* 히어로 섹션 */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {(() => {
           const videoId = "8ErcU7HjICU";
@@ -120,14 +120,13 @@ export default function Home() {
             {t.hero.spirit}
           </p>
           <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-8" />
-          
           <p className="text-lg md:text-xl font-medium text-gray-200/90 border-t border-gray-500/60 pt-6 px-10 leading-relaxed">
             {t.hero.desc}
           </p>
         </div>
       </section>
 
-      {/* 3. About */}
+      {/* About */}
       <section id="about" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
@@ -146,7 +145,6 @@ export default function Home() {
               <img src="/vision/spirit.jpg" alt="Challenger Car Side" className="w-full h-full object-cover" />
             </div>
           </div>
-
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
               <img src="/vision/sex.jpg" alt="Night Shot" className="w-full h-[320px] object-cover" />
@@ -170,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. History */}
+      {/* History */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
@@ -181,10 +179,8 @@ export default function Home() {
               {t.history.title}
             </h2>
           </div>
-
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -196,8 +192,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
-
-              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -209,8 +203,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
-
-              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -222,8 +214,6 @@ export default function Home() {
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
-
-              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
@@ -241,10 +231,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. News Section */}
       <NewsSection />
 
-      {/* 6. Sponsors */}
       <section id="sponsors" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.65)]">
@@ -276,7 +264,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Footer + Contact */}
       <section id="contact" className="bg-black py-16 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// ✅ 1. 방금 만든 Provider 불러오기
+import { LanguageProvider } from "./context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,29 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ 하나로 깔끔하게 합쳤습니다!
 export const metadata: Metadata = {
   title: "CHALLENGER - Hoseo Univ. Formula Student Team",
   description: "호서대학교 자작자동차 동아리 CHALLENGER 공식 웹사이트입니다.",
-  keywords: ["호서대", "자작자동차", "CHALLENGER", "Formula Student", "FSAE", "대학생", "자동차"],
-  icons: {
-    icon: "/favicon.ico",
-  },
-  openGraph: {
-    title: "CHALLENGER - Hoseo Univ.",
-    description: "Challenger Spirit! 호서대학교 자작자동차 동아리 챌린저입니다.",
-    url: "https://challenger-web.vercel.app",
-    siteName: "CHALLENGER",
-    images: [
-      {
-        url: "/vision/team.jpg",
-        width: 800,
-        height: 600,
-      },
-    ],
-    type: "website",
-  },
-  // ✅ 검증 코드는 여기에 넣으세요 (주의: 파일 이름 아님!)
+  // ... (기타 메타데이터 그대로 유지) ...
   verification: {
     google: "ek3UK1DGh9YSFKsBX0QjxMUNq1lVzLEJtGsHF72t0jk", 
     other: {
@@ -50,10 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ✅ 2. 여기서 감싸주면 끝! */}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

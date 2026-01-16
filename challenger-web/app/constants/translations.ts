@@ -1,5 +1,5 @@
 export const translations = {
-  // 🇰🇷 한국어 모드 (제목은 영어, 본문은 한국어, Hero는 영어)
+  // 🇰🇷 한국어 모드 (제목은 영어, 본문은 한국어, Hero는 영어 고정)
   ko: {
     nav: {
       about: "ABOUT US",
@@ -27,7 +27,7 @@ export const translations = {
       label: "Latest Achievements",
       title: "Awards & Records",
     },
-    // ✅ 수상 내역 데이터 추가 (한국어)
+    // ✅ 홈 화면 수상 내역 (한국어)
     awards: {
       gold25_title: "FSK E-Formula 금상",
       gold25_desc: "KSAE 대학생 자작자동차 대회",
@@ -47,6 +47,9 @@ export const translations = {
     contact: {
       chairman: "회장 (Chairman)",
       pm: "팀장 (Project Manager)",
+      // ✅ 요청하신 이름 반영
+      name_chair: "Jeon JinWoo",
+      name_pm: "Minsoo Park",
     },
   },
 
@@ -77,7 +80,7 @@ export const translations = {
       label: "Latest Achievements",
       title: "Awards & Records",
     },
-    // ✅ 수상 내역 데이터 (영어)
+    // ✅ 홈 화면 수상 내역 (영어)
     awards: {
       gold25_title: "FSK E-Formula Gold Award",
       gold25_desc: "Formula Student Korea",
@@ -97,6 +100,9 @@ export const translations = {
     contact: {
       chairman: "Chairman",
       pm: "Project Manager",
+      // ✅ 요청하신 이름 반영
+      name_chair: "Jeon JinWoo",
+      name_pm: "Minsoo Park",
     },
   },
 };
