@@ -1,12 +1,15 @@
-import React from "react";
+"use client"; // 👈 상태 관리를 위해 필수
+
+import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe } from "lucide-react";
 import NewsSection from "./components/NewsSection";
+import { translations } from "./constants/translations"; // 👈 방금 만든 파일 불러오기
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (로고 데이터는 그대로 둡니다 - 생략 없음)
+// ... (스폰서 로고 데이터는 그대로 유지)
 const sponsorLogosRow1 = [
   { src: "/sponsors/marquee/altair.png", alt: "altair" },
   { src: "/sponsors/marquee/ansys.png", alt: "ansys" },
@@ -59,7 +62,21 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
   );
 }
 
+// 타입 정의
+type LangType = "ko" | "en";
+
 export default function Home() {
+  // ✅ 언어 상태 관리 (기본값: 한국어 'ko')
+  const [language, setLanguage] = useState<LangType>("ko");
+
+  // 현재 선택된 언어 데이터 가져오기
+  const t = translations[language];
+
+  // 언어 변경 함수
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === "ko" ? "en" : "ko"));
+  };
+
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
       
@@ -70,13 +87,22 @@ export default function Home() {
             <img src="/logo.png" alt="CHALLENGER Logo" className="h-12 md:h-14 w-auto object-contain" />
           </div>
 
-          <div className="hidden md:flex items-center space-x-10 text-sm font-bold text-gray-300">
-            <a href="#about" className="hover:text-[#950000] transition">ABOUT US</a>
-            <a href="#history" className="hover:text-[#950000] transition">COMPETITION</a>
-            <a href="#news" className="hover:text-[#950000] transition">NEWS</a>
-            <Link href="/gallery" className="hover:text-[#950000] transition">GALLERY</Link>
-            <a href="#sponsors" className="hover:text-[#950000] transition">SPONSORS</a>
-            <a href="#contact" className="inline-flex items-center bg-zinc-800 px-6 py-2 rounded-full hover:bg-[#950000] transition text-white">CONTACT US</a>
+          <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
+            <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
+            <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
+            <a href="#news" className="hover:text-[#950000] transition">{t.nav.news}</a>
+            <Link href="/gallery" className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
+            <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
+            <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
+
+            {/* ✅ 언어 변경 버튼 (클릭 시 글자 바뀜) */}
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
+            >
+              <Globe size={14} />
+              <span>{language === "ko" ? "ENG" : "KOR"}</span>
+            </button>
           </div>
         </div>
       </nav>
@@ -96,14 +122,13 @@ export default function Home() {
           );
         })()}
         <div className="relative z-30 text-center px-4 flex flex-col items-center">
-          <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse">Spirit of</p>
+          <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse">
+            {t.hero.spirit}
+          </p>
           <img src="/logo.png" alt="CHALLENGER Main Logo" className="w-[80vw] max-w-4xl h-auto object-contain drop-shadow-2xl mb-8" />
           
-          {/* ✅ 수정됨: 줄바꿈(<br />) 추가 */}
           <p className="text-lg md:text-xl font-medium text-gray-200/90 border-t border-gray-500/60 pt-6 px-10 leading-relaxed">
-            Hoseo University Formula Student Team
-            <br />
-            Since 1997
+            {t.hero.desc}
           </p>
         </div>
       </section>
@@ -111,32 +136,23 @@ export default function Home() {
       {/* 3. About */}
       <section id="about" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
-          
-          {/* ✅ 수정됨: About Us 섹션도 박스 형태로 변경 & 사진 둥글게 처리 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
             {/* 왼쪽: 텍스트 박스 */}
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10 flex flex-col justify-center">
               <p className="text-sm font-bold text-white/80 mb-3">About Us</p>
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                A powerful electric machine
+              <h2 className="text-4xl md:text-5xl font-black leading-tight break-keep">
+                {t.about.title_1}
                 <br />
-                created with a <span className="text-[#950000]">CHALLENGER</span>{" "}
-                spirit
+                {t.about.title_2} <span className="text-[#950000]">CHALLENGER</span> spirit
               </h2>
-              <p className="mt-6 text-gray-400 text-lg leading-relaxed">
-                We are a team of Hoseo University students designing and building
-                Formula Student cars. We are now building the next electric
-                formula machine—engineered to compete on track.
+              <p className="mt-6 text-gray-400 text-lg leading-relaxed break-keep">
+                {t.about.desc}
               </p>
             </div>
 
-            {/* 오른쪽: 사진 박스 (둥글게 + 꽉 차게) */}
+            {/* 오른쪽: 사진 박스 */}
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10 h-full min-h-[320px]">
-              <img
-                src="/vision/spirit.jpg"
-                alt="Challenger Car Side"
-                className="w-full h-full object-cover"
-              />
+              <img src="/vision/spirit.jpg" alt="Challenger Car Side" className="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -145,18 +161,15 @@ export default function Home() {
               <img src="/vision/sex.jpg" alt="Night Shot" className="w-full h-[320px] object-cover" />
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
-              <h3 className="text-3xl md:text-4xl font-black mb-4">Our Spirit</h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
-                What on earth is the <span className="text-white font-bold">CHALLENGER</span> spirit? 
-                Think of it as a strong mind without fear of the future.
-                <br /><br />
-                We build race machines with a fearless <span className="text-[#950000] font-bold">CHALLENGER</span> spirit.
+              <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.spirit_title}</h3>
+              <p className="text-gray-400 text-lg leading-relaxed break-keep">
+                {t.about.spirit_desc}
               </p>
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
-              <h3 className="text-3xl md:text-4xl font-black mb-4">Our Vision</h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
-                Our vision is to help young people to continuously challenge themselves in the field of automotive engineering.
+              <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
+              <p className="text-gray-400 text-lg leading-relaxed break-keep">
+                {t.about.vision_desc}
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
@@ -169,39 +182,63 @@ export default function Home() {
       {/* 4. History */}
       <section id="history" className="py-28 bg-black">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10"><p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">Latest Achievements</p><h2 className="text-4xl md:text-5xl font-black">Awards & Records</h2></div>
+          <div className="mb-10">
+            <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">
+              {t.history.label}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black">
+              {t.history.title}
+            </h2>
+          </div>
+
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
+              {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">FSK E-Formula 금상</div><div className="mt-2 text-sm md:text-base text-gray-400">KSAE Formula Student Korea</div></div>
+                <div className="flex-1">
+                  <div className="text-xl md:text-2xl font-black">FSK E-Formula 금상</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">KSAE Formula Student Korea</div>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">GOLD</span>
               </li>
+              {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2025</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">FSK 가속 성능 최우수상</div><div className="mt-2 text-sm md:text-base text-gray-400">0-100 km/h <span className="text-white font-black">3.01 s</span></div></div>
+                <div className="flex-1">
+                  <div className="text-xl md:text-2xl font-black">FSK 가속 성능 최우수상</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">0-100 km/h <span className="text-white font-black">3.01 s</span></div>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
               </li>
+              {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2022</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">KSAE E-Formula 은상</div><div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div></div>
+                <div className="flex-1">
+                  <div className="text-xl md:text-2xl font-black">KSAE E-Formula 은상</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
+              {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
                   <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-black text-lg md:text-xl">2020</div>
-                <div className="flex-1"><div className="text-xl md:text-2xl font-black">KSAE C-Formula 은상</div><div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div></div>
+                <div className="flex-1">
+                  <div className="text-xl md:text-2xl font-black">KSAE C-Formula 은상</div>
+                  <div className="mt-2 text-sm md:text-base text-gray-400">Formula Student Korea</div>
+                </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-white/15 bg-white/5 text-white/80">SILVER</span>
               </li>
             </ul>
@@ -225,11 +262,19 @@ export default function Home() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="absolute inset-0 bg-black/55" />
               <div className="relative z-10 text-center px-6 pointer-events-none">
-                <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">Sponsors</p>
-                <h2 className="text-4xl md:text-5xl font-black">Become a Sponsor</h2>
-                <p className="mt-4 text-gray-300/90">Support us and join the <span className="text-white font-bold">CHALLENGER</span> spirit by participating as a sponsor!</p>
+                <p className="text-xs tracking-[0.35em] font-black text-[#950000]/80 mb-3 uppercase">
+                  {t.sponsors.label}
+                </p>
+                <h2 className="text-4xl md:text-5xl font-black">
+                  {t.sponsors.title}
+                </h2>
+                <p className="mt-4 text-gray-300/90">
+                  {t.sponsors.desc}
+                </p>
                 <div className="mt-7 pointer-events-auto">
-                  <Link href="/sponsors" className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white text-black font-black text-sm hover:bg-[#950000] hover:text-white transition">SHOW LIST</Link>
+                  <Link href="/sponsors" className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white text-black font-black text-sm hover:bg-[#950000] hover:text-white transition">
+                    {t.sponsors.btn}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -246,8 +291,8 @@ export default function Home() {
               <div className="flex items-start gap-3"><MapPin className="w-5 h-5 text-[#950000] mt-0.5 shrink-0" /><p>충청남도 아산시 배방읍 호서로79번길 20,<br />호서대학교 아산캠퍼스 제2공학관 B10호</p></div>
               <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-[#950000] shrink-0" /><p>CHALLENGERFSAE@gmail.com</p></div>
               <div className="border-t border-zinc-800 my-4" />
-              <div><p className="text-white font-bold mb-2">회장 (Chairman)</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>전진우 +82) 10 4561 8947</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div></div></div>
-              <div><p className="text-white font-bold mb-2">팀장 (Project Manager)</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>박민수 +82) 10 4705 3671</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div></div></div>
+              <div><p className="text-white font-bold mb-2">{t.contact.chairman}</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>전진우 +82) 10 4561 8947</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div></div></div>
+              <div><p className="text-white font-bold mb-2">{t.contact.pm}</p><div className="space-y-2"><div className="flex items-center gap-3"><Phone className="w-4 h-4 text-[#950000]" /><p>박민수 +82) 10 4705 3671</p></div><div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div></div></div>
             </div>
             <div className="flex gap-4 mt-8">
               <a href="https://instagram.com/challenger_fsae" target="_blank" rel="noopener noreferrer" className="p-3 bg-zinc-900 rounded-full hover:bg-[#950000] transition text-white"><Instagram size={20} /></a>
