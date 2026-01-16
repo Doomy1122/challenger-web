@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronUp } from "lucide-react";
+// ✅ Menu, X, MousePointerClick 아이콘 추가
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronUp, Menu, X, MousePointerClick } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
@@ -67,6 +68,9 @@ export default function Home() {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+  
+  // ✅ 모바일 메뉴 상태 추가
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
@@ -78,18 +82,18 @@ export default function Home() {
             <img src="/logo.png" alt="CHALLENGER Logo" className="h-12 md:h-14 w-auto object-contain" />
           </div>
 
-          <div className="flex items-center gap-6">
-            {/* PC 메뉴 */}
-            <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
-              <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
-              <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
-              <a href="#news" className="hover:text-[#950000] transition">{t.nav.news}</a>
-              <Link href="/gallery" className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
-              <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
-              <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
-            </div>
+          {/* PC 메뉴 */}
+          <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-gray-300">
+            <a href="#about" className="hover:text-[#950000] transition">{t.nav.about}</a>
+            <a href="#history" className="hover:text-[#950000] transition">{t.nav.competition}</a>
+            <a href="#news" className="hover:text-[#950000] transition">{t.nav.news}</a>
+            <Link href="/gallery" className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
+            <a href="#sponsors" className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
+            <a href="#contact" className="hover:text-[#950000] transition">{t.nav.contact}</a>
+          </div>
 
-            {/* 언어 버튼 (모바일에서도 보임) */}
+          <div className="flex items-center gap-4">
+            {/* 언어 버튼 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -97,11 +101,31 @@ export default function Home() {
               <Globe size={14} />
               <span>{language === "ko" ? "ENG" : "KOR"}</span>
             </button>
+
+            {/* ✅ 모바일 햄버거 버튼 */}
+            <button 
+              className="md:hidden text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
         </div>
+
+        {/* ✅ 모바일 메뉴 드롭다운 (열렸을 때만 보임) */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-black border-b border-zinc-800 flex flex-col p-6 space-y-6 text-center text-sm font-bold text-gray-300 shadow-2xl">
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.about}</a>
+            <a href="#history" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.competition}</a>
+            <a href="#news" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.news}</a>
+            <Link href="/gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.gallery}</Link>
+            <a href="#sponsors" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.sponsors}</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#950000] transition">{t.nav.contact}</a>
+          </div>
+        )}
       </nav>
 
-      {/* 2. 히어로 섹션 (모바일 영상 확대 적용) */}
+      {/* 2. 히어로 섹션 */}
       <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
         {(() => {
           const videoId = "8ErcU7HjICU";
@@ -109,7 +133,6 @@ export default function Home() {
           const src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&start=${startSec}`;
           return (
             <div className="absolute inset-0 z-0 overflow-hidden">
-              {/* ✅ 여기서 w-[350%]를 주어 모바일에서 영상을 강제로 키웁니다 */}
               <iframe 
                 className="absolute top-1/2 left-1/2 w-[350%] h-full -translate-x-1/2 -translate-y-1/2 md:w-full md:h-full md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 pointer-events-none object-cover" 
                 src={src} 
@@ -123,7 +146,6 @@ export default function Home() {
           );
         })()}
         
-        {/* 모바일 텍스트 위치 정렬 */}
         <div className="relative z-30 text-center px-4 flex flex-col items-center justify-center h-full pb-20 md:pb-0">
           <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
             {t.hero.spirit}
@@ -187,6 +209,10 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black">
               {t.history.title}
             </h2>
+            {/* ✅ 모바일용 스펙 확인 안내 문구 추가 */}
+            <p className="md:hidden text-xs text-[#950000] mt-3 flex items-center gap-1 font-bold animate-pulse">
+              <MousePointerClick size={16} /> Click list to see Vehicle Specs
+            </p>
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
