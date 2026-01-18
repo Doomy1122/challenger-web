@@ -140,9 +140,9 @@ export const translations = {
       chairman: "Chairman",
       pm: "Project Manager",
       vice: "Assistant Manager", // ✅ 추가
-      name_chair: "Jeon JinWoo",
+      name_chair: "JinWoo Jeon",
       name_pm: "Minsoo Park",
-      name_vice: "ChanWong Heo", // ✅ 추가
+      name_vice: "ChanWoong Heo", // ✅ 추가
       address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },
