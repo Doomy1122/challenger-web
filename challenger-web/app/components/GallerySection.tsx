@@ -6,6 +6,8 @@ import Link from "next/link";
 // ✅ 갤러리 설정
 const GALLERY_CATEGORIES = [
   { id: "df-25", title: "DF-25", year: "2025" },
+  { id: "df-24", title: "DF-24", year: "2024" },
+  { id: "df-23", title: "DF-23", year: "2023" },
   { id: "df-22", title: "DF-22", year: "2022" },
 ];
 
