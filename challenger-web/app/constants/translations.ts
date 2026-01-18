@@ -39,20 +39,14 @@ export const translations = {
     sponsors: {
       label: "Sponsorship",
       title: "Partnership",
-      // ✅ 상단 설득 멘트
       main_copy: "열정적인 엔지니어들과 함께\n모빌리티의 미래를 이끌어주세요.",
       sub_copy: "CHALLENGER는 단순한 후원을 넘어, 기업과 함께 성장하는 파트너십을 지향합니다.",
       download_btn: "제안서 다운로드 (PDF)",
-
-      // ✅ [추가] 버전 선택 텍스트
       down_kor: "한국어 버전 (.pdf)",
       down_eng: "English Version (.pdf)",
-
-      // ✅ [복구] 하단 배너 멘트
-      banner_title: "Become a Sponsor",
+      banner_title: "스폰서가 되어주세요",
       banner_desc: "스폰서로 참여하여 CHALLENGER 정신과 함께해주세요!",
       list_btn: "스폰서 목록 보기",
-      
       benefits: [
         {
           title: "강력한 브랜드 노출",
@@ -71,8 +65,10 @@ export const translations = {
     contact: {
       chairman: "회장 (Chairman)",
       pm: "팀장 (Project Manager)",
+      vice: "부팀장 (Assistant Manager)", // ✅ 추가
       name_chair: "전진우",
       name_pm: "박민수",
+      name_vice: "허찬웅", // ✅ 추가
       address: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호",
     },
   },
@@ -94,7 +90,7 @@ export const translations = {
     about: {
       title_1: "A powerful E-Formula Vehicle",
       title_2: "created with a ",
-      desc: "The will to dominate the track with precision.\n\nIt's not just about speed. We build the culmination of technology that controls every movement of the car with real-time data.Hoseo University CHALLENGER constantly challenges the limits of technology.",
+      desc: "The will to dominate the track with precision.\n\nIt's not just about speed. We build the culmination of technology that controls every movement of the car with real-time data. Hoseo University CHALLENGER constantly challenges the limits of technology.",
       spirit_title: "Our Spirit",
       spirit_desc: "Daring Challenger Spirit.\n\nOur spirit is a strong mind that moves towards the future without fear of failure. Extracting 100% of the car's potential on any track or environment—that is our challenge.",
       vision_title: "Our Vision",
@@ -120,15 +116,11 @@ export const translations = {
       main_copy: "Drive the Future of Mobility\nwith Passionate Engineers.",
       sub_copy: "CHALLENGER aims for a partnership that grows together with your company.",
       download_btn: "Download Proposal",
-
       down_kor: "Korean Version (.pdf)",
       down_eng: "English Version (.pdf)",
-
-      // ✅ [Restored] Banner Text
       banner_title: "Become a Sponsor",
       banner_desc: "Support us and join the CHALLENGER spirit by participating as a sponsor!",
       list_btn: "SHOW LIST",
-      
       benefits: [
         {
           title: "Powerful Brand Exposure",
@@ -147,8 +139,10 @@ export const translations = {
     contact: {
       chairman: "Chairman",
       pm: "Project Manager",
+      vice: "Assistant Manager", // ✅ 추가
       name_chair: "Jeon JinWoo",
       name_pm: "Minsoo Park",
+      name_vice: "ChanWong Heo", // ✅ 추가
       address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },

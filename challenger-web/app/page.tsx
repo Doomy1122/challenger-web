@@ -401,6 +401,17 @@ export default function Home() {
                   <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div>
                 </div>
               </div>
+              {/* ✅ 부팀장 (Assistant Manager) 추가 */}
+              <div>
+                <p className="text-white font-bold mb-2">{t.contact.vice}</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-[#950000]" />
+                    <p>{t.contact.name_vice} +82) 10 3336 3428</p>
+                  </div>
+                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20222315@vision.hoseo.edu</p></div>
+                </div>
+              </div>
             </div>
             <div className="flex gap-4 mt-8">
               <a href="https://instagram.com/challenger_fsae" target="_blank" rel="noopener noreferrer" className="p-3 bg-zinc-900 rounded-full hover:bg-[#950000] transition text-white"><Instagram size={20} /></a>
