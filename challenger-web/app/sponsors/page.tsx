@@ -252,6 +252,19 @@ ${message}`;
                   >
                     20212192@vision.hoseo.edu
                   </a>
+
+                  {/* 부팀장 정보 */}
+                  <p className={`${contentClass} mt-6`}>부팀장 (Assistant Manager):</p>
+                  {/* ✅ 이름/번호 부분만 볼드체 적용 */}
+                  <p className={`${contentClass} font-bold mt-1`}>
+                    허찬웅 +82) 10 3336 3428
+                  </p>
+                  <a
+                    href="mailto:20222315@vision.hoseo.edu"
+                    className={`${contentClass} block hover:text-white mt-1 transition`}
+                  >
+                    20222315@vision.hoseo.edu
+                  </a>
                 </div>
 
                 <div>
