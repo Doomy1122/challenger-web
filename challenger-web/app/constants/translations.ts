@@ -201,7 +201,7 @@ export const translations = {
       // ✅ 영어 모드에서 이름 영어로 변경
       name_chair: "JinWoo Jeon",
       name_pm: "Minsoo Park",
-      name_vice: "ChanWong Heo",
+      name_vice: "ChanWoong Heo",
       address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },
