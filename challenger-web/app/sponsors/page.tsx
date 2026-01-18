@@ -3,10 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube } from "lucide-react";
+import { Instagram, Youtube, Globe } from "lucide-react"; // Globe 아이콘 추가
+import { useLanguage } from "../context/LanguageContext"; // ✅ 언어 컨텍스트 가져오기
+import { translations } from "../constants/translations"; // ✅ 번역 데이터 가져오기
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
+// ... (tiers 데이터는 그대로 유지, 이름은 고유명사이므로 번역 불필요) ...
 const tiers = [
   {
     title: "Lifetime Sponsor",
@@ -81,6 +84,10 @@ function SponsorCard({ name, src }: { name: string; src: string }) {
 }
 
 export default function SponsorsPage() {
+  // ✅ 언어 설정 불러오기
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language].sponsors_page; // sponsors_page 데이터 사용
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -112,7 +119,6 @@ ${message}`;
     )}`;
   };
 
-  // ✅ 공통 스타일 변수 (본문 텍스트 통일용)
   const contentClass = "text-gray-300 text-base leading-relaxed";
 
   return (
@@ -122,7 +128,16 @@ ${message}`;
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="font-black tracking-tight text-xl">Sponsors</div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            {/* ✅ 언어 변경 버튼 추가 */}
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
+            >
+              <Globe size={14} />
+              <span>{language === "ko" ? "ENG" : "KOR"}</span>
+            </button>
+
             <Link
               href="#join"
               className="hidden md:inline-flex items-center px-6 py-2 rounded-full border border-white/20 bg-white/5 text-white font-bold text-sm hover:bg-white/10 transition"
@@ -134,7 +149,7 @@ ${message}`;
               href="/#sponsors"
               className="px-6 py-2 rounded-full bg-white text-black font-bold text-sm hover:bg-[#950000] hover:text-white transition"
             >
-              Back
+              {t.back_btn}
             </Link>
           </div>
         </div>
@@ -144,18 +159,17 @@ ${message}`;
         {/* 2. 타이틀 섹션 */}
         <div className="text-center mb-20">
           <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Sponsors
+            {t.title}
           </h1>
           <p className="text-gray-400 text-lg mb-8">
-            Thank you for supporting{" "}
-            <span className="text-[#950000] font-bold">CHALLENGER</span>.
+            {t.subtitle} <span className="text-[#950000] font-bold">CHALLENGER</span>.
           </p>
 
           <Link
             href="#join"
             className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#950000] text-white font-bold hover:bg-[#b00000] transition shadow-[0_10px_30px_rgba(149,0,0,0.3)]"
           >
-            Become a Sponsor
+            {t.join_btn}
           </Link>
         </div>
 
@@ -198,19 +212,16 @@ ${message}`;
             {/* 왼쪽: 회사/팀 정보 (Company Info) */}
             <div>
               <h2 className="text-2xl font-bold border-b-2 border-white pb-3 mb-8 inline-block">
-                SPONSORSHIP INQUIRY
+                {t.inquiry_title}
               </h2>
 
               <div className="space-y-8">
                 <div>
                   <h3 className="text-white text-lg font-bold mb-2">
-                    Team Address:
+                    {t.team_address}
                   </h3>
-                  {/* ✅ 모든 본문 텍스트 스타일 통일 */}
-                  <p className={contentClass}>
-                    충청남도 아산시 배방읍 호서로79번길 20, <br />
-                    호서대학교 아산캠퍼스 제2공학관 B10호 <br />
-                    (Formula Student Team CHALLENGER)
+                  <p className={`${contentClass} whitespace-pre-line`}>
+                    {t.address_text}
                   </p>
                 </div>
 
@@ -228,41 +239,29 @@ ${message}`;
                   <h3 className="text-white text-lg font-bold mb-2">Phone:</h3>
                   
                   {/* 회장 정보 */}
-                  <p className={contentClass}>회장 (Chairman):</p>
-                  {/* ✅ 이름/번호 부분만 볼드체 적용 */}
+                  <p className={contentClass}>{t.roles.chair}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
                     전진우 +82) 10 4561 8947
                   </p>
-                  <a
-                    href="mailto:20212241@vision.hoseo.edu"
-                    className={`${contentClass} block hover:text-white mt-1 transition`}
-                  >
+                  <a href="mailto:20212241@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20212241@vision.hoseo.edu
                   </a>
 
                   {/* 팀장 정보 */}
-                  <p className={`${contentClass} mt-6`}>팀장 (Project Manager):</p>
-                  {/* ✅ 이름/번호 부분만 볼드체 적용 */}
+                  <p className={`${contentClass} mt-6`}>{t.roles.pm}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
                     박민수 +82) 10 4705 3671
                   </p>
-                  <a
-                    href="mailto:20212192@vision.hoseo.edu"
-                    className={`${contentClass} block hover:text-white mt-1 transition`}
-                  >
+                  <a href="mailto:20212192@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20212192@vision.hoseo.edu
                   </a>
 
-                  {/* 부팀장 정보 */}
-                  <p className={`${contentClass} mt-6`}>부팀장 (Assistant Manager):</p>
-                  {/* ✅ 이름/번호 부분만 볼드체 적용 */}
+                  {/* ✅ 부팀장 정보 추가 */}
+                  <p className={`${contentClass} mt-6`}>{t.roles.vice}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
                     허찬웅 +82) 10 3336 3428
                   </p>
-                  <a
-                    href="mailto:20222315@vision.hoseo.edu"
-                    className={`${contentClass} block hover:text-white mt-1 transition`}
-                  >
+                  <a href="mailto:20222315@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20222315@vision.hoseo.edu
                   </a>
                 </div>
@@ -294,13 +293,13 @@ ${message}`;
             {/* 오른쪽: 입력 폼 (Contact Us) */}
             <div className="bg-zinc-900/50 p-8 md:p-10 rounded-3xl border border-white/5">
               <h2 className="text-2xl font-bold border-b-2 border-white pb-3 mb-8 inline-block">
-                CONTACT US
+                {t.contact_title}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-bold text-gray-400 mb-2">
-                    Your Name *
+                    {t.form_name}
                   </label>
                   <input
                     type="text"
@@ -315,7 +314,7 @@ ${message}`;
 
                 <div>
                   <label className="block text-sm font-bold text-gray-400 mb-2">
-                    Your Email *
+                    {t.form_email}
                   </label>
                   <input
                     type="email"
@@ -330,7 +329,7 @@ ${message}`;
 
                 <div>
                   <label className="block text-sm font-bold text-gray-400 mb-2">
-                    Type of support *
+                    {t.form_type}
                   </label>
                   <div className="relative">
                     <select
@@ -339,10 +338,9 @@ ${message}`;
                       onChange={handleChange}
                       className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white appearance-none focus:outline-none focus:border-[#950000] transition"
                     >
-                      <option>Financial Sponsorship</option>
-                      <option>Technical / Material Support</option>
-                      <option>Software / License</option>
-                      <option>Other Inquiry</option>
+                      {t.types.map((type, idx) => (
+                        <option key={idx} value={type}>{type}</option>
+                      ))}
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                       ▼
@@ -352,7 +350,7 @@ ${message}`;
 
                 <div>
                   <label className="block text-sm font-bold text-gray-400 mb-2">
-                    Subject
+                    {t.form_subject}
                   </label>
                   <input
                     type="text"
@@ -367,7 +365,7 @@ ${message}`;
 
                 <div>
                   <label className="block text-sm font-bold text-gray-400 mb-2">
-                    Your Message
+                    {t.form_message}
                   </label>
                   <textarea
                     rows={5}
@@ -384,7 +382,7 @@ ${message}`;
                   type="submit"
                   className="w-full md:w-auto px-10 py-3 bg-[#950000] text-white font-bold rounded-lg hover:bg-[#b00000] transition"
                 >
-                  Send Message
+                  {t.form_btn}
                 </button>
               </form>
             </div>

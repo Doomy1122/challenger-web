@@ -73,6 +73,36 @@ export const translations = {
     },
   },
 
+// ✅ [NEW] Sponsors 상세 페이지 전용 텍스트
+    sponsors_page: {
+      title: "Sponsors",
+      subtitle: "CHALLENGER를 후원해 주셔서 감사합니다.",
+      join_btn: "스폰서 신청하기",
+      back_btn: "돌아가기",
+      inquiry_title: "SPONSORSHIP INQUIRY",
+      team_address: "Team Address:",
+      address_text: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호\n(Formula Student Team CHALLENGER)",
+      contact_title: "CONTACT US",
+      form_name: "Your Name *",
+      form_email: "Your Email *",
+      form_type: "Type of support *",
+      form_subject: "Subject",
+      form_message: "Your Message",
+      form_btn: "Send Message",
+      types: [
+        "Financial Sponsorship (재정 후원)",
+        "Technical / Material Support (기술/물품 후원)",
+        "Software / License (소프트웨어/라이선스)",
+        "Other Inquiry (기타 문의)"
+      ],
+      roles: {
+        chair: "회장 (Chairman)",
+        pm: "팀장 (Project Manager)",
+        vice: "부팀장 (Assistant Manager)"
+      }
+    },
+  },
+
   // 🇺🇸 영어 모드
   en: {
     nav: {
@@ -144,6 +174,34 @@ export const translations = {
       name_pm: "Minsoo Park",
       name_vice: "ChanWoong Heo", // ✅ 추가
       address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
+    },
+
+    sponsors_page: {
+      title: "Sponsors",
+      subtitle: "Thank you for supporting CHALLENGER.",
+      join_btn: "Become a Sponsor",
+      back_btn: "Back",
+      inquiry_title: "SPONSORSHIP INQUIRY",
+      team_address: "Team Address:",
+      address_text: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)\n(Formula Student Team CHALLENGER)",
+      contact_title: "CONTACT US",
+      form_name: "Your Name *",
+      form_email: "Your Email *",
+      form_type: "Type of support *",
+      form_subject: "Subject",
+      form_message: "Your Message",
+      form_btn: "Send Message",
+      types: [
+        "Financial Sponsorship",
+        "Technical / Material Support",
+        "Software / License",
+        "Other Inquiry"
+      ],
+      roles: {
+        chair: "Chairman",
+        pm: "Project Manager",
+        vice: "Assistant Manager"
+      }
     },
   },
 };
