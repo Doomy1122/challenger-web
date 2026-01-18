@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import { Instagram, Youtube, Globe } from "lucide-react"; // Globe 아이콘 추가
-import { useLanguage } from "../context/LanguageContext"; // ✅ 언어 컨텍스트 가져오기
-import { translations } from "../constants/translations"; // ✅ 번역 데이터 가져오기
+import { Instagram, Youtube, Globe } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../constants/translations";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-// ... (tiers 데이터는 그대로 유지, 이름은 고유명사이므로 번역 불필요) ...
+// ... (로고 데이터는 그대로 유지) ...
 const tiers = [
   {
     title: "Lifetime Sponsor",
@@ -84,9 +84,11 @@ function SponsorCard({ name, src }: { name: string; src: string }) {
 }
 
 export default function SponsorsPage() {
-  // ✅ 언어 설정 불러오기
   const { language, toggleLanguage } = useLanguage();
-  const t = translations[language].sponsors_page; // sponsors_page 데이터 사용
+  
+  // ✅ 여기서 데이터 2개를 다 가져와야 합니다.
+  const t = translations[language].sponsors_page; // 페이지 전용 텍스트
+  const c = translations[language].contact;       // 이름/직책 공통 데이터
 
   const [formData, setFormData] = useState({
     name: "",
@@ -129,7 +131,6 @@ ${message}`;
           <div className="font-black tracking-tight text-xl">Sponsors</div>
 
           <div className="flex gap-4 items-center">
-            {/* ✅ 언어 변경 버튼 추가 */}
             <button 
               onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-white text-xs"
@@ -241,7 +242,8 @@ ${message}`;
                   {/* 회장 정보 */}
                   <p className={contentClass}>{t.roles.chair}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
-                    전진우 +82) 10 4561 8947
+                    {/* ✅ 변수 사용: 이름과 번호 */}
+                    {c.name_chair} +82) 10 4561 8947
                   </p>
                   <a href="mailto:20212241@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20212241@vision.hoseo.edu
@@ -250,16 +252,18 @@ ${message}`;
                   {/* 팀장 정보 */}
                   <p className={`${contentClass} mt-6`}>{t.roles.pm}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
-                    박민수 +82) 10 4705 3671
+                    {/* ✅ 변수 사용: 이름과 번호 */}
+                    {c.name_pm} +82) 10 4705 3671
                   </p>
                   <a href="mailto:20212192@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20212192@vision.hoseo.edu
                   </a>
 
-                  {/* ✅ 부팀장 정보 추가 */}
+                  {/* 부팀장 정보 */}
                   <p className={`${contentClass} mt-6`}>{t.roles.vice}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
-                    허찬웅 +82) 10 3336 3428
+                    {/* ✅ 변수 사용: 이름과 번호 */}
+                    {c.name_vice} +82) 10 3336 3428
                   </p>
                   <a href="mailto:20222315@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
                     20222315@vision.hoseo.edu

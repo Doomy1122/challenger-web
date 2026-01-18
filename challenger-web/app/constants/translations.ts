@@ -62,7 +62,7 @@ export const translations = {
         },
       ],
     },
-    // ✅ Sponsors 상세 페이지용 데이터
+    // ✅ Sponsors 상세 페이지용 데이터 (한국어)
     sponsors_page: {
       title: "Sponsors",
       subtitle: "CHALLENGER를 후원해 주셔서 감사합니다.",
@@ -72,12 +72,13 @@ export const translations = {
       team_address: "Team Address:",
       address_text: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호\n(Formula Student Team CHALLENGER)",
       contact_title: "CONTACT US",
-      form_name: "Your Name *",
-      form_email: "Your Email *",
-      form_type: "Type of support *",
-      form_subject: "Subject",
-      form_message: "Your Message",
-      form_btn: "Send Message",
+      // 🇰🇷 폼 입력창 한국어 번역
+      form_name: "성함 *",
+      form_email: "이메일 *",
+      form_type: "후원 유형 *",
+      form_subject: "제목",
+      form_message: "문의 내용",
+      form_btn: "메시지 보내기",
       types: [
         "Financial Sponsorship (재정 후원)",
         "Technical / Material Support (기술/물품 후원)",
@@ -164,7 +165,7 @@ export const translations = {
         },
       ],
     },
-    // ✅ Sponsors Detail Page Data
+    // ✅ Sponsors Detail Page Data (English)
     sponsors_page: {
       title: "Sponsors",
       subtitle: "Thank you for supporting CHALLENGER.",
@@ -174,6 +175,7 @@ export const translations = {
       team_address: "Team Address:",
       address_text: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)\n(Formula Student Team CHALLENGER)",
       contact_title: "CONTACT US",
+      // 🇺🇸 폼 입력창 영어 유지
       form_name: "Your Name *",
       form_email: "Your Email *",
       form_type: "Type of support *",
@@ -196,6 +198,7 @@ export const translations = {
       chairman: "Chairman",
       pm: "Project Manager",
       vice: "Assistant Manager",
+      // ✅ 영어 모드에서 이름 영어로 변경
       name_chair: "Jeon JinWoo",
       name_pm: "Minsoo Park",
       name_vice: "ChanWong Heo",
