@@ -16,9 +16,9 @@ export const translations = {
     about: {
       title_1: "강력한 E-Formula,",
       title_2: "그 이상의 가치 ", 
-      desc: "빠르고 정밀하게 트랙을 지배하는 의지. \n\n단순히 빠른 속도만이 아닙니다. 우리는 차량의 모든 움직임을 실시간 데이터로 제어하는 기술의 집약체를 만듭니다. 호서대학교 CHALLENGER는 끊임없이 기술의 한계에 도전합니다.",
+      desc: "빠르고 정밀하게 트랙을 지배하는 의지, DF-25.\n\n단순히 빠른 속도만이 아닙니다. 우리는 차량의 모든 움직임을 실시간 데이터로 제어하는 기술의 집약체를 만듭니다.\n\n호서대학교 CHALLENGER는 끊임없이 기술의 한계에 도전합니다.",
       spirit_title: "Our Spirit",
-      spirit_desc: "패기있는 도전자 정신.\n\n우리의 정신은 실패를 두려워하지 않고 미래를 향해 나아가는 강인한 마음입니다. 어떠한 트랙과 환경에서도 차량의 잠재력을 100% 이끌어내는 것, 그것이 우리의 도전입니다.",
+      spirit_desc: "패기있는 도전자 정신.\n\n우리의 정신은 실패를 두려워하지 않고 미래를 향해 나아가는 강인한 마음입니다.\n\n어떠한 트랙과 환경에서도 차량의 잠재력을 100% 이끌어내는 것, 그것이 우리의 도전입니다.",
       vision_title: "Our Vision",
       vision_desc: "결과로 증명하고, 과정으로 성장하다.\n\n우리는 트랙 위에서의 결과로 실력을 증명합니다. 동시에 Ansys, Catia, MATLAB 등 전문 엔지니어링 툴을 활용하여 설계부터 제작까지, 미래 자동차 산업을 이끌어갈 엔지니어로 함께 성장합니다.",
     },
@@ -50,7 +50,7 @@ export const translations = {
       benefits: [
         {
           title: "강력한 브랜드 노출",
-          desc: "차량(DF-Series), 유니폼, 패독 부스 및 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
+          desc: "차량(DF-25), 유니폼, 패독 부스 및 SNS 채널에 귀사의 브랜드 로고가 노출되어 마케팅 효과를 극대화합니다.",
         },
         {
           title: "우수 공학 인재 확보",
@@ -62,18 +62,7 @@ export const translations = {
         },
       ],
     },
-    contact: {
-      chairman: "회장 (Chairman)",
-      pm: "팀장 (Project Manager)",
-      vice: "부팀장 (Assistant Manager)", // ✅ 추가
-      name_chair: "전진우",
-      name_pm: "박민수",
-      name_vice: "허찬웅", // ✅ 추가
-      address: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호",
-    },
-  },
-
-// ✅ [NEW] Sponsors 상세 페이지 전용 텍스트
+    // ✅ Sponsors 상세 페이지용 데이터
     sponsors_page: {
       title: "Sponsors",
       subtitle: "CHALLENGER를 후원해 주셔서 감사합니다.",
@@ -101,6 +90,15 @@ export const translations = {
         vice: "부팀장 (Assistant Manager)"
       }
     },
+    contact: {
+      chairman: "회장 (Chairman)",
+      pm: "팀장 (Project Manager)",
+      vice: "부팀장 (Assistant Manager)",
+      name_chair: "전진우",
+      name_pm: "박민수",
+      name_vice: "허찬웅",
+      address: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호",
+    },
   },
 
   // 🇺🇸 영어 모드
@@ -120,9 +118,9 @@ export const translations = {
     about: {
       title_1: "A powerful E-Formula Vehicle",
       title_2: "created with a ",
-      desc: "The will to dominate the track with precision.\n\nIt's not just about speed. We build the culmination of technology that controls every movement of the car with real-time data. Hoseo University CHALLENGER constantly challenges the limits of technology.",
+      desc: "The will to dominate the track with precision, DF-25.\n\nIt's not just about speed. We build the culmination of technology that controls every movement of the car with real-time data.\n\nHoseo University CHALLENGER constantly challenges the limits of technology.",
       spirit_title: "Our Spirit",
-      spirit_desc: "Daring Challenger Spirit.\n\nOur spirit is a strong mind that moves towards the future without fear of failure. Extracting 100% of the car's potential on any track or environment—that is our challenge.",
+      spirit_desc: "Daring Challenger Spirit.\n\nOur spirit is a strong mind that moves towards the future without fear of failure.\n\nExtracting 100% of the car's potential on any track or environment—that is our challenge.",
       vision_title: "Our Vision",
       vision_desc: "Prove with results, Grow through the process.\n\nWe prove our skills with results on the track. Simultaneously, we grow together into future leaders of the automotive industry by mastering professional engineering tools like Ansys, Catia, and MATLAB.",
     },
@@ -154,7 +152,7 @@ export const translations = {
       benefits: [
         {
           title: "Powerful Brand Exposure",
-          desc: "Maximize marketing impact with your logo on our race car (DF-Series), team uniforms, and social media channels.",
+          desc: "Maximize marketing impact with your logo on our race car (DF-25), team uniforms, and social media channels.",
         },
         {
           title: "Access to Top Talent",
@@ -166,16 +164,7 @@ export const translations = {
         },
       ],
     },
-    contact: {
-      chairman: "Chairman",
-      pm: "Project Manager",
-      vice: "Assistant Manager", // ✅ 추가
-      name_chair: "JinWoo Jeon",
-      name_pm: "Minsoo Park",
-      name_vice: "ChanWoong Heo", // ✅ 추가
-      address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
-    },
-
+    // ✅ Sponsors Detail Page Data
     sponsors_page: {
       title: "Sponsors",
       subtitle: "Thank you for supporting CHALLENGER.",
@@ -202,6 +191,15 @@ export const translations = {
         pm: "Project Manager",
         vice: "Assistant Manager"
       }
+    },
+    contact: {
+      chairman: "Chairman",
+      pm: "Project Manager",
+      vice: "Assistant Manager",
+      name_chair: "Jeon JinWoo",
+      name_pm: "Minsoo Park",
+      name_vice: "ChanWong Heo",
+      address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },
 };
