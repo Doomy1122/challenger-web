@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CHALLENGER | 호서대학교 자작자동차 연구회",
     description: "한계를 넘는 도전, 호서대 챌린저 공식 홈페이지입니다.",
-    url: "https://challenger-web.vercel.app", // 실제 배포된 도메인
+    url: "https://www.challengerfsae.com", // 실제 배포된 도메인
     siteName: "CHALLENGER",
     images: [
       {

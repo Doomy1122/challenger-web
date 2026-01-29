@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://challenger-web.vercel.app'; // 실제 도메인으로 변경
+  const baseUrl = 'https://www.challengerfsae.com'; // 실제 도메인으로 변경
 
   return [
     {
