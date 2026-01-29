@@ -22,7 +22,7 @@ const corel = localFont({
   display: "swap",
 });
 
-// ✅ 3. SEO 메타데이터 설정 (네이버 인증 추가!)
+// ✅ 3. SEO 메타데이터 설정 (네이버 인증 수정됨)
 export const metadata: Metadata = {
   title: {
     default: "CHALLENGER | 호서대학교 자작자동차 연구회",
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  // ⭐ [여기가 추가된 부분입니다] ⭐
+  // ⭐ [수정된 부분] 태그 전체가 아니라 '코드값'만 넣어야 합니다!
   verification: {
     other: {
-      "<meta name="naver-site-verification" content="cc1b5f9d0d17aa3573dacaf988122ecd817d19d4" />", 
+      "naver-site-verification": "cc1b5f9d0d17aa3573dacaf988122ecd817d19d4", 
     },
   },
 };
