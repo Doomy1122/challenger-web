@@ -16,6 +16,7 @@ const tiers = [
     items: [
       { name: "AI4U Hoseo University", src: "/sponsors/marquee/tiers/Lifetime/hoseo.png" },
       { name: "W-WORKS KOREA", src: "/sponsors/marquee/tiers/Lifetime/works.png" },
+      { name: "RISE Hoseo Univerity", src: "/sponsors/marquee/tiers/Lifetime/rise.png" },
     ],
   },
   {
@@ -41,6 +42,7 @@ const tiers = [
       { name: "KOSTECH", src: "/sponsors/marquee/tiers/Platinum/kostech.png" },
       { name: "MathWorks", src: "/sponsors/marquee/tiers/Platinum/mathworks.png" },
       { name: "Y.S. TECH", src: "/sponsors/marquee/tiers/Platinum/ys.png" },
+      { name: "INSANE GARAGE", src: "/sponsors/marquee/tiers/Platinum/insane.png" },
     ],
   },
   {
