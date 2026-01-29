@@ -28,6 +28,7 @@ const tiers = [
       { name: "KATECH", src: "/sponsors/marquee/tiers/Diamond/katech.png" },
       { name: "LLight", src: "/sponsors/marquee/tiers/Diamond/light.png" },
       { name: "Brian KIM WORKS", src: "/sponsors/marquee/tiers/Diamond/brian.png" },
+      { name: "INSANE GARAGE", src: "/sponsors/marquee/tiers/Diamond/insane.png" },
     ],
   },
   {
@@ -42,7 +43,6 @@ const tiers = [
       { name: "KOSTECH", src: "/sponsors/marquee/tiers/Platinum/kostech.png" },
       { name: "MathWorks", src: "/sponsors/marquee/tiers/Platinum/mathworks.png" },
       { name: "Y.S. TECH", src: "/sponsors/marquee/tiers/Platinum/ys.png" },
-      { name: "INSANE GARAGE", src: "/sponsors/marquee/tiers/Platinum/insane.png" },
     ],
   },
   {
