@@ -65,7 +65,7 @@ export const translations = {
     // ✅ Sponsors 상세 페이지용 데이터 (한국어)
     sponsors_page: {
       title: "Sponsors",
-      subtitle: "CHALLENGER를 후원해 주셔서 감사합니다.",
+      subtitle: "후원해 주셔서 감사합니다, ",
       join_btn: "스폰서 신청하기",
       back_btn: "돌아가기",
       inquiry_title: "SPONSORSHIP INQUIRY",
@@ -168,7 +168,7 @@ export const translations = {
     // ✅ Sponsors Detail Page Data (English)
     sponsors_page: {
       title: "Sponsors",
-      subtitle: "Thank you for supporting CHALLENGER.",
+      subtitle: "Thank you for supporting ",
       join_btn: "Become a Sponsor",
       back_btn: "Back",
       inquiry_title: "SPONSORSHIP INQUIRY",

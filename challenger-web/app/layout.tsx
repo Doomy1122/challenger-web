@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: "CHALLENGER | 호서대학교 자작자동차 연구회",
     template: "%s | CHALLENGER",
   },
-  description: "1997년 창단된 호서대학교 자작자동차 동아리 챌린저(CHALLENGER)입니다. E-Formula 레이싱카 설계 및 제작, KSAE 대회 참가.",
+  description: "1997년 창단된 호서대학교(Hoseo University) 자작자동차 동아리 챌린저(CHALLENGER)입니다. E-Formula 레이싱카 설계 및 제작, FSAE 대회 참가.",
   keywords: ["호서대학교", "자작자동차", "챌린저", "Challenger", "E-Formula", "FSAE", "KSAE", "전기차", "레이싱팀", "대학생 자작차"],
   icons: {
     icon: "/favicon.ico", 
