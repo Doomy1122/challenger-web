@@ -18,7 +18,7 @@ export default function NewsSection() {
   const [posts, setPosts] = useState<InstaPost[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const INSTAGRAM_FEED_URL = "https://feeds.behold.so/qsugorgFRWBv0HTBCoWl"; 
+  const INSTAGRAM_FEED_URL = "https://feeds.behold.so/lrZSyx9AyWYvTGyBwxJA"; 
 
   useEffect(() => {
     async function fetchInstagram() {
