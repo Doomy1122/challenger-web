@@ -43,6 +43,7 @@ const tiers = [
       { name: "KOSTECH", src: "/sponsors/marquee/tiers/Platinum/kostech.png" },
       { name: "MathWorks", src: "/sponsors/marquee/tiers/Platinum/mathworks.png" },
       { name: "Y.S. TECH", src: "/sponsors/marquee/tiers/Platinum/ys.png" },
+      { name: "HITEC", src: "/sponsors/marquee/tiers/Platinum/hitec.png" },
     ],
   },
   {
