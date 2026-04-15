@@ -34,6 +34,7 @@ const tiers = [
   {
     title: "Platinum Sponsor",
     items: [
+      { name: "HITEC", src: "/sponsors/marquee/tiers/Platinum/hitec.png" },
       { name: "ALTAIR", src: "/sponsors/marquee/tiers/Platinum/altair.png" },
       { name: "ANSYS", src: "/sponsors/marquee/tiers/Platinum/ansys.png" },
       { name: "Harvestance", src: "/sponsors/marquee/tiers/Platinum/harve.png" },
@@ -43,7 +44,6 @@ const tiers = [
       { name: "KOSTECH", src: "/sponsors/marquee/tiers/Platinum/kostech.png" },
       { name: "MathWorks", src: "/sponsors/marquee/tiers/Platinum/mathworks.png" },
       { name: "Y.S. TECH", src: "/sponsors/marquee/tiers/Platinum/ys.png" },
-      { name: "HITEC", src: "/sponsors/marquee/tiers/Platinum/hitec.png" },
     ],
   },
   {
