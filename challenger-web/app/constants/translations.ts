@@ -28,7 +28,7 @@ export const translations = {
     },
     awards: {
       // ✅ [NEW] 2026년 한국어 번역 추가
-      accel26_title: "AMF 자작자 포뮬러 짐카나 챌린지 1위",
+      accel26_title: "AMF 짐카나 챌린지 1위",
       accel26_desc: "AMF Global Motor Festival",
       gold25_title: "FSK E-Formula 금상",
       gold25_desc: "KSAE 대학생 자작자동차 대회",
