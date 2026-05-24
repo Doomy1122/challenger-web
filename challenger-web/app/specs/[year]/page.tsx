@@ -17,16 +17,16 @@ const SPECS: Record<
   }
 > = {
   "2026": {
-    image: "/awards/2026amf.jpg",
+    image: "/awards/2026df.jpg",
     ko: {
       title: "DF-26",
-      subtitle: "Active Anti-Roll Bar(AARB) 및 Active Drag Reduction System(ADRS)이 구현된 혁신적인 E-Formula",
+      subtitle: "Vehicle Control Unit(VCU) 도입을 통한 고도화된 협조제어의 시작",
       rows: [
-        { label: "전장 / 전폭 / 전고", value: "2954 / 1493 / 1040 mm" },
-        { label: "축거", value: "1515 mm" },
-        { label: "윤거(전/후)", value: "1280 / 1260 mm" },
-        { label: "공차 무게", value: "229 kg" },
-        { label: "무게 배분(전/후)", value: "49% / 51%" },
+        { label: "전장 / 전폭 / 전고", value: "2961 / 1480 / 1203 mm" },
+        { label: "축거", value: "1530 mm" },
+        { label: "윤거(전/후)", value: "1240 / 1220 mm" },
+        { label: "공차 무게", value: "227 kg" },
+        { label: "무게 배분(전/후)", value: "50% / 50%" },
         { label: "배터리", value: "Samsung 21700 40T" },
         { label: "축전지", value: "294 V / 245 A" },
         { label: "모터 / 인버터", value: "EMRAX 228 MV / CM200DZ" },
@@ -35,13 +35,13 @@ const SPECS: Record<
     },
     en: {
       title: "DF-26",
-      subtitle: "An innovative E-Formula featuring Active Anti-Roll Bar (AARB) and Active Drag Reduction System (ADRS)",
+      subtitle: "The Beginning of Advanced Coordinated Control Through the Introduction of a Vehicle Control Unit (VCU)",
       rows: [
-        { label: "L / W / H", value: "2954 / 1493 / 1040 mm" },
-        { label: "Wheelbase", value: "1515 mm" },
-        { label: "Track (F/R)", value: "1280 / 1260 mm" },
-        { label: "Weight", value: "229 kg" },
-        { label: "Weight Dist. (F/R)", value: "49% / 51%" },
+        { label: "L / W / H", value: "2961 / 1480 / 1203 mm" },
+        { label: "Wheelbase", value: "1530 mm" },
+        { label: "Track (F/R)", value: "1240 / 1220 mm" },
+        { label: "Weight", value: "227 kg" },
+        { label: "Weight Dist. (F/R)", value: "50% / 50%" },
         { label: "Battery", value: "Samsung 21700 40T" },
         { label: "Accumulator", value: "294 V / 245 A" },
         { label: "Motor / Inverter", value: "EMRAX 228 MV / CM200DZ" },
