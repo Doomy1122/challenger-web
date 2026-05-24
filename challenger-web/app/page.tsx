@@ -224,8 +224,8 @@ export default function Home() {
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
                 <div className="flex-1">
                   <Link href="/specs/2026" className="block hover:text-[#950000] transition">
-                    <div className="text-xl md:text-2xl font-black">FSK 가속 1위 & 내구 완주</div>
-                    <div className="mt-2 text-sm md:text-base text-gray-400">KSAE 대학생 자작자동차 대회</div>
+                    <div className="text-xl md:text-2xl font-black">{t.awards.accel26_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel26_desc}</div>
                   </Link>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
