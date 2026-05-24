@@ -27,6 +27,9 @@ export const translations = {
       title: "Awards & Records",
     },
     awards: {
+      // ✅ [NEW] 2026년 한국어 번역 추가
+      accel26_title: "AMF 자작자 포뮬러 짐카나 챌린지 1위",
+      accel26_desc: "AMF Global Motor Festival",
       gold25_title: "FSK E-Formula 금상",
       gold25_desc: "KSAE 대학생 자작자동차 대회",
       accel25_title: "FSK 가속 성능 최우수상",
@@ -62,7 +65,6 @@ export const translations = {
         },
       ],
     },
-    // ✅ Sponsors 상세 페이지용 데이터 (한국어)
     sponsors_page: {
       title: "Sponsors",
       subtitle: "후원해 주셔서 감사합니다, ",
@@ -72,7 +74,6 @@ export const translations = {
       team_address: "Team Address:",
       address_text: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호\n(Formula Student Team CHALLENGER)",
       contact_title: "CONTACT US",
-      // 🇰🇷 폼 입력창 한국어 번역
       form_name: "성함 *",
       form_email: "이메일 *",
       form_type: "후원 유형 *",
@@ -130,6 +131,9 @@ export const translations = {
       title: "Awards & Records",
     },
     awards: {
+      // ✅ [NEW] 2026년 영어 번역 추가
+      accel26_title: "AMF Gymkana Formula 1st Place",
+      accel26_desc: "AMF Global Motor Festival",
       gold25_title: "FSK E-Formula Gold Award",
       gold25_desc: "Formula Student Korea",
       accel25_title: "FSK Acceleration Best Award",
@@ -165,7 +169,6 @@ export const translations = {
         },
       ],
     },
-    // ✅ Sponsors Detail Page Data (English)
     sponsors_page: {
       title: "Sponsors",
       subtitle: "Thank you for supporting ",
@@ -175,7 +178,6 @@ export const translations = {
       team_address: "Team Address:",
       address_text: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)\n(Formula Student Team CHALLENGER)",
       contact_title: "CONTACT US",
-      // 🇺🇸 폼 입력창 영어 유지
       form_name: "Your Name *",
       form_email: "Your Email *",
       form_type: "Type of support *",
@@ -198,7 +200,6 @@ export const translations = {
       chairman: "Chairman",
       pm: "Project Manager",
       vice: "Assistant Manager",
-      // ✅ 영어 모드에서 이름 영어로 변경
       name_chair: "JinWoo Jeon",
       name_pm: "Minsoo Park",
       name_vice: "ChanWoong Heo",
