@@ -642,7 +642,7 @@ function PartDetailCard({
           <h4 className="mt-3 text-xl md:text-2xl font-black text-white">
             What this part does
           </h4>
-          <p className="mt-4 text-gray-300 text-base md:text-lg leading-loose break-keep">
+          <p className="mt-4 text-gray-300 text-base md:text-lg leading-loose break-keep text-justify">
             {active.desc}
           </p>
         </div>
@@ -667,7 +667,7 @@ function PartDetailCard({
                     <h5 className="text-lg md:text-xl font-black text-white">
                       {point.title}
                     </h5>
-                    <p className="mt-2 text-sm md:text-base text-gray-400 leading-relaxed break-keep">
+                    <p className="mt-2 text-sm md:text-base text-gray-400 leading-relaxed break-keep text-justify">
                       {point.desc}
                     </p>
                   </div>
@@ -881,7 +881,7 @@ export default function GaragePage() {
               {t.vehicle.title}
             </h2>
 
-            <p className="mt-4 text-gray-400 text-base md:text-lg leading-relaxed break-keep">
+            <p className="mt-4 text-gray-400 text-base md:text-lg leading-relaxed break-keep text-justify">
               {t.vehicle.desc}
             </p>
 
@@ -998,7 +998,7 @@ export default function GaragePage() {
               <h2 className="mt-4 text-4xl md:text-7xl font-black leading-tight">
                 {t.philosophy.title}
               </h2>
-              <p className="mt-6 max-w-4xl text-lg md:text-xl text-gray-300 leading-loose break-keep">
+              <p className="mt-6 max-w-4xl text-lg md:text-xl text-gray-300 leading-loose break-keep text-justify">
                 {t.philosophy.desc}
               </p>
 
@@ -1012,7 +1012,7 @@ export default function GaragePage() {
                     >
                       <Icon className="text-[#950000] mb-5" size={28} />
                       <h3 className="text-2xl font-black">{card.title}</h3>
-                      <p className="mt-3 text-gray-400 leading-relaxed break-keep">
+                      <p className="mt-3 text-gray-400 leading-relaxed break-keep text-justify">
                         {card.desc}
                       </p>
                     </div>
@@ -1047,7 +1047,7 @@ export default function GaragePage() {
                     <Icon size={24} />
                   </div>
                   <h3 className="text-xl font-black">{item.title}</h3>
-                  <p className="mt-4 text-sm text-gray-400 leading-relaxed break-keep">
+                  <p className="mt-4 text-sm text-gray-400 leading-relaxed break-keep text-justify">
                     {item.desc}
                   </p>
                 </div>
@@ -1078,7 +1078,7 @@ export default function GaragePage() {
             </div>
 
             <div className="rounded-[32px] md:rounded-[36px] border border-white/10 bg-gradient-to-b from-zinc-950 to-black p-7 md:p-12">
-              <p className="text-lg md:text-xl text-gray-300 leading-loose break-keep">
+              <p className="text-lg md:text-xl text-gray-300 leading-loose break-keep text-justify">
                 {t.direction.desc}
               </p>
 
@@ -1133,7 +1133,7 @@ export default function GaragePage() {
               <h2 className="text-3xl md:text-6xl font-black leading-tight break-keep">
                 {t.sponsor.title}
               </h2>
-              <p className="mt-6 text-lg md:text-xl text-gray-200 leading-loose break-keep">
+              <p className="mt-6 text-lg md:text-xl text-gray-200 leading-loose break-keep text-justify">
                 {t.sponsor.desc}
               </p>
 
