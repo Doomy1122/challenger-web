@@ -28,9 +28,23 @@ import { useLanguage } from "../context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-const VEHICLE_IMAGE_SRC = "/gallery/df-25/KakaoTalk_20260629_1735219801.jpg";
-const VEHICLE_IMAGE_ASPECT = "4 / 3.8";
+const VEHICLE_IMAGE_SRC = "/garage/garage-main.jpg";
+const VEHICLE_IMAGE_ASPECT = "4 / 3";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
+
+type Point = {
+  title: string;
+  desc: string;
+};
+
+type Hotspot = {
+  name: string;
+  x: string;
+  y: string;
+  title: string;
+  desc: string;
+  points: Point[];
+};
 
 const copy = {
   ko: {
@@ -55,9 +69,9 @@ const copy = {
     ],
     vehicle: {
       label: "Interactive Vehicle",
-      title: "차량을 클릭해 CHALLENGER의 파트를 확인하세요.",
+      title: "CHALLENGER의 파트를 확인하세요.",
       desc: "CHALLENGER의 차량은 프레임, 서스펜션, 구동계, 전장, 공력, 냉각, 제어가 하나의 시스템으로 연결되어 완성됩니다.",
-      hint: "파트 마커를 눌러보세요",
+      hint: "번호 마커를 눌러 파트를 확인하세요",
       hotspots: [
         {
           name: "Suspension",
@@ -212,7 +226,7 @@ const copy = {
             },
           ],
         },
-      ],
+      ] as Hotspot[],
     },
     philosophy: {
       label: "Why CHALLENGER",
@@ -301,9 +315,9 @@ const copy = {
     ],
     vehicle: {
       label: "Interactive Vehicle",
-      title: "Click the vehicle to explore CHALLENGER parts.",
+      title: "Explore CHALLENGER Parts.",
       desc: "CHALLENGER is completed by connecting frame, suspension, drivetrain, electronics, aero, cooling, and control as one system.",
-      hint: "Tap the part markers",
+      hint: "Tap the numbered markers",
       hotspots: [
         {
           name: "Suspension",
@@ -458,7 +472,7 @@ const copy = {
             },
           ],
         },
-      ],
+      ] as Hotspot[],
     },
     philosophy: {
       label: "Why CHALLENGER",
@@ -530,6 +544,110 @@ const copy = {
 const techIcons = [Cpu, RefreshCw, Thermometer, RadioTower, Gauge];
 const philosophyIcons = [ShieldCheck, Activity, BatteryCharging];
 
+function PartDetailCard({
+  active,
+  activeIndex,
+  parts,
+  onClose,
+  onSelect,
+  className = "",
+}: {
+  active: Hotspot;
+  activeIndex: number;
+  parts: Hotspot[];
+  onClose: () => void;
+  onSelect: (idx: number) => void;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <button
+        onClick={onClose}
+        className="absolute right-5 top-5 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-[#950000] transition flex items-center justify-center"
+        aria-label="Close"
+      >
+        <X size={22} />
+      </button>
+
+      <div className="pr-14">
+        <p className="text-xs font-black tracking-[0.35em] text-[#950000] uppercase">
+          Part {String(activeIndex + 1).padStart(2, "0")}
+        </p>
+
+        <h3 className="mt-4 text-4xl md:text-6xl font-black leading-tight">
+          {active.title}
+        </h3>
+      </div>
+
+      <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-5 md:gap-10">
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-6 md:p-8">
+          <p className="text-[11px] font-black tracking-[0.3em] text-gray-500 uppercase">
+            Role
+          </p>
+          <h4 className="mt-3 text-xl md:text-2xl font-black text-white">
+            What this part does
+          </h4>
+          <p className="mt-4 text-gray-300 text-base md:text-lg leading-loose break-keep">
+            {active.desc}
+          </p>
+        </div>
+
+        <div className="rounded-[24px] border border-[#950000]/30 bg-[#950000]/10 p-6 md:p-8">
+          <p className="text-[11px] font-black tracking-[0.3em] text-[#950000] uppercase">
+            Key Points
+          </p>
+
+          <div className="mt-5 space-y-4">
+            {active.points.map((point, idx) => (
+              <div
+                key={point.title}
+                className="rounded-2xl border border-white/10 bg-black/45 p-5"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#950000] flex items-center justify-center shrink-0 text-xs font-black text-white">
+                    {idx + 1}
+                  </div>
+
+                  <div>
+                    <h5 className="text-lg md:text-xl font-black text-white">
+                      {point.title}
+                    </h5>
+                    <p className="mt-2 text-sm md:text-base text-gray-400 leading-relaxed break-keep">
+                      {point.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-7 pt-5 border-t border-white/10">
+        <p className="mb-3 text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase">
+          Jump to part
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {parts.map((spot, idx) => (
+            <button
+              key={spot.name}
+              onClick={() => onSelect(idx)}
+              className={`rounded-full border px-4 py-2 text-xs font-black transition ${
+                idx === activeIndex
+                  ? "border-[#950000] bg-[#950000] text-white"
+                  : "border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-white/30"
+              }`}
+            >
+              {spot.name}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function GaragePage() {
   const { language, toggleLanguage } = useLanguage();
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
@@ -538,6 +656,19 @@ export default function GaragePage() {
   const t = copy[language];
   const active =
     activeHotspot !== null ? t.vehicle.hotspots[activeHotspot] : null;
+
+  const handleSelectPart = (idx: number) => {
+    setActiveHotspot(idx);
+
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      window.setTimeout(() => {
+        document.getElementById("mobile-part-detail")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 80);
+    }
+  };
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
@@ -683,20 +814,27 @@ export default function GaragePage() {
         </div>
       </section>
 
-      <section id="vehicle" className="py-20 bg-black scroll-mt-20">
+      <section id="vehicle" className="py-16 md:py-20 bg-black scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="mb-8">
+          <div className="mb-7">
             <p className="text-xs tracking-[0.35em] font-black text-[#950000] uppercase">
               {t.vehicle.label}
             </p>
 
-            <h2 className="mt-4 text-3xl md:text-6xl font-black leading-tight break-keep">
+            <h2 className="mt-4 text-[2.15rem] leading-[1.15] md:text-6xl md:leading-tight font-black break-keep">
               {t.vehicle.title}
             </h2>
 
             <p className="mt-4 text-gray-400 text-base md:text-lg leading-relaxed break-keep">
               {t.vehicle.desc}
             </p>
+
+            <div className="mt-6 flex md:hidden">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-black tracking-[0.08em] text-white/70">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#950000]" />
+                {t.vehicle.hint}
+              </div>
+            </div>
           </div>
 
           <div className="relative rounded-[30px] md:rounded-[44px] overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_rgba(0,0,0,0.65)]">
@@ -708,7 +846,7 @@ export default function GaragePage() {
                 src={VEHICLE_IMAGE_SRC}
                 alt="CHALLENGER vehicle interactive view"
                 className={`absolute inset-0 w-full h-full object-contain transition duration-500 ${
-                  active ? "blur-sm scale-105 opacity-55" : "opacity-95"
+                  active ? "md:blur-sm md:scale-105 md:opacity-55 opacity-95" : "opacity-95"
                 }`}
               />
 
@@ -718,17 +856,17 @@ export default function GaragePage() {
                 <button
                   aria-label="Close popup"
                   onClick={() => setActiveHotspot(null)}
-                  className="absolute inset-0 z-20 bg-black/45 backdrop-blur-[2px]"
+                  className="hidden md:block absolute inset-0 z-20 bg-black/45 backdrop-blur-[2px]"
                 />
               )}
 
               {!active && (
-                <div className="absolute left-5 right-5 top-5 z-10 flex items-center justify-between gap-4">
-                  <div className="rounded-full border border-white/10 bg-black/60 backdrop-blur px-4 py-2 text-[10px] md:text-xs font-black tracking-[0.18em] text-white/75">
+                <div className="hidden md:flex absolute left-5 right-5 top-5 z-10 items-center justify-between gap-4">
+                  <div className="rounded-full border border-white/10 bg-black/60 backdrop-blur px-4 py-2 text-xs font-black tracking-[0.18em] text-white/75">
                     {t.vehicle.hint}
                   </div>
 
-                  <div className="hidden md:block rounded-full border border-[#950000]/40 bg-[#950000]/20 px-4 py-2 text-xs font-black tracking-[0.18em] text-white">
+                  <div className="rounded-full border border-[#950000]/40 bg-[#950000]/20 px-4 py-2 text-xs font-black tracking-[0.18em] text-white">
                     DIGITAL GARAGE
                   </div>
                 </div>
@@ -737,18 +875,18 @@ export default function GaragePage() {
               {t.vehicle.hotspots.map((spot, idx) => (
                 <button
                   key={spot.name}
-                  onClick={() => setActiveHotspot(idx)}
+                  onClick={() => handleSelectPart(idx)}
                   className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 group ${
-                    active ? "pointer-events-none opacity-20" : "opacity-100"
+                    active ? "md:pointer-events-none md:opacity-20 opacity-100" : "opacity-100"
                   }`}
                   style={{ left: spot.x, top: spot.y }}
                   aria-label={spot.name}
                 >
                   <span className="absolute -inset-4 rounded-full" />
 
-                  <span className="absolute left-1/2 top-1/2 w-8 h-8 md:w-10 md:h-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-black/20 backdrop-blur-[2px] transition duration-300 group-hover:scale-125 group-hover:border-[#950000]/80 group-hover:bg-[#950000]/10" />
+                  <span className="absolute left-1/2 top-1/2 w-7 h-7 md:w-10 md:h-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/30 bg-black/20 backdrop-blur-[2px] transition duration-300 group-hover:scale-125 group-hover:border-[#950000]/80 group-hover:bg-[#950000]/10" />
 
-                  <span className="relative flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full border border-white/40 bg-black/75 text-[9px] md:text-[10px] font-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.65)] transition duration-300 group-hover:bg-[#950000] group-hover:border-white group-hover:scale-110">
+                  <span className="relative flex h-5 w-5 md:h-7 md:w-7 items-center justify-center rounded-full border border-white/35 bg-black/80 text-[8px] md:text-[10px] font-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.65)] transition duration-300 group-hover:bg-[#950000] group-hover:border-white group-hover:scale-110">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
 
@@ -759,113 +897,33 @@ export default function GaragePage() {
                 </button>
               ))}
 
-              {!active && (
-                <div className="absolute left-0 right-0 bottom-0 z-10 p-4 md:hidden">
-                  <div className="flex gap-2 overflow-x-auto pb-2">
-                    {t.vehicle.hotspots.map((spot, idx) => (
-                      <button
-                        key={spot.name}
-                        onClick={() => setActiveHotspot(idx)}
-                        className="shrink-0 rounded-full border border-white/15 bg-black/65 backdrop-blur px-4 py-2 text-xs font-black text-white"
-                      >
-                        {spot.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {active && (
-                <div className="absolute inset-0 z-30 flex items-end md:items-center justify-center p-3 md:p-8 pointer-events-none">
-                  <div className="relative w-full max-w-6xl min-h-[70%] overflow-visible rounded-[30px] md:rounded-[40px] border border-white/15 bg-black/90 backdrop-blur-2xl p-6 md:p-12 shadow-[0_40px_140px_rgba(0,0,0,0.95)] pointer-events-auto">
-                    <button
-                      onClick={() => setActiveHotspot(null)}
-                      className="absolute right-5 top-5 w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-[#950000] transition flex items-center justify-center"
-                      aria-label="Close"
-                    >
-                      <X size={22} />
-                    </button>
-
-                    <div className="pr-14">
-                      <p className="text-xs font-black tracking-[0.35em] text-[#950000] uppercase">
-                        Part {String(activeHotspot! + 1).padStart(2, "0")}
-                      </p>
-
-                      <h3 className="mt-4 text-4xl md:text-6xl font-black leading-tight">
-                        {active.title}
-                      </h3>
-                    </div>
-
-                    <div className="mt-10 grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-6 md:gap-10">
-                      <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-6 md:p-8">
-                        <p className="text-[11px] font-black tracking-[0.3em] text-gray-500 uppercase">
-                          Role
-                        </p>
-                        <h4 className="mt-3 text-xl md:text-2xl font-black text-white">
-                          What this part does
-                        </h4>
-                        <p className="mt-4 text-gray-300 text-base md:text-lg leading-loose break-keep">
-                          {active.desc}
-                        </p>
-                      </div>
-
-                      <div className="rounded-[24px] border border-[#950000]/30 bg-[#950000]/10 p-6 md:p-8">
-                        <p className="text-[11px] font-black tracking-[0.3em] text-[#950000] uppercase">
-                          Key Points
-                        </p>
-
-                        <div className="mt-5 space-y-4">
-                          {active.points.map((point, idx) => (
-                            <div
-                              key={point.title}
-                              className="rounded-2xl border border-white/10 bg-black/45 p-5"
-                            >
-                              <div className="flex items-start gap-4">
-                                <div className="w-8 h-8 rounded-full bg-[#950000] flex items-center justify-center shrink-0 text-xs font-black text-white">
-                                  {idx + 1}
-                                </div>
-
-                                <div>
-                                  <h5 className="text-lg md:text-xl font-black text-white">
-                                    {point.title}
-                                  </h5>
-                                  <p className="mt-2 text-sm md:text-base text-gray-400 leading-relaxed break-keep">
-                                    {point.desc}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-7 pt-5 border-t border-white/10">
-                      <p className="mb-3 text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase">
-                        Jump to part
-                      </p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {t.vehicle.hotspots.map((spot, idx) => (
-                          <button
-                            key={spot.name}
-                            onClick={() => setActiveHotspot(idx)}
-                            className={`rounded-full border px-4 py-2 text-xs font-black transition ${
-                              idx === activeHotspot
-                                ? "border-[#950000] bg-[#950000] text-white"
-                                : "border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-white/30"
-                            }`}
-                          >
-                            {spot.name}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                <div className="hidden md:flex absolute inset-0 z-30 items-center justify-center p-8 pointer-events-none">
+                  <PartDetailCard
+                    active={active}
+                    activeIndex={activeHotspot ?? 0}
+                    parts={t.vehicle.hotspots}
+                    onClose={() => setActiveHotspot(null)}
+                    onSelect={handleSelectPart}
+                    className="relative w-full max-w-6xl min-h-[70%] overflow-visible rounded-[40px] border border-white/15 bg-black/90 backdrop-blur-2xl p-12 shadow-[0_40px_140px_rgba(0,0,0,0.95)] pointer-events-auto"
+                  />
                 </div>
               )}
             </div>
           </div>
+
+          {active && (
+            <div id="mobile-part-detail" className="md:hidden scroll-mt-24">
+              <PartDetailCard
+                active={active}
+                activeIndex={activeHotspot ?? 0}
+                parts={t.vehicle.hotspots}
+                onClose={() => setActiveHotspot(null)}
+                onSelect={handleSelectPart}
+                className="relative mt-5 rounded-[30px] border border-white/15 bg-gradient-to-b from-zinc-950 to-black p-6 shadow-[0_30px_90px_rgba(0,0,0,0.9)]"
+              />
+            </div>
+          )}
         </div>
       </section>
 
