@@ -32,6 +32,8 @@ const VEHICLE_IMAGE_SRC = "/gallery/df-25/KakaoTalk_20260629_1735219801.jpg";
 const VEHICLE_IMAGE_ASPECT = "4 / 3";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
 
+type Lang = "ko" | "en";
+
 type Point = {
   title: string;
   desc: string;
@@ -46,7 +48,368 @@ type Hotspot = {
   points: Point[];
 };
 
-const copy = {
+type PageCopy = {
+  nav: {
+    vehicle: string;
+    technology: string;
+    direction: string;
+    sponsors: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string;
+    desc: string;
+    primary: string;
+    secondary: string;
+  };
+  stats: { value: string; label: string }[];
+  vehicle: {
+    label: string;
+    title: string;
+    desc: string;
+    hint: string;
+    hotspots: Hotspot[];
+  };
+  philosophy: {
+    label: string;
+    title: string;
+    desc: string;
+    cards: { title: string; desc: string }[];
+  };
+  tech: {
+    label: string;
+    title: string;
+    items: { title: string; desc: string }[];
+  };
+  direction: {
+    label: string;
+    title: string;
+    desc: string;
+    items: string[];
+  };
+  sponsor: {
+    label: string;
+    title: string;
+    desc: string;
+    proposal: string;
+    contact: string;
+    instagram: string;
+  };
+};
+
+const HOTSPOTS_KO: Hotspot[] = [
+  {
+    name: "Suspension",
+    x: "55%",
+    y: "55%",
+    title: "Suspension",
+    desc: "Suspension 파트는 차량과 노면을 연결하며, 타이어가 가진 성능을 실제 주행 성능으로 끌어내는 핵심 시스템입니다. 단순히 차체를 지지하는 장치가 아닌, 가속·제동·코너링 순간마다 하중 이동을 제어하고 타이어 접지력을 유지해 차량의 한계를 결정합니다.",
+    points: [
+      {
+        title: "Maximized Tire Contact",
+        desc: "캠버 변화와 하중 이동을 정밀하게 설계해, 코너링·제동·가속 순간에도 타이어가 노면을 끝까지 붙잡도록 만듭니다.",
+      },
+      {
+        title: "Active Anti-Roll Bar",
+        desc: "Active Anti-Roll Bar를 통해 롤 강성과 좌우 하중 이동을 능동적으로 제어하며, Suspension을 단순한 설계를 넘어 Chassis Control 시스템으로 확장합니다.",
+      },
+    ],
+  },
+  {
+    name: "Frame",
+    x: "36%",
+    y: "56%",
+    title: "Frame",
+    desc: "Frame 파트는 차량의 모든 시스템을 하나로 연결하는 구조적 기반입니다. CHALLENGER는 Space Frame 구조의 경량성과 강성을 극한까지 끌어올리고, 실제 비틀림 강성 실측을 통해 설계가 실차에서 어떻게 작동하는지 데이터로 검증하고 있습니다.",
+    points: [
+      {
+        title: "Lightweight Space Frame Platform",
+        desc: "불필요한 중량은 줄이고, 하중이 집중되는 구간에는 강성을 확보해 경량화와 구조 안정성을 동시에 추구합니다. Frame은 단순한 차체가 아닌, 차량 전체 성능을 지탱하는 핵심 플랫폼입니다.",
+      },
+      {
+        title: "Verified Torsional Rigidity",
+        desc: "프레임 비틀림 강성을 직접 실측하여 해석 기반 설계의 신뢰성을 검증했습니다. 이를 통해 서스펜션 세팅과 차량 거동 예측의 기준이 되는 구조 강성을 데이터로 확보했습니다.",
+      },
+    ],
+  },
+  {
+    name: "Ergonomics",
+    x: "43%",
+    y: "49%",
+    title: "Ergonomics",
+    desc: "Ergonomics 파트는 드라이버와 차량을 연결하는 가장 중요한 인터페이스입니다. CHALLENGER는 단순한 탑승 편의성을 넘어, 모든 조작이 직관적이고 일관되게 전달될 수 있도록 Cockpit과 Driver Interface를 최적화하여, 드라이버가 차량의 성능을 한계까지 활용할 수 있는 환경을 구현합니다.",
+    points: [
+      {
+        title: "Driver-Centric Cockpit",
+        desc: "드라이빙 포지션과 조작계 배치를 최적화하여 모든 입력이 빠르고 자연스럽게 전달되도록 설계했습니다. 차량이 드라이버에 맞추는 것이 아닌, 드라이버와 차량이 하나처럼 움직이는 Cockpit을 구현합니다.",
+      },
+      {
+        title: "Performance Driver Interface",
+        desc: "회생제동 전용 Brake Hardware와 자체 설계 Accelerator Pedal Hardware를 통해 정밀한 제동과 가속 입력을 구현합니다. 드라이버의 의도를 더욱 정확하게 차량에 전달하는 인터페이스를 완성했습니다.",
+      },
+    ],
+  },
+  {
+    name: "Drive Train",
+    x: "17%",
+    y: "60%",
+    title: "Drive Train",
+    desc: "Drivetrain 파트는 모터에서 발생한 토크를 손실 없이 노면으로 전달하는 차량의 동력 전달 시스템입니다. CHALLENGER는 단순히 강한 구동계를 만드는 것을 넘어, 불필요한 중량을 줄이고 각 부품의 사용 마일리지를 관리하여 경량화와 신뢰성을 동시에 확보합니다. 고출력 전기 구동 환경에서도 일정한 성능을 유지할 수 있도록, 구조·정비성·품질관리를 함께 설계하는 파트입니다.",
+    points: [
+      {
+        title: "Lightweight Power Delivery",
+        desc: "동력 전달에 필요한 강성은 확보하면서 불필요한 질량은 최소화하여, 회전 관성과 차량 중량을 줄입니다. 이를 통해 모터의 토크가 더 빠르고 효율적으로 차량의 가속 성능으로 이어지도록 설계합니다.",
+      },
+      {
+        title: "Mileage-Based Quality Control",
+        desc: "체인, 스프로킷, 베어링 등 주요 구동 부품의 사용 시간을 추적하고 관리하여, 성능 저하와 고장을 사전에 방지합니다. Drivetrain은 단순한 조립품이 아니라, 데이터 기반 품질관리로 완성되는 신뢰성 시스템입니다.",
+      },
+    ],
+  },
+  {
+    name: "Cooling",
+    x: "23%",
+    y: "56%",
+    title: "Cooling",
+    desc: "Cooling 파트는 고출력 전기 구동 시스템이 한계 상황에서도 안정적으로 성능을 유지하도록 열을 제어하는 핵심 시스템입니다. CHALLENGER는 단순히 온도가 오른 뒤 냉각하는 방식이 아니라, 모터·인버터·배터리의 온도 변화와 주행 부하를 기반으로 선제적으로 냉각을 제어하는 Predictive Thermal Control 시스템을 지향합니다. 이를 통해 출력 제한을 늦추고, 내구 주행 동안 일관된 퍼포먼스를 유지하는 열관리 전략을 완성합니다.",
+    points: [
+      {
+        title: "Predictive Temperature Control",
+        desc: "온도가 위험 수준에 도달한 뒤 반응하는 것이 아니라, 온도 상승 추세를 예측해 팬과 펌프를 선제적으로 제어합니다. 이를 통해 냉각 응답 지연을 줄이고, 고부하 주행에서도 안정적인 열 균형을 유지합니다.",
+      },
+      {
+        title: "Consistent Power Performance",
+        desc: "모터와 인버터의 열 포화를 억제하여 출력 저하를 최소화하고, 내구 주행 후반까지 일정한 구동 성능을 유지합니다. Cooling은 단순한 보조 시스템이 아닌, 차량의 퍼포먼스를 끝까지 지켜내는 성능 제어 시스템입니다.",
+      },
+    ],
+  },
+  {
+    name: "Aero",
+    x: "84%",
+    y: "80%",
+    title: "Aero",
+    desc: "Aero Dynamics 파트는 차량 주변의 공기 흐름을 설계해, 타이어가 더 강하게 노면을 붙잡을 수 있도록 다운포스를 만들어내는 성능 시스템입니다. CHALLENGER는 단순히 기존 에어포일을 적용하는 것을 넘어, 차량 특성에 맞춘 자체 에어포일 형상을 설계하고 해석 정합성을 최적화하여 공력 성능의 신뢰도를 높이고 있습니다. 이를 통해 코너링 안정성과 고속 주행 성능을 동시에 끌어올리는 Aero Package를 완성합니다.",
+    points: [
+      {
+        title: "Self-Developed Airfoil Design",
+        desc: "차량의 속도 영역과 주행 조건에 맞춰 자체 에어포일 형상을 설계하여, 다운포스와 항력의 균형을 최적화합니다. 단순한 형상 적용이 아닌, CHALLENGER만의 공력 특성을 만들어가는 설계입니다.",
+      },
+      {
+        title: "Correlation-Based CFD Optimization",
+        desc: "해석 결과가 실제 차량 거동과 최대한 일치하도록 CFD 조건과 결과를 검증하고 보정합니다. 이를 통해 해석을 단순 예측이 아닌, 실차 성능을 설계하는 신뢰성 있는 개발 도구로 발전시킵니다.",
+      },
+    ],
+  },
+  {
+    name: "Motor Control",
+    x: "28%",
+    y: "57%",
+    title: "Motor Control",
+    desc: "Motor&Control 파트는 전기 포뮬러 차량의 구동 성능과 에너지 흐름을 제어하는 핵심 시스템입니다. CHALLENGER는 모터·인버터·배터리의 한계를 실시간으로 관리하며, VCU를 중심으로 토크 제어, Field Weakening, Break Speed, 회생제동, 냉각 제어, 안전 로직을 통합합니다. 단순히 모터를 구동하는 것을 넘어, 차량의 출력·효율·안정성을 하나의 제어 시스템으로 완성하는 Electric Performance Control을 구현합니다.",
+    points: [
+      {
+        title: "Voltage-Limited Torque Control",
+        desc: "저전압 배터리 환경에서도 고속 영역 성능을 확보하기 위해 Field Weakening과 Break Speed 기반 토크 제어를 적용합니다. 전압과 전류 한계 안에서 토크를 정밀하게 제어하여, 제한된 전력으로도 차량의 가속 성능을 끝까지 끌어냅니다.",
+      },
+      {
+        title: "VCU-Based Integrated Control",
+        desc: "VCU는 APPS, BMS, 인버터, 냉각 시스템의 데이터를 통합해 차량 상태에 맞는 토크와 회생제동을 실시간으로 결정합니다. 이를 통해 Motor&Control은 단일 부품 제어를 넘어, 차량 전체의 성능과 안전을 관리하는 통합 제어 시스템으로 확장됩니다.",
+      },
+    ],
+  },
+  {
+    name: "HV",
+    x: "30%",
+    y: "60%",
+    title: "HV",
+    desc: "High Voltage 파트는 전기 포뮬러 차량의 에너지를 안전하게 저장하고, 필요한 순간 모터와 인버터로 안정적으로 전달하는 전력 시스템의 핵심입니다. CHALLENGER는 단순히 고전압을 사용하는 것이 아니라, Accumulator, BMS, Precharge, Shutdown Circuit, 절연 안전 구조를 통해 규정을 만족하는 전기 안전 플랫폼을 구축합니다. High Voltage는 차량의 강한 출력을 가능하게 하면서도, 모든 주행 상황에서 안전이 먼저 작동하도록 설계되는 파트입니다.",
+    points: [
+      {
+        title: "Rule-Based Safety Architecture",
+        desc: "고전압 시스템의 절연, 차단, 프리차지, 비상 정지 구조를 규정에 맞춰 설계하여 차량과 드라이버를 보호합니다. 출력보다 먼저 안전을 완성하고, 안전 위에서 성능을 끌어내는 HV 구조를 구현합니다.",
+      },
+      {
+        title: "Reliable Energy Delivery",
+        desc: "배터리에서 인버터까지 이어지는 전력 경로를 안정적으로 설계해 전압 손실과 시스템 리스크를 최소화합니다. 고출력 주행 중에도 모터가 필요한 에너지를 안정적으로 공급받을 수 있도록, 전력 전달 신뢰성을 확보합니다.",
+      },
+    ],
+  },
+  {
+    name: "LV",
+    x: "43%",
+    y: "20%",
+    title: "LV",
+    desc: "Low Voltage 파트는 차량의 센서, 제어기, 통신, 안전 회로를 안정적으로 구동하는 전장 시스템의 기반입니다. CHALLENGER는 단순히 전원을 공급하는 것을 넘어, VCU가 정확한 판단을 내릴 수 있도록 신뢰성 있는 전원·신호·통신 환경을 설계합니다. 작은 전압으로 차량 전체의 상태를 감지하고, 고전압 시스템과 구동 제어가 안전하게 작동하도록 만드는 차량의 전기적 신경망입니다.",
+    points: [
+      {
+        title: "Stable GLV Architecture",
+        desc: "VCU, 센서, 통신 장치가 안정적으로 동작할 수 있도록 저전압 전원 구조를 설계합니다. 전압 강하, 노이즈, 접지 문제를 최소화하여 차량 제어 시스템의 신뢰성을 확보합니다.",
+      },
+      {
+        title: "Signal & Communication Reliability",
+        desc: "APPS, BPS, BMS, 인버터 등 핵심 데이터를 VCU로 정확하게 전달하기 위해 CAN 통신과 센서 신호 체계를 관리합니다. Low Voltage는 차량의 모든 판단이 정확한 데이터에서 시작되도록 만드는 기반 시스템입니다.",
+      },
+    ],
+  },
+];
+
+const HOTSPOTS_EN: Hotspot[] = [
+  {
+    name: "Suspension",
+    x: "55%",
+    y: "55%",
+    title: "Suspension",
+    desc: "The Suspension part connects the vehicle and the road surface, and is a core system that converts the tire's potential into actual driving performance. It is not simply a device that supports the chassis; at every moment of acceleration, braking, and cornering, it controls load transfer, maintains tire contact, and determines the vehicle's limit.",
+    points: [
+      {
+        title: "Maximized Tire Contact",
+        desc: "By precisely designing camber change and load transfer, the tire is made to hold the road surface to the end during cornering, braking, and acceleration.",
+      },
+      {
+        title: "Active Anti-Roll Bar",
+        desc: "Through the Active Anti-Roll Bar, roll stiffness and left-right load transfer are actively controlled, expanding Suspension beyond simple design into a Chassis Control system.",
+      },
+    ],
+  },
+  {
+    name: "Frame",
+    x: "36%",
+    y: "56%",
+    title: "Frame",
+    desc: "The Frame part is the structural foundation that connects every system of the vehicle into one. CHALLENGER pushes the lightness and stiffness of the Space Frame structure to the limit, and verifies with data how the design works on the actual vehicle through real torsional rigidity measurement.",
+    points: [
+      {
+        title: "Lightweight Space Frame Platform",
+        desc: "Unnecessary weight is reduced, while stiffness is secured in sections where loads are concentrated, pursuing both lightweight design and structural stability. The Frame is not a simple body, but the core platform that supports the performance of the entire vehicle.",
+      },
+      {
+        title: "Verified Torsional Rigidity",
+        desc: "Frame torsional rigidity was directly measured to verify the reliability of analysis-based design. Through this, structural stiffness data was secured as the basis for suspension setup and vehicle behavior prediction.",
+      },
+    ],
+  },
+  {
+    name: "Ergonomics",
+    x: "43%",
+    y: "49%",
+    title: "Ergonomics",
+    desc: "The Ergonomics part is the most important interface connecting the driver and the vehicle. Beyond simple seating comfort, CHALLENGER optimizes the Cockpit and Driver Interface so that every control input can be delivered intuitively and consistently, creating an environment where the driver can use the vehicle's performance up to its limit.",
+    points: [
+      {
+        title: "Driver-Centric Cockpit",
+        desc: "The driving position and control layout were optimized so that every input is delivered quickly and naturally. Rather than making the driver adapt to the vehicle, it creates a Cockpit where the driver and vehicle move as one.",
+      },
+      {
+        title: "Performance Driver Interface",
+        desc: "Precise braking and acceleration inputs are implemented through dedicated regenerative-braking Brake Hardware and self-designed Accelerator Pedal Hardware. This completes an interface that delivers the driver's intent to the vehicle more accurately.",
+      },
+    ],
+  },
+  {
+    name: "Drive Train",
+    x: "17%",
+    y: "60%",
+    title: "Drive Train",
+    desc: "The Drivetrain part is the vehicle's power transmission system that delivers torque generated by the motor to the road surface without loss. Beyond simply making a strong drivetrain, CHALLENGER reduces unnecessary weight and manages the mileage of each component to secure both lightweight design and reliability. It is a part that designs structure, maintainability, and quality control together so that consistent performance can be maintained even in a high-output electric drive environment.",
+    points: [
+      {
+        title: "Lightweight Power Delivery",
+        desc: "While securing the stiffness required for power transmission, unnecessary mass is minimized to reduce rotational inertia and vehicle weight. Through this, the motor's torque is connected more quickly and efficiently to the vehicle's acceleration performance.",
+      },
+      {
+        title: "Mileage-Based Quality Control",
+        desc: "The usage time of major drivetrain components such as chains, sprockets, and bearings is tracked and managed to prevent performance degradation and failure in advance. The Drivetrain is not a simple assembly, but a reliability system completed through data-based quality control.",
+      },
+    ],
+  },
+  {
+    name: "Cooling",
+    x: "23%",
+    y: "56%",
+    title: "Cooling",
+    desc: "The Cooling part is a core system that controls heat so that the high-output electric drive system can stably maintain performance even at its limits. CHALLENGER does not simply cool after the temperature rises; it aims for a Predictive Thermal Control system that proactively controls cooling based on temperature changes of the motor, inverter, and battery, as well as driving load. Through this, it delays output limitation and completes a thermal management strategy that maintains consistent performance during endurance driving.",
+    points: [
+      {
+        title: "Predictive Temperature Control",
+        desc: "Instead of reacting after the temperature reaches a dangerous level, the fan and pump are proactively controlled by predicting the temperature rise trend. This reduces cooling response delay and maintains a stable thermal balance even during high-load driving.",
+      },
+      {
+        title: "Consistent Power Performance",
+        desc: "By suppressing thermal saturation of the motor and inverter, output derating is minimized and consistent drive performance is maintained until the latter half of endurance driving. Cooling is not a simple auxiliary system, but a performance control system that protects the vehicle's performance to the end.",
+      },
+    ],
+  },
+  {
+    name: "Aero",
+    x: "84%",
+    y: "80%",
+    title: "Aero",
+    desc: "The Aero Dynamics part is a performance system that designs the airflow around the vehicle and creates downforce so the tires can grip the road more strongly. Beyond simply applying an existing airfoil, CHALLENGER designs its own airfoil shape suited to the vehicle characteristics and optimizes analysis correlation to improve the reliability of aerodynamic performance. Through this, it completes an Aero Package that raises both cornering stability and high-speed driving performance.",
+    points: [
+      {
+        title: "Self-Developed Airfoil Design",
+        desc: "A self-developed airfoil shape is designed for the vehicle's speed range and driving conditions to optimize the balance between downforce and drag. It is not just applying a shape, but a design that builds CHALLENGER's own aerodynamic characteristics.",
+      },
+      {
+        title: "Correlation-Based CFD Optimization",
+        desc: "CFD conditions and results are verified and corrected so that analysis results match actual vehicle behavior as closely as possible. Through this, analysis is developed from a simple prediction into a reliable development tool that designs real vehicle performance.",
+      },
+    ],
+  },
+  {
+    name: "Motor Control",
+    x: "28%",
+    y: "57%",
+    title: "Motor Control",
+    desc: "The Motor&Control part is the core system that controls the driving performance and energy flow of an electric formula vehicle. CHALLENGER manages the limits of the motor, inverter, and battery in real time, and integrates torque control, Field Weakening, Break Speed, regenerative braking, cooling control, and safety logic around the VCU. Beyond simply driving the motor, it implements Electric Performance Control that completes the vehicle's output, efficiency, and stability as one control system.",
+    points: [
+      {
+        title: "Voltage-Limited Torque Control",
+        desc: "To secure high-speed performance even in a low-voltage battery environment, Field Weakening and Break Speed based torque control are applied. Torque is precisely controlled within voltage and current limits, extracting the vehicle's acceleration performance to the end even with limited power.",
+      },
+      {
+        title: "VCU-Based Integrated Control",
+        desc: "The VCU integrates data from APPS, BMS, inverter, and cooling system to determine torque and regenerative braking in real time according to vehicle state. Through this, Motor&Control expands beyond single-component control into an integrated control system that manages the performance and safety of the entire vehicle.",
+      },
+    ],
+  },
+  {
+    name: "HV",
+    x: "30%",
+    y: "60%",
+    title: "HV",
+    desc: "The High Voltage part is the core of the power system that safely stores the energy of the electric formula vehicle and stably delivers it to the motor and inverter when needed. CHALLENGER does not simply use high voltage; it builds an electrical safety platform that satisfies the rules through the Accumulator, BMS, Precharge, Shutdown Circuit, and insulation safety structure. High Voltage is the part that enables the vehicle's strong output while making safety operate first in every driving situation.",
+    points: [
+      {
+        title: "Rule-Based Safety Architecture",
+        desc: "The insulation, shutdown, precharge, and emergency stop structure of the high-voltage system are designed according to the rules to protect the vehicle and driver. It implements an HV structure that completes safety before output and extracts performance on top of safety.",
+      },
+      {
+        title: "Reliable Energy Delivery",
+        desc: "The power path from the battery to the inverter is stably designed to minimize voltage loss and system risk. Even during high-output driving, power delivery reliability is secured so the motor can receive the energy it needs stably.",
+      },
+    ],
+  },
+  {
+    name: "LV",
+    x: "43%",
+    y: "20%",
+    title: "LV",
+    desc: "The Low Voltage part is the foundation of the electrical system that stably operates the vehicle's sensors, controller, communication, and safety circuits. Beyond simply supplying power, CHALLENGER designs a reliable power, signal, and communication environment so the VCU can make accurate decisions. It is the vehicle's electrical nervous system that senses the entire vehicle state with small voltage and makes the high-voltage system and drive control operate safely.",
+    points: [
+      {
+        title: "Stable GLV Architecture",
+        desc: "The low-voltage power structure is designed so that the VCU, sensors, and communication devices can operate stably. Voltage drop, noise, and grounding issues are minimized to secure the reliability of the vehicle control system.",
+      },
+      {
+        title: "Signal & Communication Reliability",
+        desc: "CAN communication and sensor signal systems are managed to accurately deliver key data such as APPS, BPS, BMS, and inverter data to the VCU. Low Voltage is the foundation system that makes every vehicle decision start from accurate data.",
+      },
+    ],
+  },
+];
+
+const copy: Record<Lang, PageCopy> = {
   ko: {
     nav: {
       vehicle: "VEHICLE",
@@ -72,161 +435,7 @@ const copy = {
       title: "CHALLENGER의 파트를 확인하세요.",
       desc: "CHALLENGER의 차량은 프레임, 서스펜션, 구동계, 전장, 공력, 냉각, 제어가 하나의 시스템으로 연결되어 완성됩니다.",
       hint: "번호 마커를 눌러 파트를 확인하세요",
-      hotspots: [
-        {
-          name: "Suspension",
-          x: "44%",
-          y: "66%",
-          title: "Suspension",
-          desc: "노면 입력을 차량 거동으로 연결하는 파트입니다. 타이어 접지력, 롤 거동, 조향 응답성을 고려해 차량의 기본 움직임을 설계합니다.",
-          points: [
-            {
-              title: "Vehicle Dynamics Tuning",
-              desc: "코너링, 제동, 가속 상황에서 타이어가 안정적으로 접지력을 발휘하도록 지오메트리와 세팅을 조정합니다.",
-            },
-            {
-              title: "Load Transfer Control",
-              desc: "차량의 하중 이동을 분석해 롤, 피치, 조향 응답성을 균형 있게 설계합니다.",
-            },
-          ],
-        },
-        {
-          name: "Frame",
-          x: "36%",
-          y: "56%",
-          title: "Frame",
-          desc: "차량의 모든 시스템을 지지하는 구조 파트입니다. 강성, 경량화, 패키징, 안전성을 동시에 고려해 차량의 기반을 설계합니다.",
-          points: [
-            {
-              title: "Lightweight Structure",
-              desc: "차량의 무게를 줄이면서도 주행 중 발생하는 하중을 견딜 수 있도록 프레임 구조를 설계합니다.",
-            },
-            {
-              title: "System Packaging",
-              desc: "배터리, 구동계, 서스펜션, 드라이버 공간이 충돌하지 않도록 전체 차량 패키징의 기준을 잡습니다.",
-            },
-          ],
-        },
-        {
-          name: "Ergonomics",
-          x: "43%",
-          y: "49%",
-          title: "Ergonomics",
-          desc: "드라이버가 차량을 정확하고 안정적으로 조작할 수 있도록 시야, 자세, 페달, 스티어링, 조작계를 설계하는 파트입니다.",
-          points: [
-            {
-              title: "Driver Position Optimization",
-              desc: "드라이버의 착좌 자세, 시야, 조작 범위를 고려해 차량과 드라이버가 하나의 시스템처럼 반응하도록 설계합니다.",
-            },
-            {
-              title: "Pedal & Steering Interface",
-              desc: "페달, 스티어링, 조작계 배치를 최적화해 주행 중 입력 실수를 줄이고 조작 일관성을 높입니다.",
-            },
-          ],
-        },
-        {
-          name: "Drive Train",
-          x: "25%",
-          y: "70%",
-          title: "Drive Train",
-          desc: "모터의 출력을 바퀴까지 전달하는 구동계 파트입니다. 감속비, 체인/스프로킷, 디퍼렌셜, 출력 전달 효율을 다룹니다.",
-          points: [
-            {
-              title: "Torque Delivery",
-              desc: "모터에서 발생한 토크가 손실 없이 타이어까지 전달되도록 감속비와 동력 전달 구조를 설계합니다.",
-            },
-            {
-              title: "Reliability Under Load",
-              desc: "가속, 제동, 코너 탈출 상황에서 반복적으로 걸리는 충격 하중을 견딜 수 있도록 구동계를 검증합니다.",
-            },
-          ],
-        },
-        {
-          name: "Cooling",
-          x: "32%",
-          y: "75%",
-          title: "Cooling",
-          desc: "모터와 인버터의 열을 관리해 차량이 성능을 오래 유지할 수 있도록 냉각 시스템을 설계하는 파트입니다.",
-          points: [
-            {
-              title: "Thermal Stability",
-              desc: "주행 중 모터와 인버터 온도를 안정적으로 유지해 출력 저하를 줄이고 내구 주행 성능을 확보합니다.",
-            },
-            {
-              title: "Cooling Control Logic",
-              desc: "온도 데이터를 기반으로 팬과 펌프를 제어해 필요한 순간에 필요한 만큼 냉각합니다.",
-            },
-          ],
-        },
-        {
-          name: "Aero",
-          x: "84%",
-          y: "80%",
-          title: "Aero",
-          desc: "공기 흐름을 이용해 차량의 접지력과 고속 안정성을 높이는 파트입니다. 다운포스와 항력의 균형을 설계합니다.",
-          points: [
-            {
-              title: "Downforce Generation",
-              desc: "윙과 바디워크를 통해 타이어 접지력을 높이고 코너링 성능 향상에 기여합니다.",
-            },
-            {
-              title: "Drag Balance",
-              desc: "다운포스 증가와 항력 증가 사이의 균형을 고려해 실제 주행에서 이득이 되는 공력 패키지를 설계합니다.",
-            },
-          ],
-        },
-        {
-          name: "Motor Control",
-          x: "50%",
-          y: "57%",
-          title: "Motor Control",
-          desc: "모터, 인버터, 페달 입력, 배터리 제한을 기반으로 차량의 토크 명령을 결정하는 파트입니다.",
-          points: [
-            {
-              title: "Torque Command Strategy",
-              desc: "드라이버 입력, 배터리 제한, 인버터 상태를 반영해 차량이 사용할 수 있는 토크를 실시간으로 결정합니다.",
-            },
-            {
-              title: "Regenerative Braking Logic",
-              desc: "회생제동을 단순 감속이 아니라 내구 주행 에너지 전략의 일부로 설계합니다.",
-            },
-          ],
-        },
-        {
-          name: "HV",
-          x: "37%",
-          y: "67%",
-          title: "HV",
-          desc: "고전압 배터리, 전장 안전, 전력 분배를 담당하는 파트입니다. 차량의 출력과 안전을 동시에 관리합니다.",
-          points: [
-            {
-              title: "High Voltage Safety",
-              desc: "고전압 시스템의 절연, 차단, 보호 회로를 설계해 차량과 드라이버의 안전을 확보합니다.",
-            },
-            {
-              title: "Power Distribution",
-              desc: "배터리에서 인버터까지 안정적으로 전력을 전달하고, 전류 제한과 보호 조건을 관리합니다.",
-            },
-          ],
-        },
-        {
-          name: "LV",
-          x: "55%",
-          y: "52%",
-          title: "LV",
-          desc: "센서, 제어기, 통신, 전원 시스템을 구성하는 저전압 파트입니다. 차량의 데이터와 제어 신호가 안정적으로 흐르도록 설계합니다.",
-          points: [
-            {
-              title: "Vehicle Signal Network",
-              desc: "센서, VCU, BMS, 인버터 간의 신호와 CAN 통신을 구성해 차량 상태를 안정적으로 전달합니다.",
-            },
-            {
-              title: "Fail-Safe Electronics",
-              desc: "전원, 통신, 센서 이상 상황에서도 차량이 안전한 상태로 전환될 수 있도록 전장 시스템을 설계합니다.",
-            },
-          ],
-        },
-      ] as Hotspot[],
+      hotspots: HOTSPOTS_KO,
     },
     philosophy: {
       label: "Why CHALLENGER",
@@ -303,8 +512,8 @@ const copy = {
     hero: {
       eyebrow: "CHALLENGER DIGITAL GARAGE",
       title: "BUILT TO PROVE LIMITS.",
-      desc: "CHALLENGER proves the limits of an electric formula vehicle through data and control.",
-      primary: "Explore Parts",
+      desc: "CHALLENGER proves the limits of an electric Formula vehicle through data and control.",
+      primary: "Explore Vehicle Parts",
       secondary: "Sponsor Partnership",
     },
     stats: [
@@ -316,190 +525,36 @@ const copy = {
     vehicle: {
       label: "Interactive Vehicle",
       title: "Explore CHALLENGER Parts.",
-      desc: "CHALLENGER is completed by connecting frame, suspension, drivetrain, electronics, aero, cooling, and control as one system.",
+      desc: "CHALLENGER's vehicle is completed by connecting the frame, suspension, drivetrain, electronics, aero, cooling, and control into one system.",
       hint: "Tap the numbered markers",
-      hotspots: [
-        {
-          name: "Suspension",
-          x: "44%",
-          y: "66%",
-          title: "Suspension",
-          desc: "The suspension connects road input to vehicle behavior. It defines the car's fundamental response through tire grip, roll behavior, and steering response.",
-          points: [
-            {
-              title: "Vehicle Dynamics Tuning",
-              desc: "We tune geometry and setup so the tires can generate stable grip during cornering, braking, and acceleration.",
-            },
-            {
-              title: "Load Transfer Control",
-              desc: "We analyze load transfer to balance roll, pitch, and steering response.",
-            },
-          ],
-        },
-        {
-          name: "Frame",
-          x: "36%",
-          y: "56%",
-          title: "Frame",
-          desc: "The frame supports every system of the vehicle. It balances stiffness, lightweight design, packaging, and safety.",
-          points: [
-            {
-              title: "Lightweight Structure",
-              desc: "We design the frame to reduce mass while withstanding loads generated during driving.",
-            },
-            {
-              title: "System Packaging",
-              desc: "The frame defines how the battery, drivetrain, suspension, and driver space coexist inside the vehicle.",
-            },
-          ],
-        },
-        {
-          name: "Ergonomics",
-          x: "43%",
-          y: "49%",
-          title: "Ergonomics",
-          desc: "Ergonomics helps the driver control the vehicle precisely and safely through visibility, posture, pedals, steering, and controls.",
-          points: [
-            {
-              title: "Driver Position Optimization",
-              desc: "We consider driver posture, sightline, and operating range so the driver and vehicle respond as one system.",
-            },
-            {
-              title: "Pedal & Steering Interface",
-              desc: "We optimize pedal, steering, and control layout to reduce input mistakes and improve consistency.",
-            },
-          ],
-        },
-        {
-          name: "Drive Train",
-          x: "25%",
-          y: "70%",
-          title: "Drive Train",
-          desc: "The drivetrain transfers motor output to the wheels, covering gear ratio, chain and sprocket systems, differential behavior, and power delivery efficiency.",
-          points: [
-            {
-              title: "Torque Delivery",
-              desc: "We design the reduction and power delivery structure so motor torque reaches the tires with minimal loss.",
-            },
-            {
-              title: "Reliability Under Load",
-              desc: "We validate the drivetrain against repeated impact loads during acceleration, braking, and corner exit.",
-            },
-          ],
-        },
-        {
-          name: "Cooling",
-          x: "32%",
-          y: "75%",
-          title: "Cooling",
-          desc: "The cooling system manages motor and inverter heat so the vehicle can maintain performance over time.",
-          points: [
-            {
-              title: "Thermal Stability",
-              desc: "We stabilize motor and inverter temperature to reduce power derating and secure endurance performance.",
-            },
-            {
-              title: "Cooling Control Logic",
-              desc: "We control fans and pumps based on temperature data to cool only when and where it is needed.",
-            },
-          ],
-        },
-        {
-          name: "Aero",
-          x: "84%",
-          y: "80%",
-          title: "Aero",
-          desc: "Aero uses airflow to improve grip and high-speed stability by balancing downforce and drag.",
-          points: [
-            {
-              title: "Downforce Generation",
-              desc: "Wings and bodywork increase tire grip and contribute to cornering performance.",
-            },
-            {
-              title: "Drag Balance",
-              desc: "We balance downforce gain and drag penalty to create an aero package that works in real driving.",
-            },
-          ],
-        },
-        {
-          name: "Motor Control",
-          x: "50%",
-          y: "57%",
-          title: "Motor Control",
-          desc: "Motor control determines torque commands based on motor, inverter, pedal input, and battery limits.",
-          points: [
-            {
-              title: "Torque Command Strategy",
-              desc: "We determine available torque in real time based on driver input, battery limits, and inverter state.",
-            },
-            {
-              title: "Regenerative Braking Logic",
-              desc: "Regenerative braking is designed not only for deceleration, but also as part of the endurance energy strategy.",
-            },
-          ],
-        },
-        {
-          name: "HV",
-          x: "37%",
-          y: "67%",
-          title: "HV",
-          desc: "The high-voltage system manages the battery, electrical safety, and power distribution for both performance and safety.",
-          points: [
-            {
-              title: "High Voltage Safety",
-              desc: "We design insulation, shutdown, and protection circuits to secure both vehicle and driver safety.",
-            },
-            {
-              title: "Power Distribution",
-              desc: "We deliver power from the battery to the inverter while managing current limits and protection conditions.",
-            },
-          ],
-        },
-        {
-          name: "LV",
-          x: "55%",
-          y: "52%",
-          title: "LV",
-          desc: "The low-voltage system handles sensors, controllers, communication, and power electronics for stable data and control signals.",
-          points: [
-            {
-              title: "Vehicle Signal Network",
-              desc: "We build the signal and CAN communication network between sensors, VCU, BMS, and inverter.",
-            },
-            {
-              title: "Fail-Safe Electronics",
-              desc: "We design electronics so the vehicle can transition to a safe state during power, communication, or sensor faults.",
-            },
-          ],
-        },
-      ] as Hotspot[],
+      hotspots: HOTSPOTS_EN,
     },
     philosophy: {
       label: "Why CHALLENGER",
       title: "WE DO NOT GUESS THE LIMIT.",
-      desc: "CHALLENGER does not tune the vehicle by instinct. We measure the limits through driving data, control logic, and power system analysis, then use the vehicle up to those limits.",
+      desc: "CHALLENGER does not tune the vehicle by feel. Based on driving data, control logic, and power system analysis, we quantitatively identify the vehicle's limits and use it up to those limits.",
       cards: [
         {
           title: "CONTROL",
-          desc: "We design vehicle commands from a control-oriented perspective.",
+          desc: "We design every drive command of the vehicle from a control perspective.",
         },
         {
           title: "DATA",
-          desc: "We leave evidence behind every vehicle setup decision.",
+          desc: "We leave the basis of the setup through driving logs.",
         },
         {
           title: "ENERGY",
-          desc: "We build power strategies that survive endurance.",
+          desc: "We build a power strategy that survives endurance driving.",
         },
       ],
     },
     tech: {
       label: "Technology Stack",
-      title: "We connect the vehicle as one system.",
+      title: "We connect the vehicle into one system.",
       items: [
         {
           title: "VCU Control",
-          desc: "Torque commands are determined by integrating APPS, BPS, inverter, and BMS data.",
+          desc: "APPS, BPS, inverter, and BMS data are integrated to determine torque commands.",
         },
         {
           title: "Regen Strategy",
@@ -507,7 +562,7 @@ const copy = {
         },
         {
           title: "Thermal Control",
-          desc: "Cooling logic is built from motor and inverter temperature data.",
+          desc: "Cooling logic is configured based on motor and inverter temperature data.",
         },
         {
           title: "Wireless Data",
@@ -515,31 +570,31 @@ const copy = {
         },
         {
           title: "Limit Tuning",
-          desc: "We quantify vehicle limits and tune the car to use them.",
+          desc: "We quantify vehicle limits and tune the car so those limits can be used.",
         },
       ],
     },
     direction: {
       label: "2026 Direction",
       title: "COOPERATIVE CONTROL",
-      desc: "For 2026, CHALLENGER aims to connect motor control, cooling, wireless data, and aerodynamic devices into one vehicle control strategy.",
+      desc: "In 2026, CHALLENGER aims to connect motor control, cooling, wireless data, and aerodynamic devices into one vehicle control strategy.",
       items: [
-        "Performance optimization through motor control",
-        "Endurance strategy through regenerative braking",
-        "Cooperative cooling / power / torque control",
-        "Limit-based tuning through driving data",
+        "Performance optimization based on motor control",
+        "Endurance driving strategy based on regenerative braking",
+        "Cooling / power / drive cooperative control",
+        "Vehicle limit quantification based on driving data",
       ],
     },
     sponsor: {
       label: "Partner With CHALLENGER",
-      title: "Sponsorship becomes more than logo exposure. It becomes a record of engineering growth.",
-      desc: "CHALLENGER partners leave their name in the process where student engineers design, build, and validate a real electric formula vehicle.",
-      proposal: "Download Proposal",
+      title: "Sponsorship is recorded beyond logo exposure, as a partnership of technical growth.",
+      desc: "CHALLENGER's sponsors leave their names in the process where student engineers design, build, and validate an actual electric Formula vehicle.",
+      proposal: "Download Sponsorship Proposal",
       contact: "Contact Team",
       instagram: "Instagram",
     },
   },
-} as const;
+};
 
 const techIcons = [Cpu, RefreshCw, Thermometer, RadioTower, Gauge];
 const philosophyIcons = [ShieldCheck, Activity, BatteryCharging];
@@ -650,10 +705,11 @@ function PartDetailCard({
 
 export default function GaragePage() {
   const { language, toggleLanguage } = useLanguage();
+  const currentLanguage = language as Lang;
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  const t = copy[language];
+  const t = copy[currentLanguage];
   const active =
     activeHotspot !== null ? t.vehicle.hotspots[activeHotspot] : null;
 
@@ -706,7 +762,7 @@ export default function GaragePage() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition text-xs font-bold"
             >
               <Globe size={14} />
-              {language === "ko" ? "ENG" : "KOR"}
+              {currentLanguage === "ko" ? "ENG" : "KOR"}
             </button>
 
             <button
@@ -744,7 +800,7 @@ export default function GaragePage() {
         <div className="absolute inset-0">
           <img
             src={VEHICLE_IMAGE_SRC}
-            alt="CHALLENGER DF-26"
+            alt="CHALLENGER DF-25"
             className="w-full h-full object-cover opacity-45"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
@@ -846,7 +902,9 @@ export default function GaragePage() {
                 src={VEHICLE_IMAGE_SRC}
                 alt="CHALLENGER vehicle interactive view"
                 className={`absolute inset-0 w-full h-full object-contain transition duration-500 ${
-                  active ? "md:blur-sm md:scale-105 md:opacity-55 opacity-95" : "opacity-95"
+                  active
+                    ? "md:blur-sm md:scale-105 md:opacity-55 opacity-95"
+                    : "opacity-95"
                 }`}
               />
 
@@ -877,7 +935,9 @@ export default function GaragePage() {
                   key={spot.name}
                   onClick={() => handleSelectPart(idx)}
                   className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 group ${
-                    active ? "md:pointer-events-none md:opacity-20 opacity-100" : "opacity-100"
+                    active
+                      ? "md:pointer-events-none md:opacity-20 opacity-100"
+                      : "opacity-100"
                   }`}
                   style={{ left: spot.x, top: spot.y }}
                   aria-label={spot.name}
