@@ -28,7 +28,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
-const VEHICLE_IMAGE_SRC = "/garage/garage-main.jpg";
+const VEHICLE_IMAGE_SRC = "/gallery/df-25/KakaoTalk_20260629_1735219801.jpg";
 const VEHICLE_IMAGE_ASPECT = "4 / 3";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
 
