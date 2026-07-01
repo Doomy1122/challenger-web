@@ -467,7 +467,7 @@ const copy: Record<Lang, PageCopy> = {
         },
         {
           title: "Thermal Control",
-          desc: "CHALLENGER만의 온또 에츢 모뗼을 통햬 차량 넁각 시스템이 구동됩니다.",
+          desc: "CHALLENGER만의 온도 예측 모델을 통햬 차량 넁각 시스템이 구동됩니다.",
         },
         {
           title: "Wireless Data",
