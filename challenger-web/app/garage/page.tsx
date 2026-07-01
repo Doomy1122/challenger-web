@@ -26,7 +26,7 @@ import { useLanguage } from "../context/LanguageContext";
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 const VEHICLE_IMAGE_SRC = "/gallery/df-25/KakaoTalk_20260629_1735219801.jpg";
-const VEHICLE_IMAGE_ASPECT = "4 / 3.2";
+const VEHICLE_IMAGE_ASPECT = "4 / 3.1";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
 
 type Lang = "ko" | "en";
@@ -841,12 +841,9 @@ export default function GaragePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-white/40 font-black">
-          SCROLL
-        </div>
       </section>
 
-      <section className="relative z-10 -mt-14 md:-mt-20 pb-16 md:pb-20">
+      <section className="relative z-20 bg-black pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-5 md:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {t.stats.map((item) => (
