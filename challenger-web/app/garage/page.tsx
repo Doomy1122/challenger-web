@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import {
-  Activity,
   ArrowRight,
-  BatteryCharging,
   ChevronRight,
   Cpu,
   Download,
@@ -17,7 +15,6 @@ import {
   Menu,
   RadioTower,
   RefreshCw,
-  ShieldCheck,
   Sparkles,
   Thermometer,
   Trophy,
@@ -426,9 +423,9 @@ const copy: Record<Lang, PageCopy> = {
     },
     stats: [
       { value: "GOLD", label: "2025 FSK E-Formula" },
-      { value: "1ST", label: "2025 Acceleration Award" },
-      { value: "3.598s", label: "0–75 m Acceleration" },
-      { value: "84.83", label: "Endurance Score" },
+      { value: "1st", label: "2025 Acceleration Award" },
+      { value: "2.98s", label: "0–100km/h Acceleration" },
+      { value: "5.38km/kWh", label: "Energy Efficiency" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -518,9 +515,9 @@ const copy: Record<Lang, PageCopy> = {
     },
     stats: [
       { value: "GOLD", label: "2025 FSK E-Formula" },
-      { value: "1ST", label: "2025 Acceleration Award" },
-      { value: "3.598s", label: "0–75 m Acceleration" },
-      { value: "84.83", label: "Endurance Score" },
+      { value: "1st", label: "2025 Acceleration Award" },
+      { value: "2.98s", label: "0–100km/h Acceleration" },
+      { value: "5.38km/kWh", label: "Energy Efficiency" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -597,7 +594,6 @@ const copy: Record<Lang, PageCopy> = {
 };
 
 const techIcons = [Cpu, RefreshCw, Thermometer, RadioTower, Gauge];
-const philosophyIcons = [ShieldCheck, Activity, BatteryCharging];
 
 function PartDetailCard({
   active,
@@ -987,43 +983,6 @@ export default function GaragePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-5 md:px-6">
-          <div className="rounded-[32px] md:rounded-[40px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-zinc-950 to-black p-7 md:p-14 overflow-hidden relative">
-            <div className="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-[#950000]/20 blur-[100px]" />
-            <div className="relative z-10">
-              <p className="text-xs tracking-[0.35em] font-black text-[#950000] uppercase">
-                {t.philosophy.label}
-              </p>
-              <h2 className="mt-4 text-4xl md:text-7xl font-black leading-tight">
-                {t.philosophy.title}
-              </h2>
-              <p className="mt-6 max-w-4xl text-lg md:text-xl text-gray-300 leading-loose break-keep">
-                {t.philosophy.desc}
-              </p>
-
-              <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
-                {t.philosophy.cards.map((card, idx) => {
-                  const Icon = philosophyIcons[idx];
-                  return (
-                    <div
-                      key={card.title}
-                      className="rounded-3xl border border-white/10 bg-black/40 p-7"
-                    >
-                      <Icon className="text-[#950000] mb-5" size={28} />
-                      <h3 className="text-2xl font-black">{card.title}</h3>
-                      <p className="mt-3 text-gray-400 leading-relaxed break-keep">
-                        {card.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="technology" className="py-20 md:py-24 bg-black scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 md:px-6">
           <div className="mb-12">
@@ -1112,20 +1071,22 @@ export default function GaragePage() {
 
       <section id="partner" className="py-20 md:py-24 bg-black scroll-mt-20">
         <div className="max-w-7xl mx-auto px-5 md:px-6">
-          <div className="relative rounded-[36px] md:rounded-[44px] overflow-hidden border border-white/10 bg-[#950000] p-7 md:p-14">
-            <div className="absolute inset-0 opacity-20">
+          <div className="relative rounded-[36px] md:rounded-[44px] overflow-hidden bg-zinc-950 p-7 md:p-14 shadow-[0_40px_120px_rgba(0,0,0,0.72)]">
+            <div className="absolute inset-0 opacity-[0.14]">
               <img
                 src="/awards/2025-gold.jpg"
                 alt="CHALLENGER award"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-[#950000]/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/65" />
+            <div className="absolute -right-28 -top-28 w-[520px] h-[520px] rounded-full bg-[#950000]/18 blur-[130px]" />
+            <div className="absolute -left-24 -bottom-32 w-[420px] h-[420px] rounded-full bg-white/[0.04] blur-[120px]" />
 
             <div className="relative z-10 max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-8">
-                <Trophy size={16} />
-                <span className="text-xs font-black tracking-[0.3em]">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 mb-8">
+                <Trophy size={16} className="text-[#950000]" />
+                <span className="text-xs font-black tracking-[0.3em] text-white/85">
                   {t.sponsor.label}
                 </span>
               </div>
@@ -1149,7 +1110,7 @@ export default function GaragePage() {
 
                 <Link
                   href="/sponsors#join"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/25 bg-black/30 backdrop-blur font-black hover:bg-white/10 transition"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur font-black hover:bg-white/10 transition"
                 >
                   <Mail size={18} />
                   {t.sponsor.contact}
@@ -1159,7 +1120,7 @@ export default function GaragePage() {
                   href="https://instagram.com/challenger_fsae"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/25 bg-black/30 backdrop-blur font-black hover:bg-white/10 transition"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur font-black hover:bg-white/10 transition"
                 >
                   <Instagram size={18} />
                   {t.sponsor.instagram}
