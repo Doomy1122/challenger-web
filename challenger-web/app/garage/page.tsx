@@ -517,7 +517,7 @@ const copy: Record<Lang, PageCopy> = {
       { value: "GOLD", label: "2025 FSK E-Formula" },
       { value: "1st", label: "2025 Acceleration Award" },
       { value: "2.98s", label: "0–100km/h Acceleration" },
-      { value: "5.38km/kWh", label: "Energy Efficiency" },
+      { value: "5.38", label: "km/kWh Energy Efficiency" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
