@@ -232,19 +232,19 @@ const HOTSPOTS_KO: Hotspot[] = [
     ],
   },
   {
-    name: "LV",
+    name: "GLVS",
     x: "60.5%",
     y: "21.2%",
-    title: "LV",
-    desc: "Low Voltage 파트는 차량의 센서, 제어기, 통신, 안전 회로를 안정적으로 구동하는 전장 시스템의 기반입니다. CHALLENGER는 단순히 전원을 공급하는 것을 넘어, VCU가 정확한 판단을 내릴 수 있도록 신뢰성 있는 전원·신호·통신 환경을 설계합니다. 작은 전압으로 차량 전체의 상태를 감지하고, 고전압 시스템과 구동 제어가 안전하게 작동하도록 만드는 차량의 전기적 신경망입니다.",
+    title: "GLVS",
+    desc: "Grounded Low Voltage System 파트는 차량의 센서, 제어기, 통신 장비를 안정적으로 구동하는 전장 시스템의 기반입니다. CHALLENGER는 단순히 차량의 전원을 공급하는 것을 넘어, VCU가 정확한 판단을 내릴 수 있도록 신뢰성 있는 전원·신호·통신 환경을 설계합니다. 또한 Shutdown Circuit, BSPD, IMD, AMS 등 안전 시스템을 체계적으로 구축하여 차량의 전반적인 안전 상태를 확보하고, 고전압 시스템과 구동 제어가 안전 조건 안에서 작동하도록 만드는 차량의 전기적 신경망입니다.",
     points: [
       {
-        title: "Stable GLV Architecture",
-        desc: "VCU, 센서, 통신 장치가 안정적으로 동작할 수 있도록 저전압 전원 구조를 설계합니다. 전압 강하, 노이즈, 접지 문제를 최소화하여 차량 제어 시스템의 신뢰성을 확보합니다.",
+        title: "Stable GLVS Architecture",
+        desc: "VCU, 센서, 통신 장치가 안정적으로 동작할 수 있도록 저전압 전원 구조를 설계합니다. 전압 강하, 노이즈, 접지 문제를 최소화하여 차량 제어 시스템의 신뢰성을 확보하고, 각 안전 장치가 정상적으로 작동할 수 있는 전기적 기반을 구축합니다.",
       },
       {
         title: "Signal & Communication Reliability",
-        desc: "APPS, BPS, BMS, 인버터 등 핵심 데이터를 VCU로 정확하게 전달하기 위해 CAN 통신과 센서 신호 체계를 관리합니다. Low Voltage는 차량의 모든 판단이 정확한 데이터에서 시작되도록 만드는 기반 시스템입니다.",
+        desc: "APPS, BPS, BMS, 인버터 등 핵심 차량 데이터가 VCU로 정확하게 전달될 수 있도록 CAN 통신과 센서 신호 체계를 관리합니다. Grounded Low Voltage System은 차량의 모든 제어 판단이 신뢰성 있는 데이터에서 시작되도록 만드는 기반 시스템입니다.",
       },
     ],
   },
@@ -388,19 +388,19 @@ const HOTSPOTS_EN: Hotspot[] = [
     ],
   },
   {
-    name: "LV",
+    name: "GLVS",
     x: "60.5%",
     y: "21.2%",
     title: "LV",
-    desc: "The Low Voltage part is the foundation of the electrical system that stably operates the vehicle's sensors, controller, communication, and safety circuits. Beyond simply supplying power, CHALLENGER designs a reliable power, signal, and communication environment so the VCU can make accurate decisions. It is the vehicle's electrical nervous system that senses the entire vehicle state with small voltage and makes the high-voltage system and drive control operate safely.",
+    desc: "The Grounded Low Voltage System is the foundation of the electrical system that reliably operates the vehicle’s sensors, controllers, and communication devices. CHALLENGER goes beyond simply supplying low-voltage power by designing a reliable power, signal, and communication environment that enables the VCU to make accurate decisions. In addition, it systematically implements safety systems such as the Shutdown Circuit, BSPD, IMD, and AMS to secure the vehicle’s overall safety state, forming the vehicle’s electrical nervous system that ensures the high-voltage system and drivetrain control operate within safe conditions.",
     points: [
       {
-        title: "Stable GLV Architecture",
-        desc: "The low-voltage power structure is designed so that the VCU, sensors, and communication devices can operate stably. Voltage drop, noise, and grounding issues are minimized to secure the reliability of the vehicle control system.",
+        title: "Stable GLVS Architecture",
+        desc: "The low-voltage power architecture is designed to ensure stable operation of the VCU, sensors, and communication devices. By minimizing voltage drop, electrical noise, and grounding issues, it secures the reliability of the vehicle control system and establishes the electrical foundation required for each safety device to operate properly.",
       },
       {
         title: "Signal & Communication Reliability",
-        desc: "CAN communication and sensor signal systems are managed to accurately deliver key data such as APPS, BPS, BMS, and inverter data to the VCU. Low Voltage is the foundation system that makes every vehicle decision start from accurate data.",
+        desc: "CAN communication and sensor signal systems are managed to ensure that critical vehicle data from the APPS, BPS, BMS, inverter, and other systems are accurately delivered to the VCU. The Grounded Low Voltage System serves as the foundation that allows every control decision in the vehicle to begin with reliable data.",
       },
     ],
   },
