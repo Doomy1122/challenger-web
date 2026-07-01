@@ -375,15 +375,15 @@ const HOTSPOTS_EN: Hotspot[] = [
     x: "68%",
     y: "40%",
     title: "HV",
-    desc: "The High Voltage part is the core of the power system that safely stores the energy of the electric formula vehicle and stably delivers it to the motor and inverter when needed. CHALLENGER does not simply use high voltage; it builds an electrical safety platform that satisfies the rules through the Accumulator, BMS, Precharge, Shutdown Circuit, and insulation safety structure. High Voltage is the part that enables the vehicle's strong output while making safety operate first in every driving situation.",
+    desc: "High Voltage is responsible for designing and manufacturing the battery and high-voltage systems of the electric formula vehicle. It reliably delivers the energy stored in the battery to the motor and inverter whenever needed, enabling the vehicle to achieve the required performance. CHALLENGER’s High Voltage part goes beyond simply manufacturing the hardware of the battery pack. It is responsible for the entire high-voltage system of the vehicle, including BMS-based energy management, high-voltage safety architecture, power distribution, container safety verification through structural analysis (CAE), cooling based on thermal analysis (CAE), and validation using driving data. High Voltage is the part that supports the vehicle’s powerful output while prioritizing safety in all driving conditions",
     points: [
       {
-        title: "Rule-Based Safety Architecture",
-        desc: "The insulation, shutdown, precharge, and emergency stop structure of the high-voltage system are designed according to the rules to protect the vehicle and driver. It implements an HV structure that completes safety before output and extracts performance on top of safety.",
+        title: "Safety Architecture",
+        desc: "We design the insulation system, precharge system, emergency shutdown, and BMS as one integrated high-voltage safety architecture to protect both the vehicle and the driver.",
       },
       {
         title: "Reliable Energy Delivery",
-        desc: "The power path from the battery to the inverter is stably designed to minimize voltage loss and system risk. Even during high-output driving, power delivery reliability is secured so the motor can receive the energy it needs stably.",
+        desc: "Based on the battery system and BMS, we manage energy usage and optimize the power delivery path and thermal characteristics to ensure stable energy supply even during high-power driving.",
       },
     ],
   },
