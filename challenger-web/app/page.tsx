@@ -74,6 +74,33 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen bg-black text-white ${inter.className}`}>
+      {/* Floating Digital Garage Button */}
+      <Link
+        href="/garage"
+        aria-label="Enter CHALLENGER Digital Garage"
+        className="fixed z-[80] bottom-5 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[360px] group"
+      >
+        <div className="relative overflow-hidden rounded-full border border-[#950000]/50 bg-black/80 backdrop-blur-xl px-5 py-4 md:px-6 md:py-4 shadow-[0_20px_70px_rgba(0,0,0,0.75)] transition duration-300 group-hover:border-[#950000] group-hover:shadow-[0_24px_90px_rgba(149,0,0,0.35)]">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#950000]/35 via-white/[0.03] to-[#950000]/15 opacity-80 transition duration-300 group-hover:opacity-100" />
+          <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#950000]/35 blur-2xl transition duration-300 group-hover:bg-[#950000]/55" />
+
+          <div className="relative flex items-center justify-between gap-5">
+            <div className="flex flex-col">
+              <span className="text-[10px] md:text-[11px] font-black tracking-[0.35em] text-[#ff2a2a]">
+                ENTER
+              </span>
+              <span className="mt-1 text-sm md:text-base font-black tracking-[0.08em] text-white">
+                CHALLENGER Digital Garage
+              </span>
+            </div>
+
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black transition duration-300 group-hover:bg-[#950000] group-hover:text-white">
+              →
+            </div>
+          </div>
+        </div>
+      </Link>
+
       
       {/* 1. 네비게이션 바 */}
       <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-zinc-900">
