@@ -994,21 +994,33 @@ export default function GaragePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
             {t.tech.items.map((item, idx) => {
               const Icon = techIcons[idx];
               return (
                 <div
                   key={item.title}
-                  className="group rounded-3xl border border-white/10 bg-zinc-950 p-7 hover:-translate-y-2 hover:border-[#950000]/70 hover:bg-[#950000]/10 transition duration-300"
+                  className="group relative overflow-hidden rounded-[28px] border border-white/[0.18] bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-6 md:p-7 shadow-[0_18px_60px_rgba(0,0,0,0.65)] transition duration-300 hover:-translate-y-2 hover:border-[#950000]/70"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#950000] transition">
-                    <Icon size={24} />
+                  {/* 카드 상단 얇은 하이라이트 */}
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+                  {/* 은은한 내부 글로우 */}
+                  <div className="absolute -right-14 -top-14 w-36 h-36 rounded-full bg-[#950000]/10 blur-3xl opacity-80 md:opacity-0 md:group-hover:opacity-100 transition" />
+
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 rounded-2xl bg-white/[0.07] border border-white/[0.18] flex items-center justify-center mb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] group-hover:bg-[#950000]/25 group-hover:border-[#950000]/60 transition">
+                      <Icon size={24} className="text-white" />
+                    </div>
+
+                    <h3 className="text-xl font-black text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm text-gray-300/90 leading-relaxed break-keep">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-black">{item.title}</h3>
-                  <p className="mt-4 text-sm text-gray-400 leading-relaxed break-keep">
-                    {item.desc}
-                  </p>
                 </div>
               );
             })}
