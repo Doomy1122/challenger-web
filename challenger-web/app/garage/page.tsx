@@ -26,7 +26,7 @@ import { useLanguage } from "../context/LanguageContext";
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 const VEHICLE_IMAGE_SRC = "/gallery/df-25/KakaoTalk_20260629_1735219801.jpg";
-const VEHICLE_IMAGE_ASPECT = "4 / 3";
+const VEHICLE_IMAGE_ASPECT = "4 / 2.8";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
 
 type Lang = "ko" | "en";
@@ -517,7 +517,7 @@ const copy: Record<Lang, PageCopy> = {
       { value: "GOLD", label: "2025 FSK E-Formula" },
       { value: "1st", label: "2025 Acceleration Award" },
       { value: "2.98s", label: "0–100km/h Acceleration" },
-      { value: "5.38", label: "km/kWh Energy Efficiency" },
+      { value: "5.38", label: "km/kWh Energy Eff" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
