@@ -97,8 +97,8 @@ type PageCopy = {
 const HOTSPOTS_KO: Hotspot[] = [
   {
     name: "Suspension",
-    x: "55%",
-    y: "55%",
+    x: "50%",
+    y: "60%",
     title: "Suspension",
     desc: "Suspension 파트는 차량과 노면을 연결하며, 타이어가 가진 성능을 실제 주행 성능으로 끌어내는 핵심 시스템입니다. 단순히 차체를 지지하는 장치가 아닌, 가속·제동·코너링 순간마다 하중 이동을 제어하고 타이어 접지력을 유지해 차량의 한계를 결정합니다.",
     points: [
@@ -114,8 +114,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Frame",
-    x: "36%",
-    y: "56%",
+    x: "30%",
+    y: "55%",
     title: "Frame",
     desc: "Frame 파트는 차량의 모든 시스템을 하나로 연결하는 구조적 기반입니다. CHALLENGER는 Space Frame 구조의 경량성과 강성을 극한까지 끌어올리고, 실제 비틀림 강성 실측을 통해 설계가 실차에서 어떻게 작동하는지 데이터로 검증하고 있습니다.",
     points: [
@@ -131,8 +131,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Ergonomics",
-    x: "43%",
-    y: "49%",
+    x: "58%",
+    y: "40%",
     title: "Ergonomics",
     desc: "Ergonomics 파트는 드라이버와 차량을 연결하는 가장 중요한 인터페이스입니다. CHALLENGER는 단순한 탑승 편의성을 넘어, 모든 조작이 직관적이고 일관되게 전달될 수 있도록 Cockpit과 Driver Interface를 최적화하여, 드라이버가 차량의 성능을 한계까지 활용할 수 있는 환경을 구현합니다.",
     points: [
@@ -148,8 +148,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Drive Train",
-    x: "17%",
-    y: "60%",
+    x: "75%",
+    y: "40%",
     title: "Drive Train",
     desc: "Drivetrain 파트는 모터에서 발생한 토크를 손실 없이 노면으로 전달하는 차량의 동력 전달 시스템입니다. CHALLENGER는 단순히 강한 구동계를 만드는 것을 넘어, 불필요한 중량을 줄이고 각 부품의 사용 마일리지를 관리하여 경량화와 신뢰성을 동시에 확보합니다. 고출력 전기 구동 환경에서도 일정한 성능을 유지할 수 있도록, 구조·정비성·품질관리를 함께 설계하는 파트입니다.",
     points: [
@@ -165,8 +165,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Cooling",
-    x: "23%",
-    y: "56%",
+    x: "78%",
+    y: "33%",
     title: "Cooling",
     desc: "Cooling 파트는 고출력 전기 구동 시스템이 한계 상황에서도 안정적으로 성능을 유지하도록 열을 제어하는 핵심 시스템입니다. CHALLENGER는 단순히 온도가 오른 뒤 냉각하는 방식이 아니라, 모터·인버터·배터리의 온도 변화와 주행 부하를 기반으로 선제적으로 냉각을 제어하는 Predictive Thermal Control 시스템을 지향합니다. 이를 통해 출력 제한을 늦추고, 내구 주행 동안 일관된 퍼포먼스를 유지하는 열관리 전략을 완성합니다.",
     points: [
@@ -182,8 +182,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Aero",
-    x: "84%",
-    y: "80%",
+    x: "10%",
+    y: "57%",
     title: "Aero",
     desc: "Aero Dynamics 파트는 차량 주변의 공기 흐름을 설계해, 타이어가 더 강하게 노면을 붙잡을 수 있도록 다운포스를 만들어내는 성능 시스템입니다. CHALLENGER는 단순히 기존 에어포일을 적용하는 것을 넘어, 차량 특성에 맞춘 자체 에어포일 형상을 설계하고 해석 정합성을 최적화하여 공력 성능의 신뢰도를 높이고 있습니다. 이를 통해 코너링 안정성과 고속 주행 성능을 동시에 끌어올리는 Aero Package를 완성합니다.",
     points: [
@@ -199,8 +199,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Motor Control",
-    x: "28%",
-    y: "57%",
+    x: "62%",
+    y: "32%",
     title: "Motor Control",
     desc: "Motor&Control 파트는 전기 포뮬러 차량의 구동 성능과 에너지 흐름을 제어하는 핵심 시스템입니다. CHALLENGER는 모터·인버터·배터리의 한계를 실시간으로 관리하며, VCU를 중심으로 토크 제어, Field Weakening, Break Speed, 회생제동, 냉각 제어, 안전 로직을 통합합니다. 단순히 모터를 구동하는 것을 넘어, 차량의 출력·효율·안정성을 하나의 제어 시스템으로 완성하는 Electric Performance Control을 구현합니다.",
     points: [
@@ -216,8 +216,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "HV",
-    x: "30%",
-    y: "60%",
+    x: "68%",
+    y: "40%",
     title: "HV",
     desc: "High Voltage 파트는 전기 포뮬러 차량의 에너지를 안전하게 저장하고, 필요한 순간 모터와 인버터로 안정적으로 전달하는 전력 시스템의 핵심입니다. CHALLENGER는 단순히 고전압을 사용하는 것이 아니라, Accumulator, BMS, Precharge, Shutdown Circuit, 절연 안전 구조를 통해 규정을 만족하는 전기 안전 플랫폼을 구축합니다. High Voltage는 차량의 강한 출력을 가능하게 하면서도, 모든 주행 상황에서 안전이 먼저 작동하도록 설계되는 파트입니다.",
     points: [
@@ -233,8 +233,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "LV",
-    x: "43%",
-    y: "20%",
+    x: "60.5%",
+    y: "21.2%",
     title: "LV",
     desc: "Low Voltage 파트는 차량의 센서, 제어기, 통신, 안전 회로를 안정적으로 구동하는 전장 시스템의 기반입니다. CHALLENGER는 단순히 전원을 공급하는 것을 넘어, VCU가 정확한 판단을 내릴 수 있도록 신뢰성 있는 전원·신호·통신 환경을 설계합니다. 작은 전압으로 차량 전체의 상태를 감지하고, 고전압 시스템과 구동 제어가 안전하게 작동하도록 만드는 차량의 전기적 신경망입니다.",
     points: [
@@ -355,8 +355,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Motor Control",
-    x: "28%",
-    y: "57%",
+    x: "60%",
+    y: "37%",
     title: "Motor Control",
     desc: "The Motor&Control part is the core system that controls the driving performance and energy flow of an electric formula vehicle. CHALLENGER manages the limits of the motor, inverter, and battery in real time, and integrates torque control, Field Weakening, Break Speed, regenerative braking, cooling control, and safety logic around the VCU. Beyond simply driving the motor, it implements Electric Performance Control that completes the vehicle's output, efficiency, and stability as one control system.",
     points: [
@@ -459,15 +459,15 @@ const copy: Record<Lang, PageCopy> = {
       items: [
         {
           title: "VCU Control",
-          desc: "APPS, BPS, 인버터, BMS 데이터를 통합해 토크 명령을 결정합니다.",
+          desc: "APPS, BPS, 인버터, BMS, 차량 상태 데이터를 통합해 차량을 제어합니다.",
         },
         {
           title: "Regen Strategy",
-          desc: "회생제동을 에너지 회수와 차량 안정성의 균형점에서 설계합니다.",
+          desc: "회생제동을 통해 에너지 회수량을 극대화하여 차량을 한계까지 몰아붙입니다.",
         },
         {
           title: "Thermal Control",
-          desc: "모터와 인버터 온도 데이터를 기반으로 냉각 로직을 구성합니다.",
+          desc: "CHALLENGER만의 온또 에츢 모뗼을 통햬 차량 넁각 시스템이 구동됩니다.",
         },
         {
           title: "Wireless Data",
@@ -475,14 +475,14 @@ const copy: Record<Lang, PageCopy> = {
         },
         {
           title: "Limit Tuning",
-          desc: "차량 한계를 정량화하고, 그 한계까지 사용할 수 있도록 세팅합니다.",
+          desc: "차량 한계를 정량화하고, 그 한계까지 사용할 수 있도록 모든 시스템을 세팅합니다.",
         },
       ],
     },
     direction: {
       label: "2026 Direction",
       title: "COOPERATIVE CONTROL",
-      desc: "2026 CHALLENGER는 모터 제어, 냉각, 무선 데이터, 공력 장치를 하나의 차량 제어 전략으로 연결하는 것을 목표로 합니다.",
+      desc: "2026 CHALLENGER는 모터 제어, 냉각, 무선 데이터, 공력 장치, 차량 섀시 제어를 하나의 차량 제어 전략으로 연결하는 것을 목표로 합니다.",
       items: [
         "모터 제어 기반 성능 최적화",
         "회생제동 기반 내구 주행 전략",
@@ -551,7 +551,7 @@ const copy: Record<Lang, PageCopy> = {
       items: [
         {
           title: "VCU Control",
-          desc: "APPS, BPS, inverter, and BMS data are integrated to determine torque commands.",
+          desc: "APPS, BPS, inverter, and BMS data are integrated to determine Control Logic.",
         },
         {
           title: "Regen Strategy",
@@ -559,7 +559,7 @@ const copy: Record<Lang, PageCopy> = {
         },
         {
           title: "Thermal Control",
-          desc: "Cooling logic is configured based on motor and inverter temperature data.",
+          desc: "Cooling logic is configured based on CHALLENGER's Predictive Thermal Model.",
         },
         {
           title: "Wireless Data",
