@@ -154,24 +154,20 @@ export default function Home() {
 
       {/* 2. 히어로 섹션 */}
       <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
-        {(() => {
-          const videoId = "8ErcU7HjICU";
-          const startSec = 37;
-          const src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1&start=${startSec}`;
-          return (
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <iframe 
-                className="absolute top-1/2 left-1/2 w-[350%] h-full -translate-x-1/2 -translate-y-1/2 md:w-full md:h-full md:top-0 md:left-0 md:translate-x-0 md:translate-y-0 pointer-events-none object-cover" 
-                src={src} 
-                title="CHALLENGER Hero Video" 
-                allow="autoplay; fullscreen; picture-in-picture" 
-                allowFullScreen 
-              />
-              <div className="absolute inset-0 bg-black/60 z-10" />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black z-20" />
-            </div>
-          );
-        })()}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            src="/videos/DF-25-Rollout.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black z-20" />
+        </div>
         
         <div className="relative z-30 text-center px-4 flex flex-col items-center justify-center h-full pb-20 md:pb-0">
           <p className="text-xl md:text-2xl font-bold text-[#950000] mb-4 tracking-[0.5em] uppercase animate-pulse font-corel">
