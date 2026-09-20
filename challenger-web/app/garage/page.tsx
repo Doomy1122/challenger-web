@@ -424,8 +424,8 @@ const copy: Record<Lang, PageCopy> = {
     stats: [
       { value: "GOLD", label: "2025 FSK E-Formula" },
       { value: "1st", label: "2025 Acceleration Award" },
-      { value: "2.98s", label: "0–100km/h Acceleration" },
-      { value: "5.38", label: "Energy Eff [km/kWh]" },
+      { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
+      { value: "5.61", label: "DF-26 · Energy Eff [km/kWh]" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -516,8 +516,8 @@ const copy: Record<Lang, PageCopy> = {
     stats: [
       { value: "GOLD", label: "2025 FSK E-Formula" },
       { value: "1st", label: "2025 Acceleration Award" },
-      { value: "2.98s", label: "0–100km/h Acceleration" },
-      { value: "5.38", label: "km/kWh Energy Eff" },
+      { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
+      { value: "5.61", label: "DF-26 · Energy Eff [km/kWh]" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
