@@ -48,6 +48,7 @@ type Hotspot = {
 type PageCopy = {
   nav: {
     vehicle: string;
+    special: string;
     technology: string;
     direction: string;
     sponsors: string;
@@ -60,6 +61,17 @@ type PageCopy = {
     secondary: string;
   };
   stats: { value: string; label: string }[];
+  special: {
+    label: string;
+    title: string;
+    desc: string;
+    items: {
+      title: string;
+      desc: string;
+      metric: string;
+      metricLabel: string;
+    }[];
+  };
   vehicle: {
     label: string;
     title: string;
@@ -410,6 +422,7 @@ const copy: Record<Lang, PageCopy> = {
   ko: {
     nav: {
       vehicle: "VEHICLE",
+      special: "SPECIAL",
       technology: "TECHNOLOGY",
       direction: "DIRECTION",
       sponsors: "PARTNER",
@@ -427,6 +440,56 @@ const copy: Record<Lang, PageCopy> = {
       { value: "1st", label: "DF-26 · Autocross" },
       { value: "2nd", label: "DF-26 · Design Report" },
     ],
+    special: {
+      label: "WHAT MAKES CHALLENGER SPECIAL",
+      title: "Core technologies that make the car faster and more stable.",
+      desc: "DF-26 connects aero, chassis, and powertrain control to real vehicle states. These are three active-control systems designed and validated by CHALLENGER.",
+      items: [
+        {
+          title: "Active DRS",
+          desc: "Flap AoA is varied using real-time vehicle data and VCU cooperative control. It cuts drag on straights, then returns to a high-downforce state under braking or faults to balance performance and stability.",
+          metric: "−79.2%",
+          metricLabel: "DRAG · CFD DRS ON",
+        },
+        {
+          title: "Active Anti-Roll Bar",
+          desc: "Front-to-rear roll stiffness is distributed in real time from the error between target and actual yaw rate. Instead of accepting one fixed ARB compromise, the chassis balance adapts to the driving state.",
+          metric: "17 → 5°/s",
+          metricLabel: "YAW RATE ERROR · MILS",
+        },
+        {
+          title: "Launch Control",
+          desc: "A tire model and dynamic load transfer estimate the available grip before generating a torque cap. This suppresses excessive slip from very low speed for a faster, more repeatable launch across road conditions.",
+          metric: "UP TO 64.6%",
+          metricLabel: "PEAK SLIP REDUCTION · MILS",
+        },
+      ],
+    },
+    special: {
+      label: "WHAT MAKES CHALLENGER SPECIAL",
+      title: "차량을 더 빠르고, 더 안정적으로 만드는 핵심 기술",
+      desc: "DF-26은 개별 부품의 성능을 넘어 공력·섀시·구동 제어를 차량 상태와 연결합니다. CHALLENGER가 직접 설계하고 검증한 세 가지 능동 제어 시스템입니다.",
+      items: [
+        {
+          title: "Active DRS",
+          desc: "실시간 주행 데이터와 VCU 협조제어로 Flap AoA를 가변합니다. 직선에서는 Drag를 줄이고, 제동·결함 상황에서는 High Downforce 상태로 복귀해 성능과 안정성을 함께 확보합니다.",
+          metric: "−79.2%",
+          metricLabel: "DRAG · CFD DRS ON",
+        },
+        {
+          title: "Active Anti-Roll Bar",
+          desc: "목표 Yaw Rate와 실제 Yaw Rate의 오차를 기반으로 전·후륜 롤 강성을 실시간 배분합니다. 고정식 ARB의 타협 대신 주행 상태에 따라 차량의 코너링 밸런스를 능동적으로 바꿉니다.",
+          metric: "17 → 5°/s",
+          metricLabel: "YAW RATE ERROR · MILS",
+        },
+        {
+          title: "Launch Control",
+          desc: "타이어 모델과 동적 하중 이동으로 발진 순간의 접지 한계를 먼저 계산해 Torque Cap을 생성합니다. 극저속부터 과슬립을 억제해 노면 조건이 달라도 빠르고 재현성 있는 출발을 만듭니다.",
+          metric: "UP TO 64.6%",
+          metricLabel: "PEAK SLIP REDUCTION · MILS",
+        },
+      ],
+    },
     vehicle: {
       label: "Interactive Vehicle",
       title: "CHALLENGER의 파트를 확인하세요.",
@@ -502,6 +565,7 @@ const copy: Record<Lang, PageCopy> = {
   en: {
     nav: {
       vehicle: "VEHICLE",
+      special: "SPECIAL",
       technology: "TECHNOLOGY",
       direction: "DIRECTION",
       sponsors: "PARTNER",
@@ -593,6 +657,7 @@ const copy: Record<Lang, PageCopy> = {
   },
 };
 
+const specialIcons = [Sparkles, RefreshCw, Gauge];
 const techIcons = [Cpu, RefreshCw, Thermometer, RadioTower, Gauge];
 
 function PartDetailCard({
@@ -738,6 +803,9 @@ export default function GaragePage() {
             <a href="#vehicle" className="hover:text-[#950000] transition">
               {t.nav.vehicle}
             </a>
+            <a href="#special" className="hover:text-[#950000] transition">
+              {t.nav.special}
+            </a>
             <a href="#technology" className="hover:text-[#950000] transition">
               {t.nav.technology}
             </a>
@@ -775,6 +843,9 @@ export default function GaragePage() {
           <div className="md:hidden bg-black border-t border-white/10 px-6 py-6 flex flex-col gap-5 text-sm font-black tracking-[0.18em] text-gray-300">
             <a onClick={() => setMobileMenu(false)} href="#vehicle">
               {t.nav.vehicle}
+            </a>
+            <a onClick={() => setMobileMenu(false)} href="#special">
+              {t.nav.special}
             </a>
             <a onClick={() => setMobileMenu(false)} href="#technology">
               {t.nav.technology}
@@ -980,6 +1051,78 @@ export default function GaragePage() {
               />
             </div>
           )}
+        </div>
+      </section>
+
+      <section id="special" className="relative py-20 md:py-28 bg-black scroll-mt-20 overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#950000]/70 to-transparent" />
+        <div className="absolute left-1/2 top-24 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-[#950000]/10 blur-[140px] pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-5 md:px-6">
+          <div className="max-w-4xl mb-12 md:mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#950000]/40 bg-[#950000]/10 px-4 py-2">
+              <Sparkles size={14} className="text-[#ff2a2a]" />
+              <span className="text-[10px] md:text-xs tracking-[0.28em] font-black text-[#ff2a2a]">
+                {t.special.label}
+              </span>
+            </div>
+
+            <h2 className="mt-5 text-3xl md:text-6xl font-black leading-tight break-keep">
+              {t.special.title}
+            </h2>
+
+            <p className="mt-5 max-w-3xl text-base md:text-lg leading-relaxed text-gray-400 break-keep">
+              {t.special.desc}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
+            {t.special.items.map((item, idx) => {
+              const Icon = specialIcons[idx];
+              return (
+                <article
+                  key={item.title}
+                  className="group relative min-h-[360px] overflow-hidden rounded-[30px] border border-white/10 bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-7 md:p-8 transition duration-300 hover:-translate-y-2 hover:border-[#950000]/70 hover:shadow-[0_28px_90px_rgba(149,0,0,0.18)]"
+                >
+                  <div className="absolute right-5 top-3 text-[72px] md:text-[92px] leading-none font-black text-white/[0.035] select-none">
+                    0{idx + 1}
+                  </div>
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                  <div className="absolute -right-16 -bottom-20 h-52 w-52 rounded-full bg-[#950000]/10 blur-3xl transition group-hover:bg-[#950000]/20" />
+
+                  <div className="relative z-10 flex h-full flex-col">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#950000]/45 bg-[#950000]/15">
+                        <Icon size={25} className="text-[#ff2a2a]" />
+                      </div>
+                      <span className="text-[10px] font-black tracking-[0.22em] text-white/35">
+                        DF-26 · ACTIVE CONTROL
+                      </span>
+                    </div>
+
+                    <h3 className="mt-7 text-2xl md:text-3xl font-black text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm md:text-[15px] leading-7 text-gray-300/90 break-keep">
+                      {item.desc}
+                    </p>
+
+                    <div className="mt-auto pt-8">
+                      <div className="border-t border-white/10 pt-5">
+                        <div className="text-2xl md:text-3xl font-black text-white">
+                          {item.metric}
+                        </div>
+                        <div className="mt-1.5 text-[9px] md:text-[10px] font-black tracking-[0.18em] text-[#ff2a2a]/80">
+                          {item.metricLabel}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
