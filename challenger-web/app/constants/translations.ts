@@ -92,17 +92,14 @@ export const translations = {
       ],
       roles: {
         chair: "회장 (Chairman)",
-        pm: "팀장 (Project Manager)",
-        vice: "부팀장 (Assistant Manager)"
+        pm: "팀장 (Project Manager)"
       }
     },
     contact: {
       chairman: "회장 (Chairman)",
       pm: "팀장 (Project Manager)",
-      vice: "부팀장 (Assistant Manager)",
-      name_chair: "전진우",
-      name_pm: "박민수",
-      name_vice: "허찬웅",
+      name_chair: "이준엽",
+      name_pm: "허찬웅",
       address: "충청남도 아산시 배방읍 호서로79번길 20,\n호서대학교 아산캠퍼스 제2공학관 B10호",
     },
   },
@@ -200,17 +197,14 @@ export const translations = {
       ],
       roles: {
         chair: "Chairman",
-        pm: "Project Manager",
-        vice: "Assistant Manager"
+        pm: "Project Manager"
       }
     },
     contact: {
       chairman: "Chairman",
       pm: "Project Manager",
-      vice: "Assistant Manager",
-      name_chair: "JinWoo Jeon",
-      name_pm: "Minsoo Park",
-      name_vice: "ChanWoong Heo",
+      name_chair: "JunYeop Lee",
+      name_pm: "ChanWoong Heo",
       address: "20, Hoseo-ro 79beon-gil, Baebang-eup, Asan-si,\nChungcheongnam-do, Republic of Korea (B10)",
     },
   },
