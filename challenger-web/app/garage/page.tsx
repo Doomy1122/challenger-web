@@ -442,31 +442,6 @@ const copy: Record<Lang, PageCopy> = {
     ],
     special: {
       label: "WHAT MAKES CHALLENGER SPECIAL",
-      title: "Core technologies that make the car faster and more stable.",
-      desc: "DF-26 connects aero, chassis, and powertrain control to real vehicle states. These are three active-control systems designed and validated by CHALLENGER.",
-      items: [
-        {
-          title: "Active DRS",
-          desc: "Flap AoA is varied using real-time vehicle data and VCU cooperative control. It cuts drag on straights, then returns to a high-downforce state under braking or faults to balance performance and stability.",
-          metric: "−79.2%",
-          metricLabel: "DRAG · CFD DRS ON",
-        },
-        {
-          title: "Active Anti-Roll Bar",
-          desc: "Front-to-rear roll stiffness is distributed in real time from the error between target and actual yaw rate. Instead of accepting one fixed ARB compromise, the chassis balance adapts to the driving state.",
-          metric: "17 → 5°/s",
-          metricLabel: "YAW RATE ERROR · MILS",
-        },
-        {
-          title: "Launch Control",
-          desc: "A tire model and dynamic load transfer estimate the available grip before generating a torque cap. This suppresses excessive slip from very low speed for a faster, more repeatable launch across road conditions.",
-          metric: "UP TO 64.6%",
-          metricLabel: "PEAK SLIP REDUCTION · MILS",
-        },
-      ],
-    },
-    special: {
-      label: "WHAT MAKES CHALLENGER SPECIAL",
       title: "차량을 더 빠르고, 더 안정적으로 만드는 핵심 기술",
       desc: "DF-26은 개별 부품의 성능을 넘어 공력·섀시·구동 제어를 차량 상태와 연결합니다. CHALLENGER가 직접 설계하고 검증한 세 가지 능동 제어 시스템입니다.",
       items: [
@@ -583,6 +558,31 @@ const copy: Record<Lang, PageCopy> = {
       { value: "1st", label: "DF-26 · Autocross" },
       { value: "2nd", label: "DF-26 · Design Report" },
     ],
+    special: {
+      label: "WHAT MAKES CHALLENGER SPECIAL",
+      title: "Core technologies that make the car faster and more stable.",
+      desc: "DF-26 connects aero, chassis, and powertrain control to real vehicle states. These are three active-control systems designed and validated by CHALLENGER.",
+      items: [
+        {
+          title: "Active DRS",
+          desc: "Flap AoA is varied using real-time vehicle data and VCU cooperative control. It cuts drag on straights, then returns to a high-downforce state under braking or faults to balance performance and stability.",
+          metric: "−79.2%",
+          metricLabel: "DRAG · CFD DRS ON",
+        },
+        {
+          title: "Active Anti-Roll Bar",
+          desc: "Front-to-rear roll stiffness is distributed in real time from the error between target and actual yaw rate. Instead of accepting one fixed ARB compromise, the chassis balance adapts to the driving state.",
+          metric: "17 → 5°/s",
+          metricLabel: "YAW RATE ERROR · MILS",
+        },
+        {
+          title: "Launch Control",
+          desc: "A tire model and dynamic load transfer estimate the available grip before generating a torque cap. This suppresses excessive slip from very low speed for a faster, more repeatable launch across road conditions.",
+          metric: "UP TO 64.6%",
+          metricLabel: "PEAK SLIP REDUCTION · MILS",
+        },
+      ],
+    },
     vehicle: {
       label: "Interactive Vehicle",
       title: "Explore CHALLENGER Parts.",
