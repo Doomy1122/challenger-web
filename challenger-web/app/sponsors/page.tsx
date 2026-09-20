@@ -35,7 +35,7 @@ const tiers = [
     title: "Platinum Sponsor",
     items: [
       { name: "HITEC", src: "/sponsors/marquee/tiers/Platinum/hitec.png" },
-      { name: "ALTAIR", src: "/sponsors/marquee/tiers/Platinum/altair.png" },
+      { name: "Altair", src: "/sponsors/marquee/tiers/Platinum/altair.png" },
       { name: "ANSYS", src: "/sponsors/marquee/tiers/Platinum/ansys.png" },
       { name: "Harvestance", src: "/sponsors/marquee/tiers/Platinum/harve.png" },
       { name: "HEXAGON", src: "/sponsors/marquee/tiers/Platinum/hexagon.png" },
