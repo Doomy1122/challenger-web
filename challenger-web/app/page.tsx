@@ -77,24 +77,43 @@ export default function Home() {
       {/* Floating Digital Garage Button */}
       <Link
         href="/garage"
-        aria-label="Enter CHALLENGER Digital Garage"
-        className="fixed z-[80] bottom-5 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[360px] group"
+        aria-label="Explore CHALLENGER engineering in the Digital Garage"
+        className="fixed z-[80] bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[430px] group"
       >
-        <div className="relative overflow-hidden rounded-full border border-[#950000]/50 bg-black/80 backdrop-blur-xl px-5 py-4 md:px-6 md:py-4 shadow-[0_20px_70px_rgba(0,0,0,0.75)] transition duration-300 group-hover:border-[#950000] group-hover:shadow-[0_24px_90px_rgba(149,0,0,0.35)]">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#950000]/35 via-white/[0.03] to-[#950000]/15 opacity-80 transition duration-300 group-hover:opacity-100" />
-          <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#950000]/35 blur-2xl transition duration-300 group-hover:bg-[#950000]/55" />
+        <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/85 backdrop-blur-xl px-5 py-4 md:px-5 md:py-5 shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#950000]/30 via-white/[0.025] to-transparent opacity-90 transition duration-300 group-hover:from-[#950000]/45" />
+          <div className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[#950000]/30 blur-3xl transition duration-300 group-hover:bg-[#950000]/50" />
+          <div className="absolute left-0 top-5 bottom-5 w-[3px] rounded-full bg-[#d31414]" />
 
-          <div className="relative flex items-center justify-between gap-5">
-            <div className="flex flex-col">
-              <span className="text-[10px] md:text-[11px] font-black tracking-[0.35em] text-[#ff2a2a]">
-                ENTER
-              </span>
-              <span className="mt-1 text-sm md:text-base font-black tracking-[0.08em] text-white">
-                CHALLENGER Digital Garage
-              </span>
+          <div className="relative flex items-center gap-4">
+            <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#950000]/50 bg-[#950000]/15 text-[#ff2a2a]">
+              <Cpu size={22} />
             </div>
 
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black transition duration-300 group-hover:bg-[#950000] group-hover:text-white">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#ff2a2a] shadow-[0_0_12px_rgba(255,42,42,0.9)]" />
+                <span className="text-[9px] md:text-[10px] font-black tracking-[0.28em] text-[#ff2a2a]">
+                  ENGINEERING SHOWCASE
+                </span>
+              </div>
+
+              <div className="mt-1.5 text-sm md:text-[17px] font-black tracking-[0.04em] text-white">
+                CHALLENGER Digital Garage
+              </div>
+
+              <p className="mt-1 text-[11px] md:text-xs leading-relaxed text-gray-400 break-keep">
+                {language === "ko"
+                  ? "차량을 완성하는 제어·전장·공력 기술을 직접 확인하세요."
+                  : "Explore the control, electrical, aero, and vehicle systems behind our car."}
+              </p>
+
+              <div className="mt-2 hidden sm:flex text-[9px] font-bold tracking-[0.18em] text-white/45">
+                CONTROL · HV · AERO · CHASSIS · DATA
+              </div>
+            </div>
+
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-black text-lg font-black transition duration-300 group-hover:bg-[#950000] group-hover:text-white group-hover:translate-x-1">
               →
             </div>
           </div>
