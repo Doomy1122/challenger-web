@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 // ✅ Menu, X, MousePointerClick 아이콘 추가
-import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronUp, Menu, X, MousePointerClick } from "lucide-react";
+import { Instagram, Youtube, MapPin, Mail, Phone, Globe, Download, Megaphone, Users, Cpu, List, ChevronUp, Menu, X, MousePointerClick, ArrowDown } from "lucide-react";
 import NewsSection from "./components/NewsSection";
 import { translations } from "./constants/translations";
 import { useLanguage } from "./context/LanguageContext";
@@ -82,12 +82,14 @@ export default function Home() {
       >
         {/* Desktop click cue: stays outside the button, then disappears on hover */}
         <div className="hidden md:flex absolute right-1/2 bottom-[82px] translate-x-1/2 flex-col items-center pointer-events-none transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
-          <span className="whitespace-nowrap text-[10px] font-black tracking-[0.22em] text-white/90 animate-pulse">
+          <span className="whitespace-nowrap text-[11px] font-black tracking-[0.18em] text-white animate-pulse [animation-duration:2.8s]">
             CLICK ME
           </span>
-          <span className="mt-1 text-xl leading-none text-[#ff2a2a] animate-bounce">
-            ↓
-          </span>
+          <ArrowDown
+            size={24}
+            strokeWidth={3.4}
+            className="mt-1 text-[#ff2a2a] animate-bounce [animation-duration:2.4s]"
+          />
         </div>
 
         <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/90 backdrop-blur-xl px-5 py-4 md:h-[74px] md:p-0 md:group-hover:h-[126px] shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition-[height,border-color,box-shadow,transform] duration-500 ease-out group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
@@ -103,7 +105,7 @@ export default function Home() {
           </div>
 
           {/* Desktop expanded state */}
-          <div className="hidden md:flex absolute inset-0 items-center gap-4 px-5 py-4 opacity-0 translate-x-5 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+          <div className="hidden md:flex absolute inset-0 items-center gap-4 px-5 py-4 opacity-0 translate-y-1 transition-[opacity,transform] duration-300 delay-0 group-hover:delay-[480ms] group-hover:opacity-100 group-hover:translate-y-0">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#950000]/50 bg-[#950000]/15 text-[#ff2a2a]">
               <Cpu size={22} />
             </div>
