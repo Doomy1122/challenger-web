@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { galleryManifest } from "../generated/galleryManifest";
 
@@ -30,7 +31,10 @@ export default function GallerySection() {
             if (images.length === 0) return null;
 
             return (
-              <div key={category.id}>
+              <div
+                key={category.id}
+                className="[content-visibility:auto] [contain-intrinsic-size:900px]"
+              >
                 <div className="flex items-end gap-4 mb-6 border-b border-white/10 pb-4">
                   <h3 className="text-3xl font-black text-white">{category.title}</h3>
                   <span className="text-lg font-bold text-gray-500 mb-1">{category.year}</span>
@@ -42,11 +46,12 @@ export default function GallerySection() {
                       key={src}
                       className="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 cursor-pointer"
                     >
-                      <img
+                      <Image
                         src={src}
                         alt={`${category.title} Photo ${index + 1}`}
-                        className="w-full h-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-80"
-                        loading="lazy"
+                        fill
+                        sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                        className="object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-80"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <Link
