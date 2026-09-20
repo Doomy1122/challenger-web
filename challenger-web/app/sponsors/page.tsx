@@ -112,7 +112,7 @@ export default function SponsorsPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { name, email, supportType, subject, message } = formData;
-    const mailTo = "20212241@vision.hoseo.edu";
+    const mailTo = "chwd19@naver.com";
     const body = `Name: ${name}
 Email: ${email}
 Support Type: ${supportType}
@@ -242,34 +242,22 @@ ${message}`;
                 <div>
                   <h3 className="text-white text-lg font-bold mb-2">Phone:</h3>
                   
-                  {/* 회장 정보 */}
-                  <p className={contentClass}>{t.roles.chair}:</p>
-                  <p className={`${contentClass} font-bold mt-1`}>
-                    {/* ✅ 변수 사용: 이름과 번호 */}
-                    {c.name_chair} +82) 10 4561 8947
-                  </p>
-                  <a href="mailto:20212241@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
-                    20212241@vision.hoseo.edu
-                  </a>
-
                   {/* 팀장 정보 */}
-                  <p className={`${contentClass} mt-6`}>{t.roles.pm}:</p>
+                  <p className={contentClass}>{t.roles.pm}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
-                    {/* ✅ 변수 사용: 이름과 번호 */}
-                    {c.name_pm} +82) 10 4705 3671
+                    {c.name_pm} +82) 10 3336 3428
                   </p>
-                  <a href="mailto:20212192@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
-                    20212192@vision.hoseo.edu
+                  <a href="mailto:chwd19@naver.com" className={`${contentClass} block hover:text-white mt-1 transition`}>
+                    chwd19@naver.com
                   </a>
 
-                  {/* 부팀장 정보 */}
-                  <p className={`${contentClass} mt-6`}>{t.roles.vice}:</p>
+                  {/* 회장 정보 */}
+                  <p className={`${contentClass} mt-6`}>{t.roles.chair}:</p>
                   <p className={`${contentClass} font-bold mt-1`}>
-                    {/* ✅ 변수 사용: 이름과 번호 */}
-                    {c.name_vice} +82) 10 3336 3428
+                    {c.name_chair} +82) 10 8709 7377
                   </p>
-                  <a href="mailto:20222315@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
-                    20222315@vision.hoseo.edu
+                  <a href="mailto:20222289@vision.hoseo.edu" className={`${contentClass} block hover:text-white mt-1 transition`}>
+                    20222289@vision.hoseo.edu
                   </a>
                 </div>
 
