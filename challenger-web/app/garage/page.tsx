@@ -422,10 +422,10 @@ const copy: Record<Lang, PageCopy> = {
       secondary: "후원 문의하기",
     },
     stats: [
-      { value: "GOLD", label: "2025 FSK E-Formula" },
-      { value: "1st", label: "2025 Acceleration Award" },
+      { value: "GOLD", label: "DF-25 · FSK E-Formula" },
+      { value: "1st", label: "DF-25 · FSK Acceleration Best Award" },
       { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
-      { value: "5.61", label: "DF-26 · Energy Eff [km/kWh]" },
+      { value: "5.61 km/kWh", label: "DF-26 · Energy Efficiency" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -514,10 +514,10 @@ const copy: Record<Lang, PageCopy> = {
       secondary: "Sponsor Partnership",
     },
     stats: [
-      { value: "GOLD", label: "2025 FSK E-Formula" },
-      { value: "1st", label: "2025 Acceleration Award" },
+      { value: "GOLD", label: "DF-25 · FSK E-Formula" },
+      { value: "1st", label: "DF-25 · FSK Acceleration Best Award" },
       { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
-      { value: "5.61", label: "DF-26 · Energy Eff [km/kWh]" },
+      { value: "5.61 km/kWh", label: "DF-26 · Energy Efficiency" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
