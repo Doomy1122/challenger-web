@@ -56,7 +56,7 @@ function MarqueeRow({ logos, direction = "left", speedSec = 38 }: { logos: { src
       <div className={`${cls}`} style={{ animationDuration: `${speedSec}s` }}>
         {loop(logos).map((l, idx) => (
           <div key={`${l.alt}-${idx}`} className="marquee-item" title={l.alt}>
-            <img src={l.src} alt={l.alt} className="h-12 md:h-14 w-auto max-w-[180px] object-contain opacity-80 hover:opacity-100 transition" draggable={false} />
+            <img src={l.src} alt={l.alt} loading="lazy" decoding="async" className="h-12 md:h-14 w-auto max-w-[180px] object-contain opacity-80 hover:opacity-100 transition" draggable={false} />
           </div>
         ))}
       </div>
@@ -229,7 +229,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
@@ -263,14 +263,14 @@ export default function Home() {
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10 h-full min-h-[320px]">
-              <img src="/vision/spirit.jpg" alt="Challenger Car Side" className="w-full h-full object-cover" />
+              <img src="/vision/spirit.jpg" loading="lazy" decoding="async" alt="Challenger Car Side" className="w-full h-full object-cover" />
             </div>
           </div>
           {/* Independent columns prevent image height from stretching text cards */}
           <div className="mt-8 hidden lg:grid lg:grid-cols-2 gap-6 items-start">
             <div className="flex flex-col gap-6">
               <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-                <img src="/vision/sex.jpg" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
+                <img src="/vision/sex.jpg" loading="lazy" decoding="async" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
               </div>
               <div className="rounded-3xl bg-zinc-950 border border-white/10 p-8 xl:p-10">
                 <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
@@ -288,7 +288,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-                <img src="/vision/team.jpg" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
+                <img src="/vision/team.jpg" loading="lazy" decoding="async" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
               </div>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default function Home() {
           {/* Mobile keeps the original narrative order without forced row heights */}
           <div className="mt-8 flex flex-col gap-6 lg:hidden">
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-              <img src="/vision/sex.jpg" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
+              <img src="/vision/sex.jpg" loading="lazy" decoding="async" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
             </div>
             <div className="rounded-3xl bg-zinc-950 border border-white/10 p-7">
               <h3 className="text-3xl font-black mb-4">{t.about.spirit_title}</h3>
@@ -311,7 +311,7 @@ export default function Home() {
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-              <img src="/vision/team.jpg" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
+              <img src="/vision/team.jpg" loading="lazy" decoding="async" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
             </div>
           </div>
         </div>
@@ -337,7 +337,7 @@ export default function Home() {
               {/* 2026 FSK BRONZE */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2026-bronze.jpg" alt="2026 FSK E-Formula Bronze Award" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2026-bronze.jpg" loading="lazy" decoding="async" alt="2026 FSK E-Formula Bronze Award" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
                 <div className="flex-1">
@@ -351,7 +351,7 @@ export default function Home() {
               {/* 2026 FSK AUTOCROSS */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2026-autocross.jpg" alt="2026 FSK Autocross Best Award" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2026-autocross.jpg" loading="lazy" decoding="async" alt="2026 FSK Autocross Best Award" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
                 <div className="flex-1">
@@ -365,7 +365,7 @@ export default function Home() {
               {/* ✅ [NEW] 2026 DF-26 */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2026df.jpg" alt="2026 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2026df.jpg" loading="lazy" decoding="async" alt="2026 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
                 <div className="flex-1">
@@ -379,7 +379,7 @@ export default function Home() {
               {/* 2025 GOLD */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2025-gold.jpg" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2025-gold.jpg" loading="lazy" decoding="async" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
@@ -393,7 +393,7 @@ export default function Home() {
               {/* 2025 ACCEL */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2025" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2025-accel.png" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2025-accel.png" loading="lazy" decoding="async" alt="2025 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2025</div>
                 <div className="flex-1">
@@ -407,7 +407,7 @@ export default function Home() {
               {/* 2022 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2022" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2022-silver.jpg" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2022-silver.jpg" loading="lazy" decoding="async" alt="2022 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2022</div>
                 <div className="flex-1">
@@ -421,7 +421,7 @@ export default function Home() {
               {/* 2020 SILVER */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2020" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2020-silver.jpg" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src="/awards/2020-silver.jpg" loading="lazy" decoding="async" alt="2020 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </Link>
                 <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2020</div>
                 <div className="flex-1">
