@@ -78,21 +78,21 @@ export default function Home() {
       <Link
         href="/garage"
         aria-label="Explore CHALLENGER engineering in the Digital Garage"
-        className="fixed z-[80] bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[430px] group"
+        className="fixed z-[80] bottom-4 left-4 right-4 group md:left-auto md:right-8 md:bottom-8 md:w-[76px] md:hover:w-[430px] transition-[width] duration-500 ease-out"
       >
-        <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/85 backdrop-blur-xl px-5 py-4 md:px-5 md:py-5 shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
+        <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/85 backdrop-blur-xl px-5 py-4 md:h-[92px] md:px-[13px] md:py-4 shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#950000]/30 via-white/[0.025] to-transparent opacity-90 transition duration-300 group-hover:from-[#950000]/45" />
           <div className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[#950000]/30 blur-3xl transition duration-300 group-hover:bg-[#950000]/50" />
           <div className="absolute left-0 top-5 bottom-5 w-[3px] rounded-full bg-[#d31414]" />
 
-          <div className="relative flex items-center gap-4">
-            <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#950000]/50 bg-[#950000]/15 text-[#ff2a2a]">
+          <div className="relative flex h-full items-center gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#950000]/50 bg-[#950000]/15 text-[#ff2a2a]">
               <Cpu size={22} />
             </div>
 
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 md:max-w-0 md:opacity-0 md:overflow-hidden md:whitespace-nowrap md:transition-all md:duration-500 md:group-hover:max-w-[285px] md:group-hover:opacity-100">
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#ff2a2a] shadow-[0_0_12px_rgba(255,42,42,0.9)]" />
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff2a2a] shadow-[0_0_12px_rgba(255,42,42,0.9)]" />
                 <span className="text-[9px] md:text-[10px] font-black tracking-[0.28em] text-[#ff2a2a]">
                   ENGINEERING SHOWCASE
                 </span>
@@ -102,7 +102,7 @@ export default function Home() {
                 CHALLENGER Digital Garage
               </div>
 
-              <p className="mt-1 text-[11px] md:text-xs leading-relaxed text-gray-400 break-keep">
+              <p className="mt-1 text-[11px] md:text-xs leading-relaxed text-gray-400 break-keep md:whitespace-normal">
                 {language === "ko"
                   ? "차량을 완성하는 제어·전장·공력 기술을 직접 확인하세요."
                   : "Explore the control, electrical, aero, and vehicle systems behind our car."}
@@ -113,7 +113,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-black text-lg font-black transition duration-300 group-hover:bg-[#950000] group-hover:text-white group-hover:translate-x-1">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-black text-lg font-black transition duration-300 md:absolute md:right-4 md:opacity-0 md:translate-x-3 md:group-hover:static md:group-hover:opacity-100 md:group-hover:translate-x-0 group-hover:bg-[#950000] group-hover:text-white">
               →
             </div>
           </div>
