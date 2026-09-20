@@ -81,14 +81,14 @@ export default function Home() {
         className="fixed z-[80] bottom-4 left-4 right-4 group md:left-auto md:right-8 md:bottom-8 md:w-[76px] md:hover:w-[430px] transition-[width] duration-500 ease-out"
       >
         {/* Desktop click cue: stays outside the button, then disappears on hover */}
-        <div className="hidden md:flex absolute right-1/2 bottom-[82px] translate-x-1/2 flex-col items-center pointer-events-none transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
-          <span className="whitespace-nowrap text-[11px] font-black tracking-[0.18em] text-white animate-pulse [animation-duration:2.8s]">
+        <div className="hidden md:flex absolute right-1/2 bottom-[86px] translate-x-1/2 flex-col items-center pointer-events-none transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
+          <span className="whitespace-nowrap text-[13px] font-black tracking-[0.16em] text-white animate-pulse [animation-duration:2.8s]">
             CLICK ME
           </span>
           <ArrowDown
-            size={24}
-            strokeWidth={3.4}
-            className="mt-1 text-[#ff2a2a] animate-bounce [animation-duration:2.4s]"
+            size={30}
+            strokeWidth={3.6}
+            className="mt-1.5 text-[#ff2a2a] animate-bounce [animation-duration:2.4s]"
           />
         </div>
 
