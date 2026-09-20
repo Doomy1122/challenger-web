@@ -239,20 +239,6 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] shadow-[0_30px_80px_rgba(0,0,0,0.65)] overflow-hidden">
             <ul className="divide-y divide-white/10">
-              {/* ✅ [NEW] 2026 DF-26 */}
-              <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
-                <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
-                  <img src="/awards/2026df.jpg" alt="2026 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
-                </Link>
-                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
-                <div className="flex-1">
-                  <Link href="/specs/2026" className="block hover:text-[#950000] transition">
-                    <div className="text-xl md:text-2xl font-black">{t.awards.accel26_title}</div>
-                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel26_desc}</div>
-                  </Link>
-                </div>
-                <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
-              </li>
               {/* 2026 FSK BRONZE */}
               <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
                 <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
@@ -277,6 +263,20 @@ export default function Home() {
                   <Link href="/specs/2026" className="block hover:text-[#950000] transition">
                     <div className="text-xl md:text-2xl font-black">{t.awards.autocross26_title}</div>
                     <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.autocross26_desc}</div>
+                  </Link>
+                </div>
+                <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
+              </li>
+              {/* ✅ [NEW] 2026 DF-26 */}
+              <li className="group px-6 md:px-12 py-8 flex items-center gap-5 md:gap-7">
+                <Link href="/specs/2026" className="hidden sm:block w-56 h-36 md:w-64 md:h-40 rounded-3xl overflow-hidden border border-white/15 bg-black/40 shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.7)] cursor-pointer">
+                  <img src="/awards/2026df.jpg" alt="2026 Car" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                </Link>
+                <div className="w-14 md:w-20 shrink-0 text-white/70 font-corel text-xl md:text-2xl">2026</div>
+                <div className="flex-1">
+                  <Link href="/specs/2026" className="block hover:text-[#950000] transition">
+                    <div className="text-xl md:text-2xl font-black">{t.awards.accel26_title}</div>
+                    <div className="mt-2 text-sm md:text-base text-gray-400">{t.awards.accel26_desc}</div>
                   </Link>
                 </div>
                 <span className="shrink-0 px-4 py-2 rounded-full text-xs font-black border border-[#950000]/40 bg-[#950000]/15 text-white">1st Place</span>
