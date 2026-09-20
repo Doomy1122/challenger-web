@@ -17,7 +17,7 @@ const SPECS: Record<
   }
 > = {
   "2026": {
-    image: "/awards/2026df.jpg",
+    image: "/awards/2026-bronze.jpg",
     ko: {
       title: "DF-26",
       subtitle: "Vehicle Control Unit(VCU) 도입을 통한 고도화된 협조제어의 시작",
