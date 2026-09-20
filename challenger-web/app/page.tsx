@@ -78,29 +78,29 @@ export default function Home() {
       <Link
         href="/garage"
         aria-label="Explore CHALLENGER engineering in the Digital Garage"
-        className="fixed z-[80] bottom-4 left-4 right-4 group md:left-auto md:right-8 md:bottom-8 md:w-[76px] md:hover:w-[430px] transition-[width] duration-500 ease-out"
+        className="fixed z-[80] bottom-4 left-4 right-4 group md:left-auto md:right-8 md:bottom-8 md:w-[92px] md:hover:w-[430px] transition-[width] duration-500 ease-out"
       >
         {/* Desktop click cue: stays outside the button, then disappears on hover */}
-        <div className="hidden md:flex absolute right-1/2 bottom-[86px] translate-x-1/2 flex-col items-center pointer-events-none transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
-          <span className="whitespace-nowrap text-[13px] font-black tracking-[0.16em] text-white animate-pulse [animation-duration:2.8s]">
+        <div className="hidden md:flex absolute right-1/2 bottom-[103px] translate-x-1/2 flex-col items-center pointer-events-none transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
+          <span className="whitespace-nowrap text-[15px] font-black tracking-[0.14em] text-white animate-pulse [animation-duration:2.8s]">
             CLICK ME
           </span>
           <ArrowDown
-            size={30}
-            strokeWidth={3.6}
-            className="mt-1.5 text-[#ff2a2a] animate-bounce [animation-duration:2.4s]"
+            size={36}
+            strokeWidth={3.8}
+            className="mt-2 text-[#ff2a2a] animate-bounce [animation-duration:2.4s]"
           />
         </div>
 
-        <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/90 backdrop-blur-xl px-5 py-4 md:h-[74px] md:p-0 md:group-hover:h-[126px] shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition-[height,border-color,box-shadow,transform] duration-500 ease-out group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
+        <div className="relative overflow-hidden rounded-[26px] border border-[#950000]/55 bg-black/90 backdrop-blur-xl px-5 py-4 md:h-[92px] md:p-0 md:group-hover:h-[126px] shadow-[0_22px_80px_rgba(0,0,0,0.78)] transition-[height,border-color,box-shadow,transform] duration-500 ease-out group-hover:-translate-y-1 group-hover:border-[#d31414] group-hover:shadow-[0_28px_95px_rgba(149,0,0,0.38)]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#950000]/30 via-white/[0.025] to-transparent opacity-90 transition duration-300 group-hover:from-[#950000]/45" />
           <div className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[#950000]/30 blur-3xl transition duration-300 group-hover:bg-[#950000]/50" />
           <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full bg-[#ff1f1f]" />
 
           {/* Desktop collapsed state */}
           <div className="hidden md:flex absolute inset-0 items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-75 pointer-events-none">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#950000]/55 bg-[#950000]/15 text-[#ff2a2a]">
-              <Cpu size={20} />
+            <div className="flex h-[58px] w-[58px] items-center justify-center rounded-[20px] border border-[#950000]/55 bg-[#950000]/15 text-[#ff2a2a]">
+              <Cpu size={26} strokeWidth={2.4} />
             </div>
           </div>
 
