@@ -423,9 +423,9 @@ const copy: Record<Lang, PageCopy> = {
     },
     stats: [
       { value: "GOLD", label: "DF-25 · FSK E-Formula" },
-      { value: "1st", label: "DF-25 · FSK Acceleration Best Award" },
-      { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
-      { value: "5.61 km/kWh", label: "DF-26 · Energy Efficiency" },
+      { value: "1st", label: "DF-25 · FSK Acceleration" },
+      { value: "1st", label: "DF-26 · FSK Autocross" },
+      { value: "2nd", label: "DF-26 · FSK Design Report" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -515,9 +515,9 @@ const copy: Record<Lang, PageCopy> = {
     },
     stats: [
       { value: "GOLD", label: "DF-25 · FSK E-Formula" },
-      { value: "1st", label: "DF-25 · FSK Acceleration Best Award" },
-      { value: "1st", label: "DF-26 · FSK Autocross Best Award" },
-      { value: "5.61 km/kWh", label: "DF-26 · Energy Efficiency" },
+      { value: "1st", label: "DF-25 · FSK Acceleration" },
+      { value: "1st", label: "DF-26 · FSK Autocross" },
+      { value: "2nd", label: "DF-26 · FSK Design Report" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
