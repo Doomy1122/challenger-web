@@ -30,6 +30,10 @@ export const translations = {
       // ✅ [NEW] 2026년 한국어 번역 추가
       accel26_title: "AMF 짐카나 챌린지 1위",
       accel26_desc: "AMF Global Motor Festival",
+      bronze26_title: "FSK E-Formula 동상",
+      bronze26_desc: "KSAE 대학생 자작자동차 대회",
+      autocross26_title: "FSK 오토크로스 최우수상",
+      autocross26_desc: "KSAE 대학생 자작자동차 대회",
       gold25_title: "FSK E-Formula 금상",
       gold25_desc: "KSAE 대학생 자작자동차 대회",
       accel25_title: "FSK 가속 성능 최우수상",
@@ -134,6 +138,10 @@ export const translations = {
       // ✅ [NEW] 2026년 영어 번역 추가
       accel26_title: "AMF Gymkana Formula 1st Place",
       accel26_desc: "AMF Global Motor Festival",
+      bronze26_title: "FSK E-Formula Bronze Award",
+      bronze26_desc: "Formula Student Korea",
+      autocross26_title: "FSK Autocross Best Award",
+      autocross26_desc: "Formula Student Korea",
       gold25_title: "FSK E-Formula Gold Award",
       gold25_desc: "Formula Student Korea",
       accel25_title: "FSK Acceleration Best Award",
