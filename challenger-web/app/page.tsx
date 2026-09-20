@@ -199,24 +199,52 @@ export default function Home() {
               <img src="/vision/spirit.jpg" alt="Challenger Car Side" className="w-full h-full object-cover" />
             </div>
           </div>
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-              <img src="/vision/sex.jpg" alt="Night Shot" className="w-full h-[320px] object-cover" />
+          {/* Independent columns prevent image height from stretching text cards */}
+          <div className="mt-8 hidden lg:grid lg:grid-cols-2 gap-6 items-start">
+            <div className="flex flex-col gap-6">
+              <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
+                <img src="/vision/sex.jpg" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
+              </div>
+              <div className="rounded-3xl bg-zinc-950 border border-white/10 p-8 xl:p-10">
+                <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
+                <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep text-left">
+                  {t.about.vision_desc}
+                </p>
+              </div>
             </div>
-            <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
-              <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.spirit_title}</h3>
-              <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep text-left">
+
+            <div className="flex flex-col gap-6">
+              <div className="rounded-3xl bg-zinc-950 border border-white/10 p-8 xl:p-10">
+                <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.spirit_title}</h3>
+                <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep text-left">
+                  {t.about.spirit_desc}
+                </p>
+              </div>
+              <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
+                <img src="/vision/team.jpg" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile keeps the original narrative order without forced row heights */}
+          <div className="mt-8 flex flex-col gap-6 lg:hidden">
+            <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
+              <img src="/vision/sex.jpg" alt="Night Shot" className="w-full aspect-[16/10] object-cover" />
+            </div>
+            <div className="rounded-3xl bg-zinc-950 border border-white/10 p-7">
+              <h3 className="text-3xl font-black mb-4">{t.about.spirit_title}</h3>
+              <p className="text-gray-400 text-base leading-loose whitespace-pre-line break-keep text-left">
                 {t.about.spirit_desc}
               </p>
             </div>
-            <div className="rounded-3xl bg-zinc-950 border border-white/10 p-10">
-              <h3 className="text-3xl md:text-4xl font-black mb-4">{t.about.vision_title}</h3>
-              <p className="text-gray-400 text-lg leading-loose whitespace-pre-line break-keep text-left">
+            <div className="rounded-3xl bg-zinc-950 border border-white/10 p-7">
+              <h3 className="text-3xl font-black mb-4">{t.about.vision_title}</h3>
+              <p className="text-gray-400 text-base leading-loose whitespace-pre-line break-keep text-left">
                 {t.about.vision_desc}
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10">
-              <img src="/vision/team.jpg" alt="Team Shot" className="w-full h-[320px] object-cover" />
+              <img src="/vision/team.jpg" alt="Team Shot" className="w-full aspect-[16/10] object-cover" />
             </div>
           </div>
         </div>
