@@ -422,10 +422,10 @@ const copy: Record<Lang, PageCopy> = {
       secondary: "후원 문의하기",
     },
     stats: [
-      { value: "GOLD", label: "DF-25 · FSK E-Formula" },
-      { value: "1st", label: "DF-25 · FSK Acceleration" },
-      { value: "1st", label: "DF-26 · FSK Autocross" },
-      { value: "2nd", label: "DF-26 · FSK Design Report" },
+      { value: "GOLD", label: "DF-25 · E-Formula" },
+      { value: "1st", label: "DF-25 · Acceleration" },
+      { value: "1st", label: "DF-26 · Autocross" },
+      { value: "2nd", label: "DF-26 · Design Report" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -514,10 +514,10 @@ const copy: Record<Lang, PageCopy> = {
       secondary: "Sponsor Partnership",
     },
     stats: [
-      { value: "GOLD", label: "DF-25 · FSK E-Formula" },
-      { value: "1st", label: "DF-25 · FSK Acceleration" },
-      { value: "1st", label: "DF-26 · FSK Autocross" },
-      { value: "2nd", label: "DF-26 · FSK Design Report" },
+      { value: "GOLD", label: "DF-25 · E-Formula" },
+      { value: "1st", label: "DF-25 · Acceleration" },
+      { value: "1st", label: "DF-26 · Autocross" },
+      { value: "2nd", label: "DF-26 · Design Report" },
     ],
     vehicle: {
       label: "Interactive Vehicle",
@@ -796,7 +796,7 @@ export default function GaragePage() {
         <div className="absolute inset-0">
           <img
             src={VEHICLE_IMAGE_SRC}
-            alt="CHALLENGER DF-25"
+            alt="CHALLENGER DF-26"
             className="w-full h-full object-cover opacity-45"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
@@ -845,6 +845,9 @@ export default function GaragePage() {
 
       <section className="relative z-20 bg-black pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-5 md:px-6">
+          <p className="mb-5 text-xs tracking-[0.35em] font-black text-[#950000] uppercase">
+            Recent Awards at FSK
+          </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {t.stats.map((item) => (
               <div
