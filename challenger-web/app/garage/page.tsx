@@ -26,7 +26,7 @@ import { useLanguage } from "../context/LanguageContext";
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 const VEHICLE_IMAGE_SRC = "/gallery/digital-garage/df26-digital-garage.png";
-const VEHICLE_IMAGE_ASPECT = "4 / 3.15";
+const VEHICLE_IMAGE_ASPECT = "1 / 1";
 const DIRECTION_IMAGE_SRC = "/gallery/df-26/KakaoTalk_20260423_213900869.jpg";
 
 type Lang = "ko" | "en";
@@ -97,8 +97,8 @@ type PageCopy = {
 const HOTSPOTS_KO: Hotspot[] = [
   {
     name: "Suspension",
-    x: "50%",
-    y: "60%",
+    x: "42%",
+    y: "61%",
     title: "Suspension",
     desc: "Suspension 파트는 차량과 노면을 연결하며, 타이어가 가진 성능을 실제 주행 성능으로 끌어내는 핵심 시스템입니다. 단순히 차체를 지지하는 장치가 아닌, 가속·제동·코너링 순간마다 하중 이동을 제어하고 타이어 접지력을 유지해 차량의 한계를 결정합니다.",
     points: [
@@ -114,8 +114,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Frame",
-    x: "30%",
-    y: "55%",
+    x: "48%",
+    y: "53%",
     title: "Frame",
     desc: "Frame 파트는 차량의 모든 시스템을 하나로 연결하는 구조적 기반입니다. CHALLENGER는 Space Frame 구조의 경량성과 강성을 극한까지 끌어올리고, 실제 비틀림 강성 실측을 통해 설계가 실차에서 어떻게 작동하는지 데이터로 검증하고 있습니다.",
     points: [
@@ -131,8 +131,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Ergonomics",
-    x: "58%",
-    y: "40%",
+    x: "52%",
+    y: "43%",
     title: "Ergonomics",
     desc: "Ergonomics 파트는 드라이버와 차량을 연결하는 가장 중요한 인터페이스입니다. CHALLENGER는 단순한 탑승 편의성을 넘어, 모든 조작이 직관적이고 일관되게 전달될 수 있도록 Cockpit과 Driver Interface를 최적화하여, 드라이버가 차량의 성능을 한계까지 활용할 수 있는 환경을 구현합니다.",
     points: [
@@ -148,8 +148,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Drive Train",
-    x: "75%",
-    y: "40%",
+    x: "70%",
+    y: "49%",
     title: "Drive Train",
     desc: "Drivetrain 파트는 모터에서 발생한 토크를 손실 없이 노면으로 전달하는 차량의 동력 전달 시스템입니다. CHALLENGER는 단순히 강한 구동계를 만드는 것을 넘어, 불필요한 중량을 줄이고 각 부품의 사용 마일리지를 관리하여 경량화와 신뢰성을 동시에 확보합니다. 고출력 전기 구동 환경에서도 일정한 성능을 유지할 수 있도록, 구조·정비성·품질관리를 함께 설계하는 파트입니다.",
     points: [
@@ -165,8 +165,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Cooling",
-    x: "78%",
-    y: "33%",
+    x: "64%",
+    y: "54%",
     title: "Cooling",
     desc: "Cooling 파트는 고출력 전기 구동 시스템이 한계 상황에서도 안정적으로 성능을 유지하도록 열을 제어하는 핵심 시스템입니다. CHALLENGER는 단순히 온도가 오른 뒤 냉각하는 방식이 아니라, 모터·인버터·배터리의 온도 변화와 주행 부하를 기반으로 선제적으로 냉각을 제어하는 Predictive Thermal Control 시스템을 지향합니다. 이를 통해 출력 제한을 늦추고, 내구 주행 동안 일관된 퍼포먼스를 유지하는 열관리 전략을 완성합니다.",
     points: [
@@ -182,8 +182,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Aero",
-    x: "10%",
-    y: "57%",
+    x: "31%",
+    y: "70%",
     title: "Aero",
     desc: "Aero Dynamics 파트는 차량 주변의 공기 흐름을 설계해, 타이어가 더 강하게 노면을 붙잡을 수 있도록 다운포스를 만들어내는 성능 시스템입니다. CHALLENGER는 단순히 기존 에어포일을 적용하는 것을 넘어, 차량 특성에 맞춘 자체 에어포일 형상을 설계하고 해석 정합성을 최적화하여 공력 성능의 신뢰도를 높이고 있습니다. 이를 통해 코너링 안정성과 고속 주행 성능을 동시에 끌어올리는 Aero Package를 완성합니다.",
     points: [
@@ -199,8 +199,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "Motor Control",
-    x: "62%",
-    y: "32%",
+    x: "60%",
+    y: "41%",
     title: "Motor Control",
     desc: "Motor&Control 파트는 전기 포뮬러 차량의 구동 성능과 에너지 흐름을 제어하는 핵심 시스템입니다. CHALLENGER는 모터·인버터·배터리의 한계를 실시간으로 관리하며, VCU를 중심으로 토크 제어, Field Weakening, Break Speed, 회생제동, 냉각 제어, 안전 로직을 통합합니다. 단순히 모터를 구동하는 것을 넘어, 차량의 출력·효율·안정성을 하나의 제어 시스템으로 완성하는 Electric Performance Control을 구현합니다.",
     points: [
@@ -216,8 +216,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "HV",
-    x: "68%",
-    y: "40%",
+    x: "58%",
+    y: "51%",
     title: "HV",
     desc: "High Voltage 파트는 전기 포뮬러 차량의 배터리와 고전압 시스템을 설계하고 제작합니다. 배터리에 저장된 에너지를 필요한 순간 모터와 인버터에 지연 없이 전달하여 차량이 요구하는 성능을 안정적으로 구현합니다. CHALLENGER는 단순히 배터리 팩의 하드웨어 제작에 그치는 것이 아니라, BMS 기반 에너지 관리, 고전압 안전 아키텍처, 전력 분배, 구조해석 (CAE)을 통한 컨테이너 안전성 확보, 열 해석 (CAE) 기반의 쿨링, 주행 데이터 기반 검증까지 차량의 모든 고전압 시스템을 담당합니다. High Voltage는 차량의 강한 출력을 책임지면서도, 모든 주행 환경에서 안전을 최우선으로 설계하는 파트입니다.",
     points: [
@@ -233,8 +233,8 @@ const HOTSPOTS_KO: Hotspot[] = [
   },
   {
     name: "GLVS",
-    x: "60.5%",
-    y: "21.2%",
+    x: "56%",
+    y: "36%",
     title: "GLVS",
     desc: "Grounded Low Voltage System 파트는 차량의 센서, 제어기, 통신 장비를 안정적으로 구동하는 전장 시스템의 기반입니다. CHALLENGER는 단순히 차량의 전원을 공급하는 것을 넘어, VCU가 정확한 판단을 내릴 수 있도록 신뢰성 있는 전원·신호·통신 환경을 설계합니다. 또한 Shutdown Circuit, BSPD, IMD, AMS 등 안전 시스템을 체계적으로 구축하여 차량의 전반적인 안전 상태를 확보하고, 고전압 시스템과 구동 제어가 안전 조건 안에서 작동하도록 만드는 차량의 전기적 신경망입니다.",
     points: [
@@ -253,8 +253,8 @@ const HOTSPOTS_KO: Hotspot[] = [
 const HOTSPOTS_EN: Hotspot[] = [
   {
     name: "Suspension",
-    x: "50%",
-    y: "60%",
+    x: "42%",
+    y: "61%",
     title: "Suspension",
     desc: "The Suspension part connects the vehicle and the road surface, and is a core system that converts the tire's potential into actual driving performance. It is not simply a device that supports the chassis; at every moment of acceleration, braking, and cornering, it controls load transfer, maintains tire contact, and determines the vehicle's limit.",
     points: [
@@ -270,8 +270,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Frame",
-    x: "30%",
-    y: "55%",
+    x: "48%",
+    y: "53%",
     title: "Frame",
     desc: "The Frame part is the structural foundation that connects every system of the vehicle into one. CHALLENGER pushes the lightness and stiffness of the Space Frame structure to the limit, and verifies with data how the design works on the actual vehicle through real torsional rigidity measurement.",
     points: [
@@ -287,8 +287,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Ergonomics",
-    x: "58%",
-    y: "40%",
+    x: "52%",
+    y: "43%",
     title: "Ergonomics",
     desc: "The Ergonomics part is the most important interface connecting the driver and the vehicle. Beyond simple seating comfort, CHALLENGER optimizes the Cockpit and Driver Interface so that every control input can be delivered intuitively and consistently, creating an environment where the driver can use the vehicle's performance up to its limit.",
     points: [
@@ -304,8 +304,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Drive Train",
-    x: "75%",
-    y: "40%",
+    x: "70%",
+    y: "49%",
     title: "Drive Train",
     desc: "The Drivetrain part is the vehicle's power transmission system that delivers torque generated by the motor to the road surface without loss. Beyond simply making a strong drivetrain, CHALLENGER reduces unnecessary weight and manages the mileage of each component to secure both lightweight design and reliability. It is a part that designs structure, maintainability, and quality control together so that consistent performance can be maintained even in a high-output electric drive environment.",
     points: [
@@ -321,8 +321,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Cooling",
-    x: "78%",
-    y: "33%",
+    x: "64%",
+    y: "54%",
     title: "Cooling",
     desc: "The Cooling part is a core system that controls heat so that the high-output electric drive system can stably maintain performance even at its limits. CHALLENGER does not simply cool after the temperature rises; it aims for a Predictive Thermal Control system that proactively controls cooling based on temperature changes of the motor, inverter, and battery, as well as driving load. Through this, it delays output limitation and completes a thermal management strategy that maintains consistent performance during endurance driving.",
     points: [
@@ -338,8 +338,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Aero",
-    x: "10%",
-    y: "57%",
+    x: "31%",
+    y: "70%",
     title: "Aero",
     desc: "The Aero Dynamics part is a performance system that designs the airflow around the vehicle and creates downforce so the tires can grip the road more strongly. Beyond simply applying an existing airfoil, CHALLENGER designs its own airfoil shape suited to the vehicle characteristics and optimizes analysis correlation to improve the reliability of aerodynamic performance. Through this, it completes an Aero Package that raises both cornering stability and high-speed driving performance.",
     points: [
@@ -355,8 +355,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "Motor Control",
-    x: "62%",
-    y: "32%",
+    x: "60%",
+    y: "41%",
     title: "Motor Control",
     desc: "The Motor&Control part is the core system that controls the driving performance and energy flow of an electric formula vehicle. CHALLENGER manages the limits of the motor, inverter, and battery in real time, and integrates torque control, Field Weakening, Break Speed, regenerative braking, cooling control, and safety logic around the VCU. Beyond simply driving the motor, it implements Electric Performance Control that completes the vehicle's output, efficiency, and stability as one control system.",
     points: [
@@ -372,8 +372,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "HV",
-    x: "68%",
-    y: "40%",
+    x: "58%",
+    y: "51%",
     title: "HV",
     desc: "High Voltage is responsible for designing and manufacturing the battery and high-voltage systems of the electric formula vehicle. It reliably delivers the energy stored in the battery to the motor and inverter whenever needed, enabling the vehicle to achieve the required performance. CHALLENGER’s High Voltage part goes beyond simply manufacturing the hardware of the battery pack. It is responsible for the entire high-voltage system of the vehicle, including BMS-based energy management, high-voltage safety architecture, power distribution, container safety verification through structural analysis (CAE), cooling based on thermal analysis (CAE), and validation using driving data. High Voltage is the part that supports the vehicle’s powerful output while prioritizing safety in all driving conditions",
     points: [
@@ -389,8 +389,8 @@ const HOTSPOTS_EN: Hotspot[] = [
   },
   {
     name: "GLVS",
-    x: "60.5%",
-    y: "21.2%",
+    x: "56%",
+    y: "36%",
     title: "LV",
     desc: "The Grounded Low Voltage System is the foundation of the electrical system that reliably operates the vehicle’s sensors, controllers, and communication devices. CHALLENGER goes beyond simply supplying low-voltage power by designing a reliable power, signal, and communication environment that enables the VCU to make accurate decisions. In addition, it systematically implements safety systems such as the Shutdown Circuit, BSPD, IMD, and AMS to secure the vehicle’s overall safety state, forming the vehicle’s electrical nervous system that ensures the high-voltage system and drivetrain control operate within safe conditions.",
     points: [
