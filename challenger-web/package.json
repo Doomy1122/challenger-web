@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predev": "node scripts/generate-gallery-manifest.mjs",
+    "prebuild": "node scripts/generate-gallery-manifest.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
