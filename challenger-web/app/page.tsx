@@ -475,34 +475,23 @@ export default function Home() {
               <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-[#950000] shrink-0" /><p>CHALLENGERFSAE@gmail.com</p></div>
               <div className="border-t border-zinc-800 my-4" />
               <div>
-                <p className="text-white font-bold mb-2">{t.contact.chairman}</p>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-[#950000]" />
-                    <p>{t.contact.name_chair} +82) 10 4561 8947</p>
-                  </div>
-                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212241@vision.hoseo.edu</p></div>
-                </div>
-              </div>
-              <div>
                 <p className="text-white font-bold mb-2">{t.contact.pm}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#950000]" />
-                    <p>{t.contact.name_pm} +82) 10 4705 3671</p>
+                    <p>{t.contact.name_pm} +82) 10 3336 3428</p>
                   </div>
-                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20212192@vision.hoseo.edu</p></div>
+                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>chwd19@naver.com</p></div>
                 </div>
               </div>
-              {/* ✅ 부팀장 (Assistant Manager) 추가 */}
               <div>
-                <p className="text-white font-bold mb-2">{t.contact.vice}</p>
+                <p className="text-white font-bold mb-2">{t.contact.chairman}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#950000]" />
-                    <p>{t.contact.name_vice} +82) 10 3336 3428</p>
+                    <p>{t.contact.name_chair} +82) 10 8709 7377</p>
                   </div>
-                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20222315@vision.hoseo.edu</p></div>
+                  <div className="flex items-center gap-3"><Mail className="w-4 h-4 text-[#950000]" /><p>20222289@vision.hoseo.edu</p></div>
                 </div>
               </div>
             </div>
